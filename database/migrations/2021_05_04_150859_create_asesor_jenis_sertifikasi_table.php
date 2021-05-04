@@ -21,6 +21,9 @@ class CreateAsesorJenisSertifikasiTable extends Migration
             $table->date('tanggal_akhir_berlaku');
             $table->string('no_sertifikat');
             // $table->timestamps();
+
+            $table->foreign('id_asesor')->references('id')->on('asesor')->onDelete('cascade');
+            $table->foreign('id_ref_jenis_sertifikasi')->references('id')->on('ref_jenis_sertifikasi')->onDelete('cascade');
         });
     }
 
