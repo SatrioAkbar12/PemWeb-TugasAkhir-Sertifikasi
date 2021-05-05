@@ -20,16 +20,16 @@ class CreateAsesiTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
-            // $table-> id ref negara
+            // $table->bigInteger('id_ref_negara');
             $table->text('alamat');
             $table->string('no_telepon');
             $table->string('email');
             $table->string('kualifikasi_pendidikan');
-            // $table-> id unit
+            $table->bigInteger('id_user');
             $table->timestamps();
             $table->string('created_by');
             $table->string('edited_by');
-            $table->bigInteger('id_user');
+            // $table->bigInteger('id_user');
 
             $table->foreign('id_user')->references('id')->on('users');
         });
