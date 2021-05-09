@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePendaftarKuesionerTable extends Migration
+class AlterPendaftarKuesionerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreatePendaftarKuesionerTable extends Migration
      */
     public function up()
     {
-        Schema::create('pendaftar_kuesioner', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_pendaftar');
-            $table->unsignedBigInteger('id_kuesioner');
-            $table->text('jawaban');
-            $table->string('created_by');
-            $table->string('edited_by');
-            $table->timestamps();
+        Schema::table('pendaftar_kuesioner', function (Blueprint $table) {
+            $table->foreign('id_pendaftar')->references('id')->on('pendaftar')->onDelete('cascade');
+            $table->foreign('id_kuesioner')->references('id')->on('ref_kuesioner')->onDelete('cascade');
         });
     }
 

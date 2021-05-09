@@ -15,13 +15,13 @@ class CreateAsesorPendaftarTable extends Migration
     {
         Schema::create('asesor_pendaftar', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_asesor_jenis_sertifikasi');
-            $table->bigInteger('id_pendaftar');
+            $table->unsignedBigInteger('id_asesor_jenis_sertifikasi');
+            $table->unsignedBigInteger('id_pendaftar');
             $table->string('hasil');
             // $table->timestamps();
 
-            $table->foreign('id_asesor_jenis_sertifikasi')->references('id')->on('asesor_jenis_sertifikasi')->onDelete('cascade');
-            $table->foreign('id_pendaftar')->references('id')->on('pendaftar')->onDelete('cascade');
+            // $table->foreign('id_asesor_jenis_sertifikasi')->references('id')->on('asesor_jenis_sertifikasi')->onDelete('cascade');
+            // $table->foreign('id_pendaftar')->references('id')->on('pendaftar')->onDelete('cascade');
         });
     }
 

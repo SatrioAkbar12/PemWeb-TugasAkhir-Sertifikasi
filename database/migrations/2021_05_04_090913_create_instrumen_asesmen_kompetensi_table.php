@@ -15,12 +15,12 @@ class CreateInstrumenAsesmenKompetensiTable extends Migration
     {
         Schema::create('instrumen_asesmen_kompetensi', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_ref_unit_kompetensi');
+            $table->unsignedBigInteger('id_ref_unit_kompetensi');
             $table->string('instrumen_pertanyaan');
             $table->string('status_instrumen');
             $table->boolean('is_aktif');
 
-            $table->foreign('id_ref_unit_kompetensi')->references('id')->on('ref_unit_kompetensi')->onDelete('cascade');
+            // $table->foreign('id_ref_unit_kompetensi')->references('id')->on('ref_unit_kompetensi')->onDelete('cascade');
             // $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class CreatePendaftarTable extends Migration
     {
         Schema::create('pendaftar', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_penawaran_sertifikasi');
-            $table->bigInteger('id_asesi');
+            $table->unsignedBigInteger('id_penawaran_sertifikasi');
+            $table->unsignedBigInteger('id_asesi');
             $table->string('status_akhir_sertifikasi');
             $table->date('tanggal_status_akhir');
             $table->timestamps();
@@ -24,8 +24,8 @@ class CreatePendaftarTable extends Migration
             $table->string('edited_by');
             $table->string('status_pendaftaran');
 
-            $table->foreign('id_penawaran_sertifikasi')->references('id')->on('penawaran_sertifikasi')->onDelete('cascade');
-            $table->foreign('id_asesi')->references('id')->on('asesi')->onDelete('cascade');
+            // $table->foreign('id_penawaran_sertifikasi')->references('id')->on('penawaran_sertifikasi')->onDelete('cascade');
+            // $table->foreign('id_asesi')->references('id')->on('asesi')->onDelete('cascade');
         });
     }
 

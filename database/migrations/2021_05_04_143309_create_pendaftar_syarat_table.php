@@ -15,8 +15,8 @@ class CreatePendaftarSyaratTable extends Migration
     {
         Schema::create('pendaftar_syarat', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_syarat_sertifikasi');
-            $table->bigInteger('id_pendaftar');
+            $table->unsignedBigInteger('id_syarat_sertifikasi');
+            $table->unsignedBigInteger('id_pendaftar');
             $table->string('status_verifikasi_syarat');
             $table->string('path_bukti');
             $table->string('verifikasi_asesor');
@@ -27,8 +27,8 @@ class CreatePendaftarSyaratTable extends Migration
             $table->string('edited_by');
             $table->timestamps();
 
-            $table->foreign('id_syarat_sertifikasi')->references('id')->on('syarat_sertifikasi')->onDelete('cascade');
-            $table->foreign('id_pendaftar')->references('id')->on('pendaftar')->onDelete('cascade');
+            // $table->foreign('id_syarat_sertifikasi')->references('id')->on('syarat_sertifikasi')->onDelete('cascade');
+            // $table->foreign('id_pendaftar')->references('id')->on('pendaftar')->onDelete('cascade');
         });
     }
 

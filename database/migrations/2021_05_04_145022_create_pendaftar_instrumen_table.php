@@ -15,8 +15,8 @@ class CreatePendaftarInstrumenTable extends Migration
     {
         Schema::create('pendaftar_instrumen', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_pendaftar');
-            $table->bigInteger('id_instrumen_asesmen');
+            $table->unsignedBigInteger('id_pendaftar');
+            $table->unsignedBigInteger('id_instrumen_asesmen');
             $table->text('jawaban_self_asesmen');
             $table->string('path_bukti');
             $table->text('komentar_bukti');
@@ -27,8 +27,8 @@ class CreatePendaftarInstrumenTable extends Migration
             $table->string('edited_by');
             $table->timestamps();
 
-            $table->foreign('id_pendaftar')->references('id')->on('pendaftar')->onDelete('cascade');
-            $table->foreign('id_instrumen_asesmen')->references('id')->on('instrumen_asesmen_kompetensi')->onDelete('cascade');
+            // $table->foreign('id_pendaftar')->references('id')->on('pendaftar')->onDelete('cascade');
+            // $table->foreign('id_instrumen_asesmen')->references('id')->on('instrumen_asesmen_kompetensi')->onDelete('cascade');
         });
     }
 

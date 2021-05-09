@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsesorTable extends Migration
+class AlterPendaftarTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateAsesorTable extends Migration
      */
     public function up()
     {
-        Schema::create('asesor', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-
-            $table->unsignedBigInteger('id_user');
-            // $table->timestamps();
+        Schema::table('pendaftar', function (Blueprint $table) {
+            $table->foreign('id_penawaran_sertifikasi')->references('id')->on('penawaran_sertifikasi')->onDelete('cascade');
+            $table->foreign('id_asesi')->references('id')->on('asesi')->onDelete('cascade');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateAsesorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asesor');
+        Schema::dropIfExists('pendaftar');
     }
 }

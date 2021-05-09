@@ -15,8 +15,8 @@ class CreateJadwalTable extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_penawaran_sertifikasi');
-            $table->bigInteger('id_jadwal');
+            $table->unsignedBigInteger('id_penawaran_sertifikasi');
+            $table->unsignedBigInteger('id_kegiatan');
             $table->date('tanggal_awal');
             $table->date('tanggal_akhir');
             $table->timestamp('created_at');
@@ -24,8 +24,8 @@ class CreateJadwalTable extends Migration
             $table->boolean('is_show');
             $table->text('deskripsi');
 
-            $table->foreign('id_penawaran_sertifikasi')->references('id')->on('penawaran_sertifikasi')->onDelete('cascade');
-            $table->foreign('id_jadwal')->references('id')->on('ref_kegiatan')->onDelete('cascade');
+            // $table->foreign('id_penawaran_sertifikasi')->references('id')->on('penawaran_sertifikasi')->onDelete('cascade');
+            // $table->foreign('id_kegiatan')->references('id')->on('ref_kegiatan')->onDelete('cascade');
         });
     }
 

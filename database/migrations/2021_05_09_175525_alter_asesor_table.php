@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsesorTable extends Migration
+class AlterAsesorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateAsesorTable extends Migration
      */
     public function up()
     {
-        Schema::create('asesor', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-
-            $table->unsignedBigInteger('id_user');
-            // $table->timestamps();
+        Schema::table('asesor', function (Blueprint $table) {
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

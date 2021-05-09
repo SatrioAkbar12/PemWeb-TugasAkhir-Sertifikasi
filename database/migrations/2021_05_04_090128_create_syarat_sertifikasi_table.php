@@ -15,11 +15,11 @@ class CreateSyaratSertifikasiTable extends Migration
     {
         Schema::create('syarat_sertifikasi', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_ref_jenis_sertifikasi');
+            $table->unsignedBigInteger('id_ref_jenis_sertifikasi');
             $table->string('syarat');
             $table->boolean('is_aktif');
 
-            $table->foreign('id_ref_jenis_sertifikasi')->references('id')->on('ref_jenis_sertifikasi')->onDelete('cascade');
+            // $table->foreign('id_ref_jenis_sertifikasi')->references('id')->on('ref_jenis_sertifikasi')->onDelete('cascade');
             // $table->timestamps();
         });
     }
