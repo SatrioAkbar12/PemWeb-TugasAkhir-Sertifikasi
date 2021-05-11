@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterAsesorTable extends Migration
+class CreateRefNegaraTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AlterAsesorTable extends Migration
      */
     public function up()
     {
-        Schema::table('asesor', function (Blueprint $table) {
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+        Schema::create('ref_negara', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
         });
     }
 
@@ -25,6 +26,6 @@ class AlterAsesorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asesor');
+        Schema::dropIfExists('ref_negara');
     }
 }

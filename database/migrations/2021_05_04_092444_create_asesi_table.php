@@ -20,12 +20,12 @@ class CreateAsesiTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
-            $table->unsignedBigInteger('id_ref_negara')->nullable();
+            $table->unsignedBigInteger('id_ref_negara');
             $table->text('alamat');
             $table->string('no_telepon');
             $table->string('email');
             $table->string('kualifikasi_pendidikan');
-            $table->unsignedBigInteger('id_unit')->nullable();
+            $table->unsignedBigInteger('id_prodi');
             $table->timestamps();
             $table->string('created_by');
             $table->string('edited_by');
