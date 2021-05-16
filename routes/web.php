@@ -21,4 +21,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// Route khusus admin
+Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
+    Route::get('/', function () {
+        return 'ini page khusus admin';
+    });
+});
+
+// Route khusus asesor
+Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
+    Route::get('/', function () {
+        return 'fini page khusus asesor';
+    });
+});
+
 require __DIR__.'/auth.php';
