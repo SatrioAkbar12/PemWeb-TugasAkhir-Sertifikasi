@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\ReferensiNegaraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +25,8 @@ Route::get('/dashboard', function () {
 
 // Route khusus admin
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
-    Route::get('/', function () {
-        return 'ini page khusus admin';
-    });
+    Route::get('/', [AdminDashboardController::class, 'showDashboard']);
+    Route::get('/negara', [ReferensiNegaraController::class, 'show']);
 });
 
 // Route khusus asesor
