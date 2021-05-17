@@ -9,8 +9,7 @@ use App\Models\User;
 
 class AdminDashboardController extends Controller
 {
-    public function showDashboard() {
-        $user = Auth::user();
-        return view('admin.index', ['nama' => $user->nama, 'role'=> $user->role]);
+    public function showDashboard() {;
+        return view('admin.index');
     }
 }
