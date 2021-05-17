@@ -2,14 +2,6 @@
 
 @section('head_title', 'Admin Dashboard')
 
-@section('nama')
-    {{ Auth::user()->nama }}
-@endsection
-
-@section('role')
-    {{ Auth::user()->role }}
-@endsection
-
 @section('sidebar-dashboard-active', 'active')
 
 @section('content')
