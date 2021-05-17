@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterRenameColumnUsersTable extends Migration
+class AlterUsernameColumnUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AlterRenameColumnUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('nama', 'username');
+            $table->string('username')->unique()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AlterRenameColumnUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('username', 'nama');
+            $table->dropUnique(['username']);
         });
     }
 }
