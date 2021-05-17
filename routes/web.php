@@ -26,7 +26,16 @@ Route::get('/dashboard', function () {
 // Route khusus admin
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'showDashboard']);
-    Route::get('/negara', [ReferensiNegaraController::class, 'show']);
+
+    Route::prefix('negara')->group(function () {
+        Route::get('/', [ReferensiNegaraController::class, 'show']);
+        Route::get('/tambah', [ReferensiNegaraController::class, 'showCreate']);
+        Route::post('/tambah', [ReferensiNegaraController::class, 'create']);
+        Route::get('/{id}', [ReferensiNegaraController::class, 'read']);
+        Route::get('/{id}/edit', [ReferensiNegaraController::class, 'showEdit']);
+        Route::put('/{id}/edit', [ReferensiNegaraController::class, 'edit']);
+        Route::get('/{id}/delete', [ReferensiNegaraController::class, 'del']);
+    });
 });
 
 // Route khusus asesor
