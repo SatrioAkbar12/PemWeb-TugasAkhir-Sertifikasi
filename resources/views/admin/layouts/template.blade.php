@@ -43,7 +43,7 @@
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="info">
                     <p class="text-light">
-                        {{ Auth::user()->nama }}<br>
+                        {{ Auth::user()->username }}<br>
                         {{ Auth::user()->role }}
                     </p>
                 </div>
@@ -62,7 +62,34 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-header">EXAMPLES</li> --}}
+
+                <li class="nav-header">KELOLA AKUN</li>
+                <li class="nav-item">
+                    <a href="/admin/kelola-admin" class="nav-link @yield('sidebar-admin-active')">
+                        <i class=""></i>
+                        <p>
+                            Admin
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/kelola-asesi" class="nav-link @yield('sidebar-asesi-active')">
+                        <i class=""></i>
+                        <p>
+                            Asesi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/kelola-asesor" class="nav-link @yield('sidebar-asesor-active')">
+                        <i class=""></i>
+                        <p>
+                            Asesor
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-header">HEADER</li>
                 <li class="nav-item">
                     <a href="/admin/negara" class="nav-link @yield('sidebar-negara-active')">
                         <i class="nav-icon far fa-flag"></i>
