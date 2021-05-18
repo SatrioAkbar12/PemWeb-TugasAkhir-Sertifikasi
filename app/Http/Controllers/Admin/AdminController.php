@@ -24,8 +24,9 @@ class AdminController extends Controller
         $request->validate([
             'username' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:8|required_with:password_confirmation|same:password_confirmation',
-            'password_confirmation' => 'required|min:8',
+            'password' => 'required|min:8|confirmed'
+            // 'password' => 'required|min:8|required_with:password_confirmation|same:password_confirmation',
+            // 'password_confirmation' => 'required|min:8',
         ]);
 
         User::create([
@@ -47,22 +48,33 @@ class AdminController extends Controller
     public function showEdit() {
         $data = Auth::user();
 
-        // return view('admin.admin.form_edit_data', ['data' => $data ]);
-        return 'tes';
+        return view('admin.admin.form_edit_data', ['data' => $data ]);
     }
 
     public function edit(Request $request) {
         $request->validate([
-            'id' => 'required',
             'username' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'role' => 'required'
         ]);
 
-        User::where('id', $request->id)->update([
+        User::where('id', Auth::id())->update([
             'username' => $request->username,
-            'email' => $request->email,
+            'email' => $request->email
+        ]);
+
+        return redirect('/admin/kelola-admin');
+    }
+
+    public function showChangePassword() {
+        return view('admin.admin.form_ganti_password');
+    }
+
+    public function changePassword(Request $request) {
+        $request->validate([
+            'password' => 'required|min:8|confirmed'
+        ]);
+
+        User::where('id', Auth::id())->update([
             'password' => Hash::make($request->password)
         ]);
 

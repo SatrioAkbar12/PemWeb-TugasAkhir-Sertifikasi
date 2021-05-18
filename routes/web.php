@@ -32,9 +32,11 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/', [AdminController::class, 'show']);
         Route::get('/tambah', [AdminController::class, 'showCreate']);
         Route::post('/tambah', [AdminController::class, 'create']);
-        Route::get('/{id}', [AdminController::class, 'read']);
         Route::get('/edit', [AdminController::class, 'showEdit']);
         Route::put('/edit', [AdminController::class, 'edit']);
+        Route::get('/edit/ganti-password', [AdminController::class, 'showChangePassword']);
+        Route::put('/edit/ganti-password', [AdminController::class, 'changePassword']);
+        Route::get('/{id}', [AdminController::class, 'read']);
         Route::get('/{id}/delete', [AdminController::class, 'del']);
     });
 
