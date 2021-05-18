@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\ReferensiNegaraController;
 
 /*
@@ -70,6 +71,15 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/{id}/delete', [ReferensiNegaraController::class, 'del']);
     });
 
+    Route::prefix('prodi')->group(function() {
+        Route::get('/', [ProdiController::class, 'show']);
+        Route::get('/tambah', [ProdiController::class, 'showCreate']);
+        Route::post('/tambah', [ProdiController::class, 'create']);
+        Route::get('/{id}', [ProdiController::class, 'read']);
+        Route::get('/{id}/edit', [ProdiController::class, 'showEdit']);
+        Route::put('/{id}/edit', [ProdiController::class, 'edit']);
+        Route::get('/{id}/delete', [ProdiController::class, 'del']);
+    });
 });
 
 // Route khusus asesor
