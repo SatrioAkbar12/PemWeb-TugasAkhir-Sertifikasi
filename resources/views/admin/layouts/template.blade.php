@@ -66,7 +66,7 @@
                 <li class="nav-header">KELOLA AKUN</li>
                 <li class="nav-item">
                     <a href="/admin/kelola-admin" class="nav-link @yield('sidebar-admin-active')">
-                        <i class=""></i>
+                        <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             Admin
                         </p>
@@ -74,7 +74,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/admin/kelola-asesi" class="nav-link @yield('sidebar-asesi-active')">
-                        <i class=""></i>
+                        <i class="nav-icon fas fa-user-graduate"></i>
                         <p>
                             Asesi
                         </p>
@@ -82,7 +82,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/admin/kelola-asesor" class="nav-link @yield('sidebar-asesor-active')">
-                        <i class=""></i>
+                        <i class="nav-icon fas fa-user-check"></i>
                         <p>
                             Asesor
                         </p>
@@ -95,6 +95,14 @@
                         <i class="nav-icon far fa-flag"></i>
                         <p>
                             Referensi Negara
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/prodi" class="nav-link @yield('sidebar-prodi-active')">
+                        <i class="nav-icon fas fa-university"></i>
+                        <p>
+                            Program Studi
                         </p>
                     </a>
                 </li>
