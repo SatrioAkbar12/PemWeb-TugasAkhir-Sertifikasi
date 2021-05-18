@@ -18,7 +18,7 @@
     <section class="content">
         <!-- Default box -->
         <div class="card">
-            <div class="card-body p-0">
+            <div class="card-body p-4">
                 <form method="post" action="/admin/negara/{{ $data->id }}/edit">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     {{ method_field('PUT') }}

@@ -18,7 +18,7 @@
     <section class="content">
         <!-- Default box -->
         <div class="card">
-            <div class="card-body p-0">
+            <div class="card-body p-4">
                 <div class="row">
                     <div class="col-2">
                         ID
