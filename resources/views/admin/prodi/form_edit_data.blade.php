@@ -30,9 +30,26 @@
                     <div class="form-group">
                         <label for="input_fakultas" class="form-label">Fakultas</label>
                         <select id="input_fakultas" class="form-control" name="fakultas">
-                            {{-- Option fakultas belum lengkap --}}
-                            {{-- if untuk selected data belum  --}}
-                            <option value="Fakultas Matematika dan Ilmu Pengetahuan Alam">Fakultas Matematika dan Ilmu Pengetahuan Alam</option>
+                            @php
+                                $list_fakultas = array(
+                                   "Fakultas Ilmu Budaya",
+                                   "Fakultas Hukum",
+                                   "Fakultas Ilmu Sosial dan Ilmu Politik",
+                                   "Fakultas Keguruan dan Ilmu Pendidikan",
+                                   "Fakultas Ekonomi dan Bisnis",
+                                   "Fakultas Teknik",
+                                   "Fakultas Kedokteran",
+                                   "Fakultas Pertanian",
+                                   "Fakultas Matematika dan Ilmu Pengetahuan Alam",
+                                   "Fakultas Seni Rupa dan Desain",
+                                   "Fakultas Keolahragaan",
+                                   "Pascasarjana",
+                                   "Sekolah Vokasi"
+                                );
+                            @endphp
+                            @for($i = 0; $i < count($list_fakultas); $i++)
+                                <option value="{{ $list_fakultas[$i] }}" {{ $list_fakultas[$i] == $data->fakultas ? 'selected' : ''}}>{{ $list_fakultas[$i] }}</option>
+                            @endfor
                         </select>
                     </div>
                     <div class="form-group">
