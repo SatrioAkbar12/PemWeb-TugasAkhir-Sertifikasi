@@ -28,8 +28,20 @@
                     <div class="form-group">
                         <label for="input_fakultas" class="form-label">Fakultas</label>
                         <select id="input_fakultas" class="form-control" name="fakultas">
-                            {{-- Option fakultas belum lengkap --}}
+                            <option disabled selected>Pilih Fakultas ...</option>
+                            <option value="Fakultas Ilmu Budaya">Fakultas Ilmu Budaya</option>
+                            <option value="Fakultas Hukum">Fakultas Hukum</option>
+                            <option value="Fakultas Ilmu Sosial dan Ilmu Politik">Fakultas Ilmu Sosial dan Ilmu Politik</option>
+                            <option value="Fakultas Keguruan dan Ilmu Pendidikan">Fakultas Keguruan dan Ilmu Pendidikan</option>
+                            <option value="Fakultas Ekonomi dan Bisnis">Fakultas Ekonomi dan Bisnis</option>
+                            <option value="Fakultas Teknik">Fakultas Teknik</option>
+                            <option value="Fakultas Kedokteran">Fakultas Kedokteran</option>
+                            <option value="Fakultas Pertanian">Fakultas Pertanian</option>
                             <option value="Fakultas Matematika dan Ilmu Pengetahuan Alam">Fakultas Matematika dan Ilmu Pengetahuan Alam</option>
+                            <option value="Fakultas Seni Rupa dan Desain">Fakultas Seni Rupa dan Desain</option>
+                            <option value="Fakultas Keolahragaan">Fakultas Keolahragaan</option>
+                            <option value="Pascasarjana">Pascasarjana</option>
+                            <option value="Sekolah Vokasi">Sekolah Vokasi</option>
                         </select>
                     </div>
                     <div class="form-group">
