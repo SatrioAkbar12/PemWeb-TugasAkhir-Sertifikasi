@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AsesiController;
+use App\Http\Controllers\Admin\AsesorController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\ReferensiNegaraController;
 
@@ -41,25 +43,25 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/{id}/delete', [AdminController::class, 'del']);
     });
 
-    // Route::prefix('kelola-asesi')->group(function() {
-    //     Route::get('/', [AsesiController::class, 'show']);
-    //     Route::get('/tambah', [AsesiController::class, 'showCreate']);
-    //     Route::post('/tambah', [AsesiController::class, 'create']);
-    //     Route::get('/{id}', [AsesiController::class, 'read']);
-    //     Route::get('/{id}/edit', [AsesiController::class, 'showEdit']);
-    //     Route::put('/{id}/edit', [AsesiController::class, 'edit']);
-    //     Route::get('/{id}/delete', [AsesiController::class, 'del']);
-    // });
+    Route::prefix('kelola-asesi')->group(function() {
+        Route::get('/', [AsesiController::class, 'show']);
+        Route::get('/tambah', [AsesiController::class, 'showCreate']);
+        Route::post('/tambah', [AsesiController::class, 'create']);
+        Route::get('/{id}', [AsesiController::class, 'read']);
+        Route::get('/{id}/edit', [AsesiController::class, 'showEdit']);
+        Route::put('/{id}/edit', [AsesiController::class, 'edit']);
+        Route::get('/{id}/delete', [AsesiController::class, 'del']);
+    });
 
-    // Route::prefix('kelola-asesor')->group(function() {
-    //     Route::get('/', [AsesorController::class, 'show']);
-    //     Route::get('/tambah', [AsesorController::class, 'showCreate']);
-    //     Route::post('/tambah', [AsesorController::class, 'create']);
-    //     Route::get('/{id}', [AsesorController::class, 'read']);
-    //     Route::get('/{id}/edit', [AsesorController::class, 'showEdit']);
-    //     Route::put('/{id}/edit', [AsesorController::class, 'edit']);
-    //     Route::get('/{id}/delete', [AsesorController::class, 'del']);
-    // });
+    Route::prefix('kelola-asesor')->group(function() {
+        Route::get('/', [AsesorController::class, 'show']);
+        Route::get('/tambah', [AsesorController::class, 'showCreate']);
+        Route::post('/tambah', [AsesorController::class, 'create']);
+        Route::get('/{id}', [AsesorController::class, 'read']);
+        Route::get('/{id}/edit', [AsesorController::class, 'showEdit']);
+        Route::put('/{id}/edit', [AsesorController::class, 'edit']);
+        Route::get('/{id}/delete', [AsesorController::class, 'del']);
+    });
 
     Route::prefix('negara')->group(function () {
         Route::get('/', [ReferensiNegaraController::class, 'show']);
