@@ -20,7 +20,7 @@ class AsesorMiddleware
     {
         $user = User::find(Auth::id());
 
-        if($user->role == 'aseosr' || $user->role == 'admin'){
+        if($user->role == 'asesor' || $user->role == 'admin'){
             return $next($request);
         }
         abort('403', 'hanya khusus asesor');
