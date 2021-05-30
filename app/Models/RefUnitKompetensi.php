@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class RefUnitKompetensi extends Model
 {
     use HasFactory;
+
+    protected $table = 'ref_unit_kompetensi';
+
+    protected $primaryKey = 'id';
+
+    public $incrementing = 'true';
+
+    protected $fillable = [
+        'nama',
+        'is_aktif'
+    ];
 }

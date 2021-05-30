@@ -106,6 +106,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/kegiatan" class="nav-link @yield('sidebar-kegiatan-active')">
+                        <i class="nav-icon fas fa-child"></i>
+                        <p>
+                            Kegiatan
+                        </p>
+                    </a>
+                </li>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
@@ -114,6 +122,17 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
         @yield('content')
     </div>
     <!-- /.content-wrapper -->

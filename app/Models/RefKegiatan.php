@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RefKuesioner extends Model
+class RefKegiatan extends Model
 {
     use HasFactory;
 
-    
-    protected $table = 'ref_kuesioner';
+    protected $table = 'ref_kegiatan';
 
     protected $primaryKey = 'id';
 
     public $incrementing = 'true';
 
     protected $fillable = [
-        'pertanyaan',
-        'is_aktif'
-    ];
+        'nama_kegiatan',
+        'deskripsi',
+        'created_at',
+        'created_by'
+    ];    
 }

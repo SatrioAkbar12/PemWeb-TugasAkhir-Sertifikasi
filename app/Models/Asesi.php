@@ -32,4 +32,8 @@ class Asesi extends Model
         'edited_by',
         'id_user'
     ];
+
+    public function users() {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 }
