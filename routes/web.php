@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AsesiController;
 use App\Http\Controllers\Admin\AsesorController;
+use App\Http\Controllers\Admin\KegiatanController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\ReferensiNegaraController;
 
@@ -81,6 +82,16 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/{id}/edit', [ProdiController::class, 'showEdit']);
         Route::put('/{id}/edit', [ProdiController::class, 'edit']);
         Route::get('/{id}/delete', [ProdiController::class, 'del']);
+    });
+
+    Route::prefix('kegiatan')->group(function() {
+        Route::get('/', [KegiatanController::class, 'index']);
+        Route::get('/tambah', [KegiatanController::class, 'showCreate']);
+        Route::post('/tambah', [KegiatanController::class, 'create']);
+        Route::get('/{id}', [KegiatanController::class, 'read']);
+        Route::get('/{id}/edit', [KegiatanController::class, 'showEdit']);
+        Route::put('/{id}/edit', [KegiatanController::class, 'edit']);
+        Route::get('/{id}/delete', [KegiatanController::class, 'del']);
     });
 });
 

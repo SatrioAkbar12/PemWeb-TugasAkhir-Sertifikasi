@@ -106,6 +106,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/kegiatan" class="nav-link @yield('sidebar-kegiatan-active')">
+                        <i class="nav-icon fas fa-child"></i>
+                        <p>
+                            Kegiatan
+                        </p>
+                    </a>
+                </li>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
