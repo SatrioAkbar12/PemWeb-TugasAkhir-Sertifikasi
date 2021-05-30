@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AsesiController;
-use App\Http\Controllers\Admin\AsesorController;
+//use App\Http\Controllers\Admin\AsesorController;
 use App\Http\Controllers\Admin\KegiatanController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\ReferensiNegaraController;
+use App\Http\Controllers\Asesor\AsesorDashboardController;
+use App\Http\Controllers\Asesor\AsesorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,8 +99,25 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
 
 // Route khusus asesor
 Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
-    Route::get('/', function () {
-        return 'fini page khusus asesor';
+    Route::get('/', [AsesorDashboardController::class, 'showDashboard']);
+    // Route::get('/', function () {
+    // //     return view('asesor.index');
+    // });
+
+    Route::prefix('lihat-data')->group(function() {
+        Route::get('/', [AsesorController::class, 'show']);
+        // Route::get('/tambah', [AsesorController::class, 'showCreate']);
+        // Route::post('/tambah', [AsesorController::class, 'create']);
+       // Route::get('/{id}', [AsesorController::class, 'read']);
+        // Route::get('/{id}/edit', [AsesorController::class, 'showEdit']);
+        // Route::put('/{id}/edit', [AsesorController::class, 'edit']);
+        // Route::get('/{id}/delete', [AsesorController::class, 'del']);
+    });
+
+    Route::prefix('edit-data')->group(function() {
+        Route::get('/', [AsesorController::class, 'showEdit']);
+        Route::put('/edit', [AsesorController::class, 'edit']);
+
     });
 });
 
