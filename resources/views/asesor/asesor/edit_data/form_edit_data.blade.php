@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Edit Data Program Studi</h1>
+                    <h1>Edit Profile Anda</h1>
                 </div>
             </div>
     </section>
@@ -84,7 +84,7 @@
 
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Simpan</button>
-                        <a href="/asesor/lihat-data"><button class="btn btn-danger" type="button">Kembali</button></a>
+                        <a href="/asesor"><button class="btn btn-danger" type="button">Kembali</button></a>
                     </div>
                 </form>
             </div>

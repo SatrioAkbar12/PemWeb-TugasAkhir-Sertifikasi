@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Detail Data Program Studi</h1>
+                    <h1>Detail Profile Anda</h1>
                 </div>
             </div>
     </section>
@@ -90,7 +90,7 @@
                 </div>
 
 
-                <a href="/admin/prodi">
+                <a href="/asesor">
                     <button type="button" class="btn btn-danger">Kembali</button>
                 </a>
             </div>
