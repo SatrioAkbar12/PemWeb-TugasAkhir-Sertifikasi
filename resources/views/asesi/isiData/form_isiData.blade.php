@@ -10,22 +10,6 @@
                 <form method="post" action="/register/isi-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
-                        <label for="input_username" class="form-label">Username</label>
-                        <input id="input_username" class="form-control" name="username" type="text" placeholder="Username ..." required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="input_email" class="form-label">Email</label>
-                        <input id="input_email" class="form-control" name="email" type="email" placeholder="Email ..." required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="input_password" class="form-label">Password</label>
-                        <input id="input_password" class="form-control" name="password" type="password" placeholder="Password ..." required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="input_ulangpassword" class="form-label">Ulangi Password</label>
-                        <input id="input_ulangpassword" class="form-control" name="password_confirmation" type="password" placeholder="Masukkan ulang password ..." required/>
-                    </div>
-                    <div class="form-group">
                         <label for="input_nama" class="form-label">Nama Lengkap</label>
                         <input id="input_nama" class="form-control" name="nama" type="text" placeholder="Masukkan nama lengkap ..." required/>
                     </div>
