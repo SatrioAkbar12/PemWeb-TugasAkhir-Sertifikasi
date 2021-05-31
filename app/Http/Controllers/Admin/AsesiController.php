@@ -36,7 +36,7 @@ class AsesiController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'asesor'
+            'role' => 'asesi'
         ]);
 
         $data_user = User::where([
@@ -115,7 +115,6 @@ class AsesiController extends Controller
     public function del($id) {
         $data = Asesi::find($id);
         $data_user = User::find($data->id_user);
-        $data->delete();
         $data_user->delete();
 
         return redirect('/admin/kelola-asesi');
