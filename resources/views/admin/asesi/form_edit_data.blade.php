@@ -120,11 +120,6 @@
                                     @for($i=0; $i<count($list_kualifikasi); $i++)
                                         <option value="{{ $list_kualifikasi[$i] }}" {{ $list_kualifikasi[$i] == $data_asesi->kualifikasi_pendidikan ? 'selected' : ''}}>{{ $list_kualifikasi[$i] }}</option>
                                     @endfor
-                                    {{-- <option value="Pendidikan Dasar">Pendidikan Dasar</option>
-                                    <option value="Pendidikan Menengah">Pendidikan Menengah</option>
-                                    <option value="Sarjana (S1)">Sarjana (S1)</option>
-                                    <option value="Magister (S2)">Magister (S2)</option>
-                                    <option value="Doktor (S3)">Doktor (S3)</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -135,7 +130,7 @@
                             <div class="col-sm-4">
                                 <select id="input_prodi" class="form-control" name="prodi">
                                     @foreach ($data_prodi as $d_prodi)
-                                        <option value="{{ $d_prodi->id }}">{{ $d_prodi->nama }}</option>
+                                        <option value="{{ $d_prodi->id }}" {{ $d_prodi->id == $data_asesi->id_prodi ? 'selected' : '' }}>{{ $d_prodi->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>

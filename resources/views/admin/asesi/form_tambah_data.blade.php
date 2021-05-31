@@ -116,7 +116,7 @@
                             <div class="col-sm-4">
                                 <select id="input_prodi" class="form-control" name="prodi">
                                     @foreach ($prodi as $d_prodi)
-                                        <option value="{{ $d_prodi->id }}" {{ $d_prodi->id == $data_asesi->id_prodi ? 'selected' : '' }}>{{ $d_prodi->nama }}</option>
+                                        <option value="{{ $d_prodi->id }}">{{ $d_prodi->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
