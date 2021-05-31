@@ -45,32 +45,31 @@ class AsesorController extends Controller
     // }
 
     public function edit(Request $request) {
-        $request->validate([
-            'username' => 'required',
-            'email' => 'required',
-        ]);
+        // $request->validate([
+        //     'username' => 'required',
+        //     'email' => 'required',
+        // ]);
 
-        $data_user = User::where([
-            'username' => $request->username,
-            'email' => $request->email
-        ])->first();
+        // $data_user = DB::table('User')->where([
+        //     'username' => $request->username,
+        //     'email' => $request->email
+        // ])->first();
 
 
-        DB::table('asesor')->where('id_user',Auth::id())->get()->first()->update([
+        DB::table('asesor')->where('id_user',Auth::id())->update([
             'nama' => $request->nama,
-            'nip' => $request->nim,
+            'nip' => $request->nip,
             'nik' => $request->nik,
-            'tempat_lahir' => $request->tempatlahir,
-            'tanggal_lahir' => $request->tanggallahir,
-            'jenis_kelamin' => $request->jeniskelamin,
-            'id_ref_negara' => $request->ref_negara,
+            'tempat_lahir' => $request->tpl,
+            'tanggal_lahir' => $request->tgl,
+            'jenis_kelamin' => $request->jk,
+            'id_ref_negara' => $request->negara,
             'alamat' => $request->alamat,
-            'no_telepon' => $request->no_telepon,
-            'kualifikasi_pendidikan' => $request->kualifikasi_pendidikan,
+            'no_telepon' => $request->tlp,
+            'kualifikasi_pendidikan' => $request->pend,
             'id_prodi' => $request->prodi,
-            'created_by' => Auth::user()->username,
             'edited_by' => Auth::user()->username,
-            'id_user' => $data_user->id
+
         ]);
 
         return redirect('/asesor/edit-data');

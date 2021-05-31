@@ -1,6 +1,6 @@
 @extends('asesor.layouts.template')
 
-@section('head_title', 'Admin Dashboard')
+@section('head_title', 'Asesor Dashboard')
 
 @section('sidebar-dashboard-active', 'active')
 
