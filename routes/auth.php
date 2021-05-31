@@ -19,10 +19,10 @@ Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
 
 Route::get('/register/isi-data',[RegisteredAsesiController::class, 'create'])
-                ->middleware('guest');
+                ->middleware('auth');
 
 Route::post('/register/isi-data',[RegisteredAsesiController::class, 'store'])
-                ->middleware('guest');
+                ->middleware('auth');
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
