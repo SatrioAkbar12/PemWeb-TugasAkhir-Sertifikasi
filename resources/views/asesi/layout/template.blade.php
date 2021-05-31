@@ -33,7 +33,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="/admin" class="brand-link text-center">
+        <a href="/asesor" class="brand-link text-center">
             <span class="brand-text font-weight-light">Sertifikasi</span>
         </a>
 
@@ -55,32 +55,38 @@
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/admin" class="nav-link @yield('sidebar-dashboard-active')">
+                    <a href="/asesor" class="nav-link @yield('sidebar-dashboard-active')">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"class="nav-link">Log Out</button>
+                    </form>
+                </li>
 
                 <li class="nav-header">KELOLA AKUN</li>
                 <li class="nav-item">
-                    <a href="/admin/kelola-admin" class="nav-link @yield('sidebar-admin-active')">
+                    <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-admin-active')">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
-                            Admin
+                            Lihat data
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/kelola-asesi" class="nav-link @yield('sidebar-asesi-active')">
+                    <a href="/asesor/edit-data" class="nav-link @yield('sidebar-asesi-active')">
                         <i class="nav-icon fas fa-user-graduate"></i>
                         <p>
-                            Asesi
+                            Edit Data
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="/admin/kelola-asesor" class="nav-link @yield('sidebar-asesor-active')">
                         <i class="nav-icon fas fa-user-check"></i>
                         <p>
@@ -89,12 +95,12 @@
                     </a>
                 </li>
 
-                <li class="nav-header">REFERENSI</li>
+                <li class="nav-header">HEADER</li>
                 <li class="nav-item">
                     <a href="/admin/negara" class="nav-link @yield('sidebar-negara-active')">
                         <i class="nav-icon far fa-flag"></i>
                         <p>
-                            Negara
+                            Referensi Negara
                         </p>
                     </a>
                 </li>
@@ -113,7 +119,7 @@
                             Kegiatan
                         </p>
                     </a>
-                </li>
+                </li> -->
             </nav>
             <!-- /.sidebar-menu -->
         </div>

@@ -29,7 +29,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('asesi.index');
 })->middleware(['auth'])->name('dashboard');
 
 // Route khusus admin

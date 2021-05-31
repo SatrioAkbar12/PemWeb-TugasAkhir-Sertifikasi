@@ -62,6 +62,12 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"class="nav-link">Log Out</button>
+                    </form>
+                </li>
 
                 <li class="nav-header">KELOLA AKUN</li>
                 <li class="nav-item">
