@@ -15,11 +15,13 @@
             </div>
     </section>
 
+
+
     <section class="content">
         <!-- Default box -->
         <div class="card">
             <div class="card-body p-4">
-                <form method="post" action="#">
+                <form method="post" action="/asesor/edit-data/edit">
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     {{ method_field('PUT') }}
@@ -82,7 +84,7 @@
 
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Simpan</button>
-                        <a href="/asesor/edit-data"><button class="btn btn-danger" type="button">Kembali</button></a>
+                        <a href="/asesor/lihat-data"><button class="btn btn-danger" type="button">Kembali</button></a>
                     </div>
                 </form>
             </div>
