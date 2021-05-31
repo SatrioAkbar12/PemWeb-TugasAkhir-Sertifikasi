@@ -89,12 +89,12 @@
                     </a>
                 </li>
 
-                <li class="nav-header">HEADER</li>
+                <li class="nav-header">REFERENSI</li>
                 <li class="nav-item">
                     <a href="/admin/negara" class="nav-link @yield('sidebar-negara-active')">
                         <i class="nav-icon far fa-flag"></i>
                         <p>
-                            Referensi Negara
+                            Negara
                         </p>
                     </a>
                 </li>
