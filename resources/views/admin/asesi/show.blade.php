@@ -50,7 +50,7 @@
                             </th>
                         </tr>
                     </thead>
-                    @foreach ($data as $d)
+                    @foreach ($data_asesi as $d)
                         <tbody>
                             <tr>
                                 <td>
@@ -72,7 +72,7 @@
                                         </i>
                                         View
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="/admin/kelola-asesi/edit">
+                                    <a class="btn btn-info btn-sm" href="/admin/kelola-asesi/{{ $d->id }}/edit">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit

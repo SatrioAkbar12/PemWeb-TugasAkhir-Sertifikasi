@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Tambah Data Asesi</h1>
+                    <h1>Edit Data Asesi</h1>
                 </div>
             </div>
     </section>
@@ -19,45 +19,39 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-body p-4">
-                <form method="post" action="/admin/kelola-asesi/tambah">
+                <form method="post" action="/admin/kelola-asesi/{{ $data_asesi->id }}/edit">
+                    {{ method_field('PUT') }}
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="id_user" value="{{ $data_asesi->id_user }}">
                     <div class="form-group">
                         <label for="input_username" class="form-label">Username</label>
-                        <input id="input_username" class="form-control" name="username" type="text" placeholder="Username ..." required/>
+                        <input id="input_username" class="form-control" name="username" type="text" value="{{ $data_user->username }}" placeholder="Username ..." required/>
                     </div>
                     <div class="form-group">
                         <label for="input_email" class="form-label">Email</label>
-                        <input id="input_email" class="form-control" name="email" type="email" placeholder="Email ..." required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="input_password" class="form-label">Password</label>
-                        <input id="input_password" class="form-control" name="password" type="password" placeholder="Password ..." required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="input_ulangpassword" class="form-label">Ulangi Password</label>
-                        <input id="input_ulangpassword" class="form-control" name="password_confirmation" type="password" placeholder="Masukkan ulang password ..." required/>
+                        <input id="input_email" class="form-control" name="email" type="email" value="{{ $data_user->email }}" placeholder="Email ..." required/>
                     </div>
                     <div class="form-group">
                         <label for="input_nama" class="form-label">Nama Lengkap</label>
-                        <input id="input_nama" class="form-control" name="nama" type="text" placeholder="Masukkan nama lengkap ..." required/>
+                        <input id="input_nama" class="form-control" name="nama" type="text" value="{{ $data_asesi->nama }}" placeholder="Masukkan nama lengkap ..." required/>
                     </div>
                     <div class="form-group">
                         <label for="input_nim" class="form-label">NIM</label>
-                        <input id="input_nim" class="form-control" name="nim" type="text" placeholder="Masukkan NIM ..." required/>
+                        <input id="input_nim" class="form-control" name="nim" type="text" value="{{ $data_asesi->nim }}" placeholder="Masukkan NIM ..." required/>
                     </div>
                     <div class="form-group">
                         <label for="input_nik" class="form-label">Nomor Induk Kependudukan (NIK)</label>
-                        <input id="input_nik" class="form-control" name="nik" type="text" placeholder="Masukkan NIK ..." required/>
+                        <input id="input_nik" class="form-control" name="nik" type="text" value="{{ $data_asesi->nik }}" placeholder="Masukkan NIK ..." required/>
                     </div>
                     <div class="form-group">
                         <label for="input_tempatlahir" class="form-label">Tempat Lahir</label>
-                        <input id="input_tempatlahir" class="form-control" name="tempatlahir" type="text" placeholder="Masukkan tempat lahir ..." required/>
+                        <input id="input_tempatlahir" class="form-control" name="tempatlahir" type="text" value="{{ $data_asesi->tempat_lahir }}" placeholder="Masukkan tempat lahir ..." required/>
                     </div>
                     <div class="form-group">
                         <label for="input_tanggallahir" class="form-label">Tanggal Lahir</label>
                         <div class="row">
                             <div class="col-sm-4">
-                                <input id="input_tanggallahir" class="form-control" name="tanggallahir" type="date" required/>
+                                <input id="input_tanggallahir" class="form-control" name="tanggallahir" type="date" value="{{ $data_asesi->tanggal_lahir }}" required/>
                             </div>
                         </div>
                     </div>
@@ -66,8 +60,16 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <select id="input_jeniskelamin" class="form-control" name="jeniskelamin" required>
-                                    <option value="Laki-laki">Laki-laki</option>
-                                    <option value="Perempuan">Perempuan</option>
+                                    @if ($data_asesi->jenis_kelamin == 'Laki-laki')
+                                        <option value="Laki-Laki" selected>Laki-laki</option>
+                                    @else
+                                        <option value="Laki-Laki">Laki-laki</option>
+                                    @endif
+                                    @if ($data_asesi->jenis_kelamin == 'Perempuan')
+                                        <option value="Perempuan" selected>Perempuan</option>
+                                    @else
+                                        <option value="Perempuan">Perempuan</option>
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -77,8 +79,12 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <select id="input_refnegara" class="form-control" name="ref_negara" required>
-                                    @foreach ($ref_negara as $d_negara)
-                                        <option value="{{ $d_negara->id }}">{{ $d_negara->nama }}</option>
+                                    @foreach ($data_refnegara as $d_negara)
+                                        @if($data_asesi->id_ref_negara == $d_negara->id)
+                                            <option value="{{ $d_negara->id }}" selected>{{ $d_negara->nama }}</option>
+                                        @else
+                                            <option value="{{ $d_negara->id }}">{{ $d_negara->nama }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -86,13 +92,13 @@
                     </div>
                     <div class="form-group">
                         <label for="input_alamat" class="form-label">Alamat</label>
-                        <textarea id="input_alamat" class="form-control" name="alamat" placeholder="Masukkan alamat ..." required></textarea>
+                        <textarea id="input_alamat" class="form-control" name="alamat" placeholder="Masukkan alamat ..." required>{{ $data_asesi->alamat }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="input_notelepon" class="form-label">Nomor Telepon</label>
                         <div class="row">
                             <div class="col-sm-4">
-                                <input id="input_notelepon" class="form-control" name="no_telepon" type="number" placeholder="Masukkan nomor telepon ..." required/>
+                                <input id="input_notelepon" class="form-control" name="no_telepon" type="number" value="{{ $data_asesi->no_telepon }}" placeholder="Masukkan nomor telepon ..." required/>
                             </div>
                         </div>
                     </div>
@@ -101,11 +107,24 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <select id="input_kualifikasipendidikan" class="form-control" name="kualifikasi_pendidikan" required>
-                                    <option value="Pendidikan Dasar">Pendidikan Dasar</option>
+                                    @php
+                                        $list_kualifikasi = array(
+                                            'Pendidikan Dasar',
+                                            'Pendidikan Menengah',
+                                            'Sarjana (S1)',
+                                            'Magister (S2)',
+                                            'Doktor (S3)'
+                                        );
+                                    @endphp
+
+                                    @for($i=0; $i<count($list_kualifikasi); $i++)
+                                        <option value="{{ $list_kualifikasi[$i] }}" {{ $list_kualifikasi[$i] == $data_asesi->kualifikasi_pendidikan ? 'selected' : ''}}>{{ $list_kualifikasi[$i] }}</option>
+                                    @endfor
+                                    {{-- <option value="Pendidikan Dasar">Pendidikan Dasar</option>
                                     <option value="Pendidikan Menengah">Pendidikan Menengah</option>
                                     <option value="Sarjana (S1)">Sarjana (S1)</option>
                                     <option value="Magister (S2)">Magister (S2)</option>
-                                    <option value="Doktor (S3)">Doktor (S3)</option>
+                                    <option value="Doktor (S3)">Doktor (S3)</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -115,8 +134,8 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <select id="input_prodi" class="form-control" name="prodi">
-                                    @foreach ($prodi as $d_prodi)
-                                        <option value="{{ $d_prodi->id }}" {{ $d_prodi->id == $data_asesi->id_prodi ? 'selected' : '' }}>{{ $d_prodi->nama }}</option>
+                                    @foreach ($data_prodi as $d_prodi)
+                                        <option value="{{ $d_prodi->id }}">{{ $d_prodi->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
