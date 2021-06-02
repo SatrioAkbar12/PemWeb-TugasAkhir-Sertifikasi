@@ -24,13 +24,13 @@
                     {{ method_field('PUT') }}
 
                     <div class="form-group">
-                        <label for="input_nama" class="form-label">Pertanyaan</label>
-                        <textarea id="input_nama" class="form-control" name="pertanyaan" type="text"
-                            placeholder="Masukkan pertanyaan ..." required ></textarea>
+                        <label for="input_pertanyaan" class="form-label">Pertanyaan</label>
+                        <textarea id="input_pertanyaan" class="form-control" name="pertanyaan" type="text"
+                            placeholder="Masukkan pertanyaan ..." required >{{ $data->pertanyaan }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="input_deskripsi" class="form-label">Is aktif</label>
-                        <select id="input_deskripsi" class="form-control" name="is_aktif">
+                        <label for="input_aktif" class="form-label">Is aktif</label>
+                        <select id="input_aktif" class="form-control" name="is_aktif">
                             <option value="1">Ya</option>
                             <option value="0">Tidak</option>
                         </select>
