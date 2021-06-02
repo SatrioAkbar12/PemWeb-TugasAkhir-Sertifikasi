@@ -25,12 +25,6 @@
                     <a href="/admin/kelola-asesi/tambah">
                         <button type="button" class="btn btn-success">Tambah Data</button>
                     </a>
-                    {{-- <a href="/admin/kelola-admin/{{ Auth::id() }}">
-                        <button type="button" class="btn btn-primary">Lihat Data Pribadi</button>
-                    </a>
-                    <a href="/admin/kelola-admin/edit">
-                        <button type="button" class="btn btn-warning">Edit Data Pribadi</button>
-                    </a> --}}
                 </div>
             </div>
             <div class="card-body p-0">
@@ -58,7 +52,7 @@
                                 </td>
                                 <td>
                                     <a>
-                                        {{ $d->username }}
+                                        {{ $d->user->username }}
                                     </a>
                                 </td>
                                 <td>
