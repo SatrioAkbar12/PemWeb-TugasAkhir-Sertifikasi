@@ -120,6 +120,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/kuesioner" class="nav-link @yield('sidebar-kuesioner-active')">
+                        <i class="nav-icon fas fa-file-alt"></i>
+                        <p>
+                            Kuesioner
+                        </p>
+                    </a>
+                </li>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
