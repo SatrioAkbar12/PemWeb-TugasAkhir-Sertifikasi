@@ -128,6 +128,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/unitKompetensi" class="nav-link @yield('sidebar-unitKompetensi-active')">
+                        <i class="nav-icon fas fa-pen"></i>
+                        <p>
+                            Unit Kompetensi
+                        </p>
+                    </a>
+                </li>
             </nav>
             <!-- /.sidebar-menu -->
         </div>

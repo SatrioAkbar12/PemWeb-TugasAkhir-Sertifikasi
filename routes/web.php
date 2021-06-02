@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AsesorController as admin_AsesorController;
 use App\Http\Controllers\Admin\KegiatanController as admin_KegiatanController;
 use App\Http\Controllers\Admin\KuesionerController as admin_KuesionerController;
 use App\Http\Controllers\Admin\ProdiController as admin_ProdiController;
+use App\Http\Controllers\Admin\UnitKompetensiController as admin_UnitKompetensiController;
 use App\Http\Controllers\Admin\ReferensiNegaraController as admin_ReferensiNegaraController;
 use App\Http\Controllers\Asesor\AsesorDashboardController as asesor_AsesorDashboardController;
 use App\Http\Controllers\Asesor\AsesorController as asesor_AsesorController;
@@ -107,6 +108,16 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/{id}/edit', [admin_KuesionerController::class, 'showEdit']);
         Route::put('/{id}/edit', [admin_KuesionerController::class, 'edit']);
         Route::get('/{id}/delete', [admin_KuesionerController::class, 'del']);
+    });
+
+    Route::prefix('unitKompetensi')->group(function() {
+        Route::get('/', [admin_UnitKompetensiController::class, 'index']);
+        Route::get('/tambah', [admin_UnitKompetensiController::class, 'showCreate']);
+        Route::post('/tambah', [admin_UnitKompetensiController::class, 'create']);
+        Route::get('/{id}', [admin_UnitKompetensiController::class, 'read']);
+        Route::get('/{id}/edit', [admin_UnitKompetensiController::class, 'showEdit']);
+        Route::put('/{id}/edit', [admin_UnitKompetensiController::class, 'edit']);
+        Route::get('/{id}/delete', [admin_UnitKompetensiController::class, 'del']);
     });
 });
 
