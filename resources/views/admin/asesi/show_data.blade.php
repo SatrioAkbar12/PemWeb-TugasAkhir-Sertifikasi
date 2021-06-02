@@ -32,7 +32,7 @@
                         Username
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_user->username }}
+                        : {{ $data_asesi->user->username }}
                     </div>
                 </div>
                 <div class="row">
@@ -48,7 +48,7 @@
                         Email
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_user->email }}
+                        : {{ $data_asesi->user->email }}
                     </div>
                 </div>
                 <div class="row">

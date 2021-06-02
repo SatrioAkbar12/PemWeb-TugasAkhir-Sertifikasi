@@ -25,11 +25,11 @@
                     <input type="hidden" name="id_user" value="{{ $data_asesor->id_user }}">
                     <div class="form-group">
                         <label for="input_username" class="form-label">Username</label>
-                        <input id="input_username" class="form-control" name="username" type="text" value="{{ $data_user->username }}" placeholder="Username ..." required/>
+                        <input id="input_username" class="form-control" name="username" type="text" value="{{ $data_asesor->user->username }}" placeholder="Username ..." required/>
                     </div>
                     <div class="form-group">
                         <label for="input_email" class="form-label">Email</label>
-                        <input id="input_email" class="form-control" name="email" type="email" value="{{ $data_user->email }}" placeholder="Email ..." required/>
+                        <input id="input_email" class="form-control" name="email" type="email" value="{{ $data_asesor->user->email }}" placeholder="Email ..." required/>
                     </div>
                     <div class="form-group">
                         <label for="input_nama" class="form-label">Nama Lengkap</label>
