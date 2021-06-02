@@ -14,19 +14,16 @@ use App\Models\Prodi;
 class AsesorController extends Controller
 {
     public function show() {
-        $data_user = User::all();
         $data_asesor = Asesor::all();
 
-        return view('admin.asesor.show', ['data_user' => $data_user, 'data_asesor' => $data_asesor]);
+        return view('admin.asesor.show', ['data_asesor' => $data_asesor]);
     }
 
     public function showCreate() {
-        $data_user = User::all();
-        $data_asesor = Asesor::all();
         $data_refnegara = RefNegara::all();
         $data_prodi = Prodi::all();
 
-        return view('admin.asesor.form_tambah_data', ['data_asesor' => $data_asesor, 'data_user' => $data_user, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
+        return view('admin.asesor.form_tambah_data', ['data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
     }
 
     public function create(Request $request) {
@@ -69,20 +66,18 @@ class AsesorController extends Controller
 
     public function read($id) {
         $data_asesor = Asesor::find($id);
-        $data_user = User::find($data_asesor->id_user);
         $data_refnegara = RefNegara::find($data_asesor->id_ref_negara);
         $data_prodi = Prodi::find($data_asesor->id_prodi);
 
-        return view('admin.asesor.show_data', ['data_asesor' => $data_asesor, 'data_user' => $data_user, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
+        return view('admin.asesor.show_data', ['data_asesor' => $data_asesor, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
     }
 
     public function showEdit($id) {
         $data_asesor = Asesor::find($id);
-        $data_user = User::find($data_asesor->id_user);
         $data_refnegara = RefNegara::all();
         $data_prodi = Prodi::all();
 
-        return view('admin.asesor.form_edit_data', ['data_asesor' => $data_asesor, 'data_user' => $data_user, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
+        return view('admin.asesor.form_edit_data', ['data_asesor' => $data_asesor, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
     }
 
     public function edit($id, Request $request) {
@@ -116,8 +111,7 @@ class AsesorController extends Controller
     }
 
     public function del($id) {
-        $data = Asesor::find($id);
-        $data_user = User::find($data->id_user);
+        $data_user = Asesor::find($id)->user;
         $data_user->delete();
 
         return redirect('/admin/kelola-asesor');

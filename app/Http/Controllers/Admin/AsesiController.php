@@ -14,15 +14,15 @@ use App\Models\Prodi;
 class AsesiController extends Controller
 {
     public function show() {
-        $data_user = User::where('role', 'asesor')->get();
         $data_asesi = Asesi::all();
 
-        return view('admin.asesi.show', ['data_user' => $data_user, 'data_asesi' => $data_asesi]);
+        return view('admin.asesi.show', ['data_asesi' => $data_asesi]);
     }
 
     public function showCreate() {
         $data_refnegara = RefNegara::all();
         $data_prodi = Prodi::all();
+
         return view('admin.asesi.form_tambah_data', ['ref_negara' => $data_refnegara, 'prodi' => $data_prodi]);
     }
 
@@ -66,20 +66,18 @@ class AsesiController extends Controller
 
     public function read($id) {
         $data_asesi = Asesi::find($id);
-        $data_user = User::find($data_asesi->id_user);
         $data_refnegara = RefNegara::find($data_asesi->id_ref_negara);
         $data_prodi = Prodi::find($data_asesi->id_prodi);
 
-        return view('admin.asesi.show_data', ['data_asesi' => $data_asesi, 'data_user' => $data_user, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
+        return view('admin.asesi.show_data', ['data_asesi' => $data_asesi, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
     }
 
     public function showEdit($id) {
         $data_asesi = Asesi::find($id);
-        $data_user = User::find($data_asesi->id_user);
         $data_refnegara = RefNegara::all();
         $data_prodi = Prodi::all();
 
-        return view('admin.asesi.form_edit_data', ['data_asesi' => $data_asesi, 'data_user' => $data_user, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
+        return view('admin.asesi.form_edit_data', ['data_asesi' => $data_asesi, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
     }
 
     public function edit($id, Request $request) {
@@ -113,8 +111,7 @@ class AsesiController extends Controller
     }
 
     public function del($id) {
-        $data = Asesi::find($id);
-        $data_user = User::find($data->id_user);
+        $data_user = Asesi::find($id)->user;
         $data_user->delete();
 
         return redirect('/admin/kelola-asesi');
