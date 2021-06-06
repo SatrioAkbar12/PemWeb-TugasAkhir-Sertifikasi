@@ -75,6 +75,18 @@ class AsesorController extends Controller
         return redirect('/asesor/edit-data');
     }
 
+    //sertifikasi 
+    public function show_nilai() {
+        $data_asesor = Asesor::all();
+
+        return view('asesor.asesor.nilai_asesi.show_nilai', ['data_asesor' => $data_asesor]);
+    }
+
+    public function showEdit_nilai() {
+        $data_asesor = Asesor::all();
+
+        return view('asesor.asesor.nilai_asesi.form_nilai_asesi', ['data_asesor' => $data_asesor]);
+    }
 
 
     // public function showCreate() {
