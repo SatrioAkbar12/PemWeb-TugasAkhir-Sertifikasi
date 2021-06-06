@@ -61,7 +61,7 @@
                         Negara
                     </div>
                     <div class="col-9">
-                        : {{ $data->id_ref_negara }}
+                        : {{ $data_negara->nama }}
                     </div>
                     <div class="col-3">
                         Alamat
@@ -85,7 +85,7 @@
                         Prodi
                     </div>
                     <div class="col-9">
-                        : {{ $data->id_prodi }}
+                        : {{ $data_prodi->nama }}
                     </div>
                 </div>
 
