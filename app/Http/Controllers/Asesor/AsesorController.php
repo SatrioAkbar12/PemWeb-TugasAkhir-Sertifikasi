@@ -26,15 +26,18 @@ class AsesorController extends Controller
     public function show() {
         $data = DB::table('asesor')->where('id_user',Auth::id())->get()->first();
         //$data = User::where('role', 'asesor')->get();
-
-        return view('asesor.asesor.lihat_data.show_data', ['data' => $data]);
+        $data_prodi = Prodi::find($data->id_prodi);
+        $data_negara = RefNegara::find($data->id_ref_negara);
+        return view('asesor.asesor.lihat_data.show_data', ['data' => $data , 'data_prodi' =>$data_prodi, 'data_negara' => $data_negara]);
         // return view('admin.asesi.show');
     }
 
     public function showEdit() {
         $data = DB::table('asesor')->where('id_user',Auth::id())->get()->first();
+        $data_prodi = Prodi::all();
+        $data_negara = RefNegara::all();
+        return view('asesor.asesor.edit_data.form_edit_data', ['data' => $data , 'data_prodi' =>$data_prodi, 'data_negara' => $data_negara]);
 
-        return view('asesor.asesor.edit_data.form_edit_data', ['data' => $data]);
     }
 
     // public function showEdit() {
@@ -75,6 +78,18 @@ class AsesorController extends Controller
         return redirect('/asesor/edit-data');
     }
 
+    //sertifikasi 
+    public function show_nilai() {
+        $data_asesor = Asesor::all();
+
+        return view('asesor.asesor.nilai_asesi.show_nilai', ['data_asesor' => $data_asesor]);
+    }
+
+    public function showEdit_nilai() {
+        $data_asesor = Asesor::all();
+
+        return view('asesor.asesor.nilai_asesi.form_nilai_asesi', ['data_asesor' => $data_asesor]);
+    }
 
 
     // public function showCreate() {

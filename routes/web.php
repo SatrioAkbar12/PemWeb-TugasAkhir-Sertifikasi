@@ -140,6 +140,12 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
         Route::put('/edit', [asesor_AsesorController::class, 'edit']);
 
     });
+
+    Route::prefix('nilai-asesi')->group(function() {
+        Route::get('/', [asesor_AsesorController::class, 'show_nilai']);
+        Route::put('/edit', [asesor_AsesorController::class, 'edit']);
+
+    });
 });
 
 require __DIR__.'/auth.php';
