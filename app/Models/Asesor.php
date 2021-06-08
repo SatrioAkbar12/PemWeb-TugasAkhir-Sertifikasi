@@ -36,4 +36,12 @@ class Asesor extends Model
     public function user() {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
+
+    public function prodi() {
+        return $this->belongsTo(Prodi::class, 'id_prodi', 'id');
+    }
+
+    public function refNegara() {
+        return $this->belongsTo(RefNegara::class, 'id_ref_negara', 'id');
+    }
 }

@@ -21,4 +21,12 @@ class Prodi extends Model
         'created_by',
         'edited_by'
     ];
+
+    public function asesi() {
+        return $this->hasMany(Asesi::class, 'id_prodi', 'id');
+    }
+
+    public function asesor() {
+        return $this->hasMany(Asesor::class, 'id_prodi', 'id');
+    }
 }
