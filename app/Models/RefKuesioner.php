@@ -9,7 +9,7 @@ class RefKuesioner extends Model
 {
     use HasFactory;
 
-    
+
     protected $table = 'ref_kuesioner';
 
     protected $primaryKey = 'id';
@@ -20,4 +20,8 @@ class RefKuesioner extends Model
         'pertanyaan',
         'is_aktif'
     ];
+
+    public function pendaftarKuesioner() {
+        return $this->hasMany(PendaftarKuesioner::class, 'id_kuesioner', 'id');
+    }
 }

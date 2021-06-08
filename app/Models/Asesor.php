@@ -44,4 +44,8 @@ class Asesor extends Model
     public function refNegara() {
         return $this->belongsTo(RefNegara::class, 'id_ref_negara', 'id');
     }
+
+    public function asesorJenisSertifikasi() {
+        return $this->hasOne(AsesorJenisSertifikasi::class, 'id_asesor', 'id');
+    }
 }

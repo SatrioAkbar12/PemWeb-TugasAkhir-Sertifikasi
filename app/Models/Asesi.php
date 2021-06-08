@@ -44,4 +44,8 @@ class Asesi extends Model
     public function refNegara() {
         return $this->belongsTo(RefNegara::class, 'id_ref_negara', 'id');
     }
+
+    public function pendaftar() {
+        return $this->hasOne(Pendaftar::class, 'id_asesi', 'id');
+    }
 }

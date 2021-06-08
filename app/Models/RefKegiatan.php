@@ -20,5 +20,9 @@ class RefKegiatan extends Model
         'deskripsi',
         'created_at',
         'created_by'
-    ];    
+    ];
+
+    public function jadwal() {
+        return $this->hasMany(Jadwal::class, 'id_kegiatan', 'id');
+    }
 }

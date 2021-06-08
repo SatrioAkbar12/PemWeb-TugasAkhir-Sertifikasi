@@ -24,4 +24,8 @@ class SyaratSertifikasi extends Model
     public function refJenisSertifikasi() {
         return $this->belongsTo(RefJenisSertifikasi::class, 'id_ref_jenis_sertifikasi', 'id');
     }
+
+    public function pendaftarSyarat() {
+        return $this->hasMany(PendaftarSyarat::class, 'id_syarat_sertifikasi', 'id');
+    }
 }

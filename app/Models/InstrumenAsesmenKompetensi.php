@@ -8,4 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class InstrumenAsesmenKompetensi extends Model
 {
     use HasFactory;
+
+    protected $table = 'instrumen_asesmen_kompetensi';
+
+    protected $primaryKey = 'id';
+
+    public $incrementing = 'true';
+
+    protected $fillable = [
+        'id_ref_unit_kompetensi',
+        'instrumen_pertanyaan',
+        'status_instrumen',
+        'is_aktif'
+    ];
+
+    public function refUnitKompetensi() {
+        return $this->belongsTo(RefUnitKompetensi::class, 'id_ref_unit_sertifikasi', 'id');
+    }
+
+    public function PendaftarInstrumen() {
+        return $this->hasMany(PendaftarInstrumen::class, 'id_instrumen_pendaftar', 'id');
+    }
 }

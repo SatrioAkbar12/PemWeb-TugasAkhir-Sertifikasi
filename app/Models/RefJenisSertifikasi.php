@@ -38,4 +38,8 @@ class RefJenisSertifikasi extends Model
     public function penawaranSertifikasi() {
         return $this->hasMany(PenawaranSertifikasi::class, 'id_ref_jenis_sertifikasi', 'id');
     }
+
+    public function asesorJenisSertifikasi() {
+        return $this->hasMany(AsesorJenisSertifikasi::class, 'id_ref_jenis_sertifikasi', 'id');
+    }
 }

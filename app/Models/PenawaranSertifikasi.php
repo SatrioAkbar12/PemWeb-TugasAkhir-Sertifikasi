@@ -29,4 +29,12 @@ class PenawaranSertifikasi extends Model
     public function refJenisSertifikasi() {
         return $this->belongsTo(RefJenisSertifikasi::class, 'id_ref_jenis_sertifikasi', 'id');
     }
+
+    public function jadwal() {
+        return $this->hasOne(Jadwal::class, 'id_penawaran_sertifikasi', 'id');
+    }
+
+    public function pendaftar() {
+        return $this->hasMany(Pendaftar::class, 'id_penawaran_sertifikasi', 'id');
+    }
 }

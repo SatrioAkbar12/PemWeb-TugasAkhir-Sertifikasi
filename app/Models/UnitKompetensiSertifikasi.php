@@ -24,4 +24,8 @@ class UnitKompetensiSertifikasi extends Model
     public function refJenisSertifikasi() {
         return $this->belongsTo(RefJenisSertifikasi::class, 'id_ref_jenis_sertifikasi', 'id');
     }
+
+    public function refUnitKompetensi() {
+        return $this->belongsTo(RefUnitKompetensi::class, 'id_ref_kompetensi', 'id');
+    }
 }
