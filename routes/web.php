@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\AdminDashboardController as admin_AdminDashboardC
 use App\Http\Controllers\Admin\AdminController as admin_AdminController;
 use App\Http\Controllers\Admin\AsesiController as admin_AsesiController;
 use App\Http\Controllers\Admin\AsesorController as admin_AsesorController;
+use App\Http\Controllers\Admin\AsesorJenisSertifikasiController as admin_AsesorJenisSertifikasiController;
+use App\Http\Controllers\Admin\JenisSertifikasiController as admin_JenisSertifikasiController;
 use App\Http\Controllers\Admin\KegiatanController as admin_KegiatanController;
 use App\Http\Controllers\Admin\KuesionerController as admin_KuesionerController;
 use App\Http\Controllers\Admin\ProdiController as admin_ProdiController;
@@ -118,6 +120,23 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/{id}/edit', [admin_UnitKompetensiController::class, 'showEdit']);
         Route::put('/{id}/edit', [admin_UnitKompetensiController::class, 'edit']);
         Route::get('/{id}/delete', [admin_UnitKompetensiController::class, 'del']);
+    });
+
+    Route::prefix('jenis-sertifikasi')->group(function() {
+        Route::get('/', [admin_JenisSertifikasiController::class, 'index']);
+        Route::get('/tambah', [admin_JenisSertifikasiController::class, 'showCreate']);
+        Route::post('/tambah', [admin_JenisSertifikasiController::class, 'create']);
+        Route::get('/{id}', [admin_JenisSertifikasiController::class, 'read']);
+        Route::get('/{id}/edit', [admin_JenisSertifikasiController::class, 'showEdit']);
+        Route::put('/{id}/edit', [admin_JenisSertifikasiController::class, 'edit']);
+        Route::get('/{id}/delete', [admin_JenisSertifikasiController::class, 'del']);
+    });
+
+    Route::prefix('asesor-jenis-sertifikasi')->group(function() {
+        Route::get('/', [admin_AsesorJenisSertifikasiController::class, 'index']);
+        Route::get('{id}', [admin_AsesorJenisSertifikasiController::class, 'read']);
+        Route::get('/{id}/edit', [admin_AsesorJenisSertifikasiController::class, 'showEdit']);
+        Route::put('/{id}/edit', [admin_AsesorJenisSertifikasiController::class, 'edit']);
     });
 });
 
