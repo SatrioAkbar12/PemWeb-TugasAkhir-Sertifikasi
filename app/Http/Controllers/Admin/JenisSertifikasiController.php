@@ -60,7 +60,7 @@ class JenisSertifikasiController extends Controller
             'aktif' => 'required|boolean'
         ]);
 
-        RefJenisSertifikasi::find($id)->update([
+        RefJenisSertifikasi::where('id', $id)->update([
             'nama' => $request->nama,
             'keterangan' => $request->keterangan,
             'status_jenis_sertifikasi' => $request->statusJenisSertifikasi,
