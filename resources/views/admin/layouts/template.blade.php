@@ -136,6 +136,24 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-header">SERTIFIKASI</li>
+                <li class="nav-item">
+                    <a href="/admin/jenis-sertifikasi" class="nav-link @yield('sidebar-jenisSertifikasi-active')">
+                        <i class="nav-icon"></i>
+                        <p>
+                            Jenis Sertfikasi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/asesor-jenis-sertifikasi" class="nav-link @yield('sidebar-jenisSertifikasi-active')">
+                        <i class="nav-icon"></i>
+                        <p>
+                            Jenis Sertifikasi Asesor
+                        </p>
+                    </a>
+                </li>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
