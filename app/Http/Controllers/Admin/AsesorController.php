@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Asesor;
 use App\Models\RefNegara;
+use App\Models\RefJenisSertifikasi;
 use App\Models\Prodi;
+use App\Models\AsesorJenisSertifikasi;
 
 class AsesorController extends Controller
 {
@@ -22,14 +24,20 @@ class AsesorController extends Controller
     public function showCreate() {
         $data_refnegara = RefNegara::all();
         $data_prodi = Prodi::all();
+        $data_jenissertifikasi = RefJenisSertifikasi::all();
 
-        return view('admin.asesor.form_tambah_data', ['data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
+        return view('admin.asesor.form_tambah_data', ['data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi, 'data_jenissertifikasi' => $data_jenissertifikasi]);
     }
 
     public function create(Request $request) {
         $request->validate([
+            'username' => 'string|required',
             'email' => 'email|required',
-            'password' => 'string|min:8|confirmed'
+            'password' => 'string|min:8|confirmed',
+            'jenisSertifikasi' => 'required',
+            'noSertifikat' => 'required',
+            'tanggalAwalBerlaku' => 'date|required',
+            'tanggalAkhirBerlaku' => 'date|required'
         ]);
 
         User::create([
@@ -61,15 +69,36 @@ class AsesorController extends Controller
             'id_user' => $data_user->id
         ]);
 
+        $data_asesor = Asesor::where([
+            'nik' => $request->nik,
+            'nip' => $request->nip
+        ])->first();
+
+        AsesorJenisSertifikasi::create([
+            'id_asesor' => $data_asesor->id,
+            'id_ref_jenis_sertifikasi' => $request->jenisSertifikasi,
+            'tanggal_awal_berlaku' => $request->tanggalAwalBerlaku,
+            'tanggal_akhir_berlaku' => $request->tanggalAkhirBerlaku,
+            'no_sertifikat' => $request->noSertifikat
+        ]);
+
         return redirect('/admin/kelola-asesor');
     }
 
     public function read($id) {
-        $data_asesor = Asesor::find($id);
-        $data_refnegara = RefNegara::find($data_asesor->id_ref_negara);
-        $data_prodi = Prodi::find($data_asesor->id_prodi);
+        // $data_asesor = Asesor::find($id);
+        // $data_refnegara = RefNegara::find($data_asesor->id_ref_negara);
+        // $data_prodi = Prodi::find($data_asesor->id_prodi);
 
-        return view('admin.asesor.show_data', ['data_asesor' => $data_asesor, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
+        // return view('admin.asesor.show_data', ['data_asesor' => $data_asesor, 'data_refnegara' => $data_refnegara, 'data_prodi' => $data_prodi]);
+
+        $data = AsesorJenisSertifikasi::where([
+            'id_asesor' => $id
+        ])->first();
+
+        // dd($data);
+
+        return view('admin.asesor.show_data', ['data' => $data]);
     }
 
     public function showEdit($id) {
