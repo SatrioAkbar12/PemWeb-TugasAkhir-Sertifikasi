@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label form="input_prodi" class="form-label">Program Studi</label>
+                        <label for="input_prodi" class="form-label">Program Studi</label>
                         <div class="row">
                             <div class="col-sm-4">
                                 <select id="input_prodi" class="form-control" name="prodi">
@@ -119,6 +119,38 @@
                                         <option value="{{ $d_prodi->id }}">{{ $d_prodi->nama }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_jenisSertifikasi" class="form-label">Jenis Sertifikasi</label>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <select id="input_jenisSertifikasi" class="form-control" name="jenisSertifikasi" required>
+                                    @foreach ($data_jenissertifikasi as $d_jenissertifikasi)
+                                        <option value="{{ $d_jenissertifikasi->id }}">{{ $d_jenissertifikasi->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_nosertifikat" class="form-label">Nomor Sertifikat</label>
+                        <input id="input_nosertifikat" class="form-control" name="noSertifikat" type="text" placeholder="Masukkan nomor sertifikat ..." required />
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="input_tanggalawalberlaku" class="form-label">Tanggal Awal Berlaku</label>
+                                <input id="input_tanggalawalberlaku" class="form-control" name="tanggalAwalBerlaku" type="date" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="input_tanggalakhirberlaku" class="form-label">Tanggal Akhir Berlaku</label>
+                                <input id="input_tanggalakhirberlaku" class="form-control" name="tanggalAkhirBerlaku" type="date" required />
                             </div>
                         </div>
                     </div>

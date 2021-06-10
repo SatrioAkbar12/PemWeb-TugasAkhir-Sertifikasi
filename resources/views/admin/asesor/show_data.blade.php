@@ -24,7 +24,7 @@
                         ID Asesor
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->id }}
+                        : {{ $data->asesor->id }}
                     </div>
                 </div>
                 <div class="row">
@@ -32,7 +32,7 @@
                         Username
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->user->username }}
+                        : {{ $data->asesor->user->username }}
                     </div>
                 </div>
                 <div class="row">
@@ -40,7 +40,7 @@
                         Nama Lengkap
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->nama }}
+                        : {{ $data->asesor->nama }}
                     </div>
                 </div>
                 <div class="row">
@@ -48,7 +48,7 @@
                         Email
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->user->email }}
+                        : {{ $data->asesor->user->email }}
                     </div>
                 </div>
                 <div class="row">
@@ -56,7 +56,7 @@
                         NIM
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->nip }}
+                        : {{ $data->asesor->nip }}
                     </div>
                 </div>
                 <div class="row">
@@ -64,7 +64,7 @@
                         NIK
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->nik }}
+                        : {{ $data->asesor->nik }}
                     </div>
                 </div>
                 <div class="row">
@@ -72,7 +72,7 @@
                         Tempat Lahir
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->tempat_lahir }}
+                        : {{ $data->asesor->tempat_lahir }}
                     </div>
                 </div>
                 <div class="row">
@@ -80,7 +80,7 @@
                         Tanggal Lahir
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->tanggal_lahir }}
+                        : {{ $data->asesor->tanggal_lahir }}
                     </div>
                 </div>
                 <div class="row">
@@ -88,7 +88,7 @@
                         Jenis kelamin
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->jenis_kelamin }}
+                        : {{ $data->asesor->jenis_kelamin }}
                     </div>
                 </div>
                 <div class="row">
@@ -96,7 +96,7 @@
                         Negara
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_refnegara->nama }}
+                        : {{ $data->asesor->refNegara->nama }}
                     </div>
                 </div>
                 <div class="row">
@@ -104,7 +104,7 @@
                         Alamat
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->alamat }}
+                        : {{ $data->asesor->alamat }}
                     </div>
                 </div>
                 <div class="row">
@@ -112,7 +112,7 @@
                         Nomor Telepon
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->no_telepon }}
+                        : {{ $data->asesor->no_telepon }}
                     </div>
                 </div>
                 <div class="row">
@@ -120,7 +120,7 @@
                         Kualifikasi Pendidikan
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->kualifikasi_pendidikan }}
+                        : {{ $data->asesor->kualifikasi_pendidikan }}
                     </div>
                 </div>
                 <div class="row">
@@ -128,7 +128,39 @@
                         Program Studi
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_prodi->nama }}
+                        : {{ $data->asesor->prodi->nama }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 col-md-2">
+                        Jenis Sertifikasi
+                    </div>
+                    <div class="col-8 col-md-10">
+                        : {{ $data->refJenisSertifikasi->nama }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 col-md-2">
+                        Nomor Sertifikat
+                    </div>
+                    <div class="col-8 col-md-10">
+                        : {{ $data->no_sertifikat }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 col-md-2">
+                        Tanggal Awal Berlaku
+                    </div>
+                    <div class="col-8 col-md-10">
+                        : {{ $data->tanggal_awal_berlaku }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 col-md-2">
+                        Tanggal Akhir Berlaku
+                    </div>
+                    <div class="col-8 col-md-10">
+                        : {{ $data->tanggal_akhir_berlaku }}
                     </div>
                 </div>
                 <div class="row">
@@ -136,7 +168,7 @@
                         Dibuat oleh
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->created_by }}
+                        : {{ $data->asesor->created_by }}
                     </div>
                 </div>
                 <div class="row">
@@ -144,7 +176,7 @@
                         Diperbarui oleh
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->edited_by }}
+                        : {{ $data->asesor->edited_by }}
                     </div>
                 </div>
                 <div class="row">
@@ -152,7 +184,7 @@
                         Dibuat pada
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->created_at }}
+                        : {{ $data->asesor->created_at }}
                     </div>
                 </div>
                 <div class="row">
@@ -160,7 +192,7 @@
                         Diperbarui pada
                     </div>
                     <div class="col-8 col-md-10">
-                        : {{ $data_asesor->updated_at }}
+                        : {{ $data->asesor->updated_at }}
                     </div>
                 </div>
 
