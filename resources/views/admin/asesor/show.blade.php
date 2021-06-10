@@ -21,7 +21,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                *untuk mengedit jenis sertifikasi dari asesor, bisa dilakukan pada menu Asesor Jenis Sertifikasi
+                *untuk mengedit jenis sertifikasi dari asesor, bisa dilakukan pada menu <a href="{{ url('/admin/asesor-jenis-sertifikasi') }}">Asesor Jenis Sertifikasi</a>
                 <div class="card-tools">
                     <a href="/admin/kelola-asesor/tambah">
                         <button type="button" class="btn btn-success">Tambah Data</button>
