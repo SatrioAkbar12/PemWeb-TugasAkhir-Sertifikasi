@@ -53,7 +53,7 @@
                 </div>
                 <div class="row">
                     <div class="col-2">
-                        Is aktif
+                        Aktif
                     </div>
                     <div class="col-10">
                         : {{ $data->is_aktif == 1 ? 'Ya' : 'Tidak' }}
