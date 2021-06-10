@@ -40,7 +40,7 @@
                         Is aktif
                     </div>
                     <div class="col-10">
-                        : {{ $data->is_aktif }}
+                        : {{ $data->is_aktif == 1 ? 'Ya' : 'Tidak' }}
                     </div>
                 </div>
                 <div class="row">

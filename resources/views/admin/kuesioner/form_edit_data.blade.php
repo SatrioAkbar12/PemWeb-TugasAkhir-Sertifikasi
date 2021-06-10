@@ -31,8 +31,8 @@
                     <div class="form-group">
                         <label for="input_aktif" class="form-label">Is aktif</label>
                         <select id="input_aktif" class="form-control" name="is_aktif">
-                            <option value="1">Ya</option>
-                            <option value="0">Tidak</option>
+                            <option value="1" {{ $data->is_aktif == 1 ? 'selected' : '' }}>Ya</option>
+                                    <option value="0" {{ $data->is_aktif == 0 ? 'selected' : '' }}>Tidak</option>
                         </select>
                     </div>
                     <div class="form-group">
