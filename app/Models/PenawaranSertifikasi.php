@@ -16,6 +16,7 @@ class PenawaranSertifikasi extends Model
     public $incrementing = 'true';
 
     protected $fillable = [
+        'nama',
         'id_ref_jenis_sertifikasi',
         'deskripsi_penawaran',
         'periode',
