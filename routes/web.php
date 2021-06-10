@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AsesorJenisSertifikasiController as admin_AsesorJ
 use App\Http\Controllers\Admin\JenisSertifikasiController as admin_JenisSertifikasiController;
 use App\Http\Controllers\Admin\KegiatanController as admin_KegiatanController;
 use App\Http\Controllers\Admin\KuesionerController as admin_KuesionerController;
+use App\Http\Controllers\Admin\PenawaranSertifikasiController as admin_PenawaranSertifikasiController;
 use App\Http\Controllers\Admin\ProdiController as admin_ProdiController;
 use App\Http\Controllers\Admin\UnitKompetensiController as admin_UnitKompetensiController;
 use App\Http\Controllers\Admin\ReferensiNegaraController as admin_ReferensiNegaraController;
@@ -137,6 +138,16 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('{id}', [admin_AsesorJenisSertifikasiController::class, 'read']);
         Route::get('/{id}/edit', [admin_AsesorJenisSertifikasiController::class, 'showEdit']);
         Route::put('/{id}/edit', [admin_AsesorJenisSertifikasiController::class, 'edit']);
+    });
+
+    Route::prefix('penawaran-sertifikasi')->group(function() {
+        Route::get('/', [admin_PenawaranSertifikasiController::class, 'index']);
+        Route::get('/tambah', [admin_PenawaranSertifikasiController::class, 'showCreate']);
+        Route::post('/tambah', [admin_PenawaranSertifikasiController::class, 'create']);
+        Route::get('/{id}', [admin_PenawaranSertifikasiController::class, 'read']);
+        Route::get('/{id}/edit', [admin_PenawaranSertifikasiController::class, 'showEdit']);
+        Route::put('/{id}/edit', [admin_PenawaranSertifikasiController::class, 'edit']);
+        Route::get('/{id}/delete', [admin_PenawaranSertifikasiController::class, 'del']);
     });
 });
 
