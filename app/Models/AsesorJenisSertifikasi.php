@@ -15,6 +15,8 @@ class AsesorJenisSertifikasi extends Model
 
     public $incrementing = 'true';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_asesor',
         'id_ref_jenis_sertifikasi',
