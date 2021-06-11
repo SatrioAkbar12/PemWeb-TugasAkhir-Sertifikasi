@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminController as admin_AdminController;
 use App\Http\Controllers\Admin\AsesiController as admin_AsesiController;
 use App\Http\Controllers\Admin\AsesorController as admin_AsesorController;
 use App\Http\Controllers\Admin\AsesorJenisSertifikasiController as admin_AsesorJenisSertifikasiController;
+use App\Http\Controllers\Admin\JadwalController as admin_JadwalController;
 use App\Http\Controllers\Admin\JenisSertifikasiController as admin_JenisSertifikasiController;
 use App\Http\Controllers\Admin\KegiatanController as admin_KegiatanController;
 use App\Http\Controllers\Admin\KuesionerController as admin_KuesionerController;
@@ -148,6 +149,16 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/{id}/edit', [admin_PenawaranSertifikasiController::class, 'showEdit']);
         Route::put('/{id}/edit', [admin_PenawaranSertifikasiController::class, 'edit']);
         Route::get('/{id}/delete', [admin_PenawaranSertifikasiController::class, 'del']);
+    });
+
+    Route::prefix('jadwal')->group(function() {
+        Route::get('/', [admin_JadwalController::class, 'index']);
+        Route::get('/tambah', [admin_JadwalController::class, 'showCreate']);
+        Route::post('/tambah', [admin_JadwalController::class, 'create']);
+        Route::get('/{id}', [admin_JadwalController::class, 'read']);
+        Route::get('/{id}/edit', [admin_JadwalController::class, 'showEdit']);
+        Route::put('/{id}/edit', [admin_JadwalController::class, 'edit']);
+        Route::get('/{id}/delete', [admin_JadwalController::class, 'del']);
     });
 });
 
