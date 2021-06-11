@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\KuesionerController as admin_KuesionerController;
 use App\Http\Controllers\Admin\PenawaranSertifikasiController as admin_PenawaranSertifikasiController;
 use App\Http\Controllers\Admin\ProdiController as admin_ProdiController;
 use App\Http\Controllers\Admin\UnitKompetensiController as admin_UnitKompetensiController;
+use App\Http\Controllers\Admin\UnitKompetensiSertifikasiController as admin_UnitKompetensiSertifikasiController;
 use App\Http\Controllers\Admin\ReferensiNegaraController as admin_ReferensiNegaraController;
 use App\Http\Controllers\Asesor\AsesorDashboardController as asesor_AsesorDashboardController;
 use App\Http\Controllers\Asesor\AsesorController as asesor_AsesorController;
@@ -39,7 +40,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 // Route khusus admin
-Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
+Route::prefix('admin')->middleware('auth', 'admin')->name('admin.')->group(function () {
     Route::get('/', [admin_AdminDashboardController::class, 'showDashboard']);
 
     Route::prefix('kelola-admin')->group(function() {
@@ -159,6 +160,16 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/{id}/edit', [admin_JadwalController::class, 'showEdit']);
         Route::put('/{id}/edit', [admin_JadwalController::class, 'edit']);
         Route::get('/{id}/delete', [admin_JadwalController::class, 'del']);
+    });
+
+    Route::prefix('unit-kompetensi-sertifikasi')->name('unit_kompetensi_sertifikasi.')->group(function() {
+        Route::get('/', [admin_UnitKompetensiSertifikasiController::class, 'index']);
+        Route::get('/tambah', [admin_UnitKompetensiSertifikasiController::class, 'showCreate']);
+        Route::post('/tambah', [admin_UnitKompetensiSertifikasiController::class, 'create']);
+        Route::get('/{id}', [admin_UnitKompetensiSertifikasiController::class, 'read'])->name('read');
+        Route::get('/{id}/edit', [admin_UnitKompetensiSertifikasiController::class, 'showEdit']);
+        Route::put('/{id}/edit', [admin_UnitKompetensiSertifikasiController::class, 'edit']);
+        Route::get('/{id}/delete', [admin_UnitKompetensiSertifikasiController::class, 'del']);
     });
 });
 
