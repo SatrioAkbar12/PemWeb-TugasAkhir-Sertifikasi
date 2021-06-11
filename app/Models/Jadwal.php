@@ -20,8 +20,8 @@ class Jadwal extends Model
         'id_kegiatan',
         'tanggal_awal',
         'tanggal_akhir',
-        'created_at',
         'created_by',
+        'edited_by',
         'is_show',
         'deskripsi'
     ];
