@@ -142,7 +142,7 @@
                     <a href="/admin/jenis-sertifikasi" class="nav-link @yield('sidebar-jenisSertifikasi-active')">
                         <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
-                            Jenis Sertfikasi
+                            Jenis Sertifikasi
                         </p>
                     </a>
                 </li>
