@@ -140,7 +140,7 @@
                 <li class="nav-header">SERTIFIKASI</li>
                 <li class="nav-item">
                     <a href="/admin/jenis-sertifikasi" class="nav-link @yield('sidebar-jenisSertifikasi-active')">
-                        <i class="nav-icon"></i>
+                        <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             Jenis Sertfikasi
                         </p>
@@ -148,7 +148,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/admin/asesor-jenis-sertifikasi" class="nav-link @yield('sidebar-asesorJenisSertifikasi-active')">
-                        <i class="nav-icon"></i>
+                        <i class="nav-icon fas fa-chalkboard-teacher"></i>
                         <p>
                             Jenis Sertifikasi Asesor
                         </p>
@@ -156,9 +156,41 @@
                 </li>
                 <li class="nav-item">
                     <a href="/admin/penawaran-sertifikasi" class="nav-link @yield('sidebar-penawaranSertifikasi-active')">
-                        <i class="nav-icon"></i>
+                        <i class="nav-icon fas fa-book-open"></i>
                         <p>
                             Penawaran Sertifikasi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/jadwal" class="nav-link @yield('sidebar-jadwal-active')">
+                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <p>
+                            Jadwal
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/unit-kompetensi-sertifikasi" class="nav-link @yield('sidebar-unitKompentensiSertifikasi-active')">
+                        <i class="nav-icon fas fa-graduation-cap"></i>
+                        <p>
+                            Unit Kompetensi Sertifikasi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/syarat-sertifikasi" class="nav-link @yield('sidebar-syaratSertifikasi-active')">
+                        <i class="nav-icon fas fa-stream"></i>
+                        <p>
+                            Syarat Sertifikasi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/instrumen-asesmen" class="nav-link @yield('sidebar-instrumenAsesmen-active')">
+                        <i class="nav-icon fas fa-laptop-code"></i>
+                        <p>
+                            Instrumen Asesmen
                         </p>
                     </a>
                 </li>
