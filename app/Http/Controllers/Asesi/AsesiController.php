@@ -61,7 +61,7 @@ class AsesiController extends Controller
 
         DB::table('asesi')->where('id_user',Auth::id())->update([
             'nama' => $request->nama,
-            'nip' => $request->nip,
+            // 'nip' => $request->nip,
             'nik' => $request->nik,
             'tempat_lahir' => $request->tpl,
             'tanggal_lahir' => $request->tgl,
@@ -78,18 +78,18 @@ class AsesiController extends Controller
         return redirect('/asesi/edit-data');
     }
 
-    //sertifikasi
-    public function show_nilai() {
-        $data_asesi = Asesi::all();
+    // //sertifikasi
+    // public function show_nilai() {
+    //     $data_asesi = Asesi::all();
 
-        return view('asesi.asesi.nilai_asesi.show_nilai', ['data_asesi' => $data_asesi]);
-    }
+    //     return view('asesi.asesi.nilai_asesi.show_nilai', ['data_asesi' => $data_asesi]);
+    // }
 
-    public function showEdit_nilai() {
-        $data_asesi = Asesi::all();
+    // public function showEdit_nilai() {
+    //     $data_asesi = Asesi::all();
 
-        return view('asesi.asesi.nilai_asesi.form_nilai_asesi', ['data_asesi' => $data_asesi]);
-    }
+    //     return view('asesi.asesi.nilai_asesi.form_nilai_asesi', ['data_asesi' => $data_asesi]);
+    // }
 
 
     // public function showCreate() {
