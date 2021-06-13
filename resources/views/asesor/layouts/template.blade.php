@@ -90,15 +90,23 @@
                 <li class="nav-header">SERTIFIKASI</li>
                 <li class="nav-item">
                     <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-admin-active')">
-                        <i class="nav-icon fas fa-user-cog"></i>
+                        <i class="nav-icon fas fa-file-alt"></i>
                         <p>
                             Verifikasi Berkas
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-admin-active')">
+                        <i class="nav-icon fas fa-user-cog"></i>
+                        <p>
+                            Verifikasi Instrument
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="/asesor/nilai-asesi" class="nav-link @yield('sidebar-asesi-active')">
-                        <i class="nav-icon fas fa-user-graduate"></i>
+                        <i class="nav-icon fas fa-pencil-alt"></i>
                         <p>
                             Penilaian
                         </p>
