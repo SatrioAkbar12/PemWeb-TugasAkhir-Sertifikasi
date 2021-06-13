@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\UnitKompetensiSertifikasiController as admin_Unit
 use App\Http\Controllers\Admin\ReferensiNegaraController as admin_ReferensiNegaraController;
 use App\Http\Controllers\Asesor\AsesorDashboardController as asesor_AsesorDashboardController;
 use App\Http\Controllers\Asesor\AsesorController as asesor_AsesorController;
+use App\Http\Controllers\Asesi\AsesiDashboardController as asesi_AsesiDashboardController;
+use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 /*
 |--------------------------------------------------------------------------
@@ -196,6 +198,33 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
     Route::prefix('nilai-asesi')->group(function() {
         Route::get('/', [asesor_AsesorController::class, 'show_nilai']);
         Route::put('/edit', [asesor_AsesorController::class, 'edit']);
+
+    });
+});
+
+// Route khusus asesi
+Route::prefix('asesi')->middleware('auth', 'asesi')->group(function () {
+    Route::get('/', [asesi_AsesiDashboardController::class, 'showDashboard']);
+
+    Route::prefix('lihat-data')->group(function() {
+        Route::get('/', [asesi_AsesiController::class, 'show']);
+        // Route::get('/tambah', [asesor_AsesorController::class, 'showCreate']);
+        // Route::post('/tambah', [asesor_AsesorController::class, 'create']);
+       // Route::get('/{id}', [asesor_AsesorController::class, 'read']);
+        // Route::get('/{id}/edit', [asesor_AsesorController::class, 'showEdit']);
+        // Route::put('/{id}/edit', [asesor_AsesorController::class, 'edit']);
+        // Route::get('/{id}/delete', [asesor_AsesorController::class, 'del']);
+    });
+
+    Route::prefix('edit-data')->group(function() {
+        Route::get('/', [asesi_AsesiController::class, 'showEdit']);
+        Route::put('/edit', [asesi_AsesiController::class, 'edit']);
+
+    });
+
+    Route::prefix('nilai-asesi')->group(function() {
+        Route::get('/', [asesi_AsesiController::class, 'show_nilai']);
+        Route::put('/edit', [asesi_AsesiController::class, 'edit']);
 
     });
 });

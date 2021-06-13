@@ -55,7 +55,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/asesor" class="nav-link @yield('sidebar-dashboard-active')">
+                    <a href="/asesi" class="nav-link @yield('sidebar-dashboard-active')">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -71,7 +71,7 @@
 
                 <li class="nav-header">KELOLA AKUN</li>
                 <li class="nav-item">
-                    <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-admin-active')">
+                    <a href="/asesi/lihat-data" class="nav-link @yield('sidebar-admin-active')">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             Lihat data
@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/asesor/edit-data" class="nav-link @yield('sidebar-asesi-active')">
+                    <a href="/asesi/edit-data" class="nav-link @yield('sidebar-asesi-active')">
                         <i class="nav-icon fas fa-user-graduate"></i>
                         <p>
                             Edit Data
