@@ -27,12 +27,12 @@
                     <div class="col-9">
                         : {{ $data->nama }}
                     </div>
-                    {{-- <div class="col-3">
-                        Nomor Induk Pegawai
+                    <div class="col-3">
+                        Nomor Induk Mahasiswa
                     </div>
                     <div class="col-9">
-                        : {{ $data->nip }}
-                    </div> --}}
+                        : {{ $data->nim }}
+                    </div>
                     <div class="col-3">
                         Nomor Induk Kependudukan
                     </div>

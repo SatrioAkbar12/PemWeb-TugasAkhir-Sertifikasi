@@ -27,33 +27,33 @@
                 {{ method_field('PUT') }}
 
                 <div class="form-group">
-                    <label for="input_nama" class="form-label">Nama Asesor</label>
-                    <input id="input_nama" class="form-control" name="nama" type="text" value="{{$data->nama}}" placeholder="Masukkan nama program studi ..." required />
+                    <label for="input_nama" class="form-label">Nama Asesi</label>
+                    <input id="input_nama" class="form-control" name="nama" type="text" value="{{$data->nama}}" placeholder="Masukkan nama lengkap ..." required />
                 </div>
 
-                {{-- <div class="form-group">
-                    <label for="input_nip" class="form-label">Nomor Induk Pegawai</label>
-                    <input id="input_nip" class="form-control" name="nip" type="text" value="{{$data->nip}}" placeholder="Masukkan nama program studi ..." required />
-                </div> --}}
+                <div class="form-group">
+                    <label for="input_nim" class="form-label">Nomor Induk Mahasiswa</label>
+                    <input id="input_nim" class="form-control" name="nim" type="text" value="{{$data->nim}}" placeholder="Masukkan NIM ..." required />
+                </div>
 
                 <div class="form-group">
                     <label for="input_nik" class="form-label">Nomor Induk Kependudukan</label>
-                    <input id="input_nik" class="form-control" name="nik" type="text" value="{{$data->nik}}" placeholder="Masukkan nama program studi ..." required />
+                    <input id="input_nik" class="form-control" name="nik" type="text" value="{{$data->nik}}" placeholder="Masukkan NIK ..." required />
                 </div>
 
                 <div class="form-group">
                     <label for="input_tpl" class="form-label">Tempat Lahir</label>
-                    <input id="input_tpl" class="form-control" name="tpl" type="text" value="{{$data->tempat_lahir}}" placeholder="Masukkan nama program studi ..." required />
+                    <input id="input_tpl" class="form-control" name="tpl" type="text" value="{{$data->tempat_lahir}}" placeholder="Masukkan tempat lahir ..." required />
                 </div>
 
                 <div class="form-group">
                     <label for="input_tgl" class="form-label">Tanggal Lahir</label>
-                    <input id="input_tgl" class="form-control" name="tgl" type="date" value="{{$data->tanggal_lahir}}" placeholder="Masukkan nama program studi ..." required />
+                    <input id="input_tgl" class="form-control" name="tgl" type="date" value="{{$data->tanggal_lahir}}" placeholder="Masukkan tanggal lahir ..." required />
                 </div>
 
                 <div class="form-group">
                     <label for="input_jk" class="form-label">Jenis Kelamin</label>
-                    <input id="input_jk" class="form-control" name="jk" type="text" value="{{$data->jenis_kelamin}}" placeholder="Masukkan nama program studi ..." required />
+                    <input id="input_jk" class="form-control" name="jk" type="text" value="{{$data->jenis_kelamin}}" placeholder="Masukkan jenis kelamin ..." required />
                 </div>
 
                 <div class="form-group">
@@ -71,12 +71,12 @@
 
                 <div class="form-group">
                     <label for="input_alamat" class="form-label">Alamat</label>
-                    <input id="input_alamat" class="form-control" name="alamat" type="text" value="{{$data->alamat}}" placeholder="Masukkan nama program studi ..." required />
+                    <input id="input_alamat" class="form-control" name="alamat" type="text" value="{{$data->alamat}}" placeholder="Masukkan alamat ..." required />
                 </div>
 
                 <div class="form-group">
                     <label for="input_tlp" class="form-label">Nomor Telepon</label>
-                    <input id="input_tlp" class="form-control" name="tlp" type="text" value="{{$data->no_telepon}}" placeholder="Masukkan nama program studi ..." required />
+                    <input id="input_tlp" class="form-control" name="tlp" type="text" value="{{$data->no_telepon}}" placeholder="Masukkan nomor telepon ..." required />
                 </div>
 
                 <div class="form-group">
