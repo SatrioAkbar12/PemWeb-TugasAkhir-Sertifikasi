@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\ReferensiNegaraController as admin_ReferensiNegar
 use App\Http\Controllers\Asesor\AsesorDashboardController as asesor_AsesorDashboardController;
 use App\Http\Controllers\Asesor\AsesorController as asesor_AsesorController;
 use App\Http\Controllers\Asesor\AsesorPenilaianController as asesor_AsesorPenilaianController;
+use App\Http\Controllers\Asesor\AsesorVerifikasiBerkasController as asesor_AsesorVerifikasiBerkasController;
 use App\Http\Controllers\Asesi\AsesiDashboardController as asesi_AsesiDashboardController;
 use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
@@ -192,6 +193,12 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
 
     Route::prefix('edit-data')->group(function() {
         Route::get('/', [asesor_AsesorController::class, 'showEdit']);
+        Route::put('/edit', [asesor_AsesorController::class, 'edit']);
+
+    });
+
+    Route::prefix('verifikasi-berkas')->group(function() {
+        Route::get('/', [asesor_AsesorVerifikasiBerkasController::class, 'index']);
         Route::put('/edit', [asesor_AsesorController::class, 'edit']);
 
     });
