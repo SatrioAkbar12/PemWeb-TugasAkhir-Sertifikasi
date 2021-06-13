@@ -37,10 +37,10 @@
                     @foreach ($data_pendaftar as $d)
                         <tbody>
                             <tr>
-                                <td>
+                                <td class="text-center">
                                     {{ $d->pendaftar->asesi->id }}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <a>
                                         {{ $d->pendaftar->asesi->nama }}
                                     </a>
