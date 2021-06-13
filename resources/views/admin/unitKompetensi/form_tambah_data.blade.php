@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label for="input_nama" class="form-label">Nama</label>
                         <textarea id="input_nama" class="form-control" name="nama" type="text"
-                            placeholder="Masukkan pertanyaan ..." required ></textarea>
+                            placeholder="Masukkan nama unit kompetensi ..." required ></textarea>
                     </div>
                     <div class="form-group">
                         <label for="input_aktif" class="form-label">Is aktif</label>
