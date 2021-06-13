@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register - @yield('head_title')</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{asset('adminlte3/plugins/fontawesome-free/css/all.min.css')}}">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{asset('adminlte3/dist/css/adminlte.min.css')}}">
+    <style>
+        body{
+          height: 100px;
+          width: 800px;
+          margin: 50px auto;
+          border: 1px solid black;
+          padding: 20px;
+          background-color: rgb(241, 241, 241);
+        }
+        </style>
+</head>
 </head>
 <body>
                 <form method="post" action="/register/isi-data">
@@ -99,5 +118,17 @@
                         <button class="btn btn-warning" type="reset">Reset</button>
                     </div>
                 </form>
+
+                 <!-- jQuery -->
+    <script src="{{asset('adminlte3/plugins/jquery/jquery.min.js')}}"></script>
+
+    <!-- Bootstrap 4 -->
+    <script src="{{asset('adminlte3/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- AdminLTE App -->
+    <script src="{{asset('adminlte3/dist/js/adminlte.min.js')}}"></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{asset('adminlte3/dist/js/demo.js')}}"></script>
 </body>
 </html>
