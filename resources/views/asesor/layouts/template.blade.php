@@ -89,7 +89,7 @@
 
                 <li class="nav-header">SERTIFIKASI</li>
                 <li class="nav-item">
-                    <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-admin-active')">
+                    <a href="/asesor/verifikasi-berkas" class="nav-link @yield('sidebar-admin-active')">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>
                             Verifikasi Berkas
