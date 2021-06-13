@@ -110,7 +110,7 @@
 
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Simpan</button>
-                    <a href="/asesor"><button class="btn btn-danger" type="button">Kembali</button></a>
+                    <a href="/asesi"><button class="btn btn-danger" type="button">Kembali</button></a>
                 </div>
             </form>
         </div>
