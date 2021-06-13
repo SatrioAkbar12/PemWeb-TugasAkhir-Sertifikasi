@@ -20,13 +20,6 @@
 
         <!-- Default box -->
         <div class="card">
-            <div class="card-header">
-                <div class="card-tools">
-                    <a href="/admin/kelola-asesor/tambah">
-                        <button type="button" class="btn btn-success">Tambah Data</button>
-                    </a>
-                </div>
-            </div>
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead class="text-center">
@@ -35,29 +28,21 @@
                                 ID
                             </th>
                             <th>
-                                Jenis Sertifikasi
-                            </th>
-                            <th>
-                                Hasil
+                                Nama Peserta
                             </th>
                             <th>
                             </th>
                         </tr>
                     </thead>
-                    @foreach ($data_asesor as $d)
+                    @foreach ($data_pendaftar as $d)
                         <tbody>
                             <tr>
                                 <td>
-                                    {{ $d->id }}
+                                    {{ $d->pendaftar->asesi->id }}
                                 </td>
                                 <td>
                                     <a>
-                                        {{ $d->user->username }}
-                                    </a>
-                                </td>
-                                <td>
-                                    <a>
-                                        {{ $d->nama }}
+                                        {{ $d->pendaftar->asesi->nama }}
                                     </a>
                                 </td>
                                 <td class="project-actions text-right">
@@ -69,12 +54,7 @@
                                     <a class="btn btn-info btn-sm" href="/admin/kelola-asesor/{{ $d->id }}/edit">
                                         <i class="fas fa-pencil-alt">
                                         </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="/admin/kelola-asesor/{{ $d->id }}/delete">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
+                                        Nilai
                                     </a>
                                 </td>
                             </tr>
