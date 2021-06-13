@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\UnitKompetensiSertifikasiController as admin_Unit
 use App\Http\Controllers\Admin\ReferensiNegaraController as admin_ReferensiNegaraController;
 use App\Http\Controllers\Asesor\AsesorDashboardController as asesor_AsesorDashboardController;
 use App\Http\Controllers\Asesor\AsesorController as asesor_AsesorController;
+use App\Http\Controllers\Asesor\AsesorPenilaianController as asesor_AsesorPenilaianController;
 use App\Http\Controllers\Asesi\AsesiDashboardController as asesi_AsesiDashboardController;
 use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
@@ -196,7 +197,7 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
     });
 
     Route::prefix('nilai-asesi')->group(function() {
-        Route::get('/', [asesor_AsesorController::class, 'show_nilai']);
+        Route::get('/', [asesor_AsesorPenilaianController::class, 'index']);
         Route::put('/edit', [asesor_AsesorController::class, 'edit']);
 
     });
