@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminController as admin_AdminController;
 use App\Http\Controllers\Admin\AsesiController as admin_AsesiController;
 use App\Http\Controllers\Admin\AsesorController as admin_AsesorController;
 use App\Http\Controllers\Admin\AsesorJenisSertifikasiController as admin_AsesorJenisSertifikasiController;
+use App\Http\Controllers\Admin\InstrumenAsesmenKompetensiController as admin_InstrumenAsesmenKompetensiController;
 use App\Http\Controllers\Admin\JadwalController as admin_JadwalController;
 use App\Http\Controllers\Admin\JenisSertifikasiController as admin_JenisSertifikasiController;
 use App\Http\Controllers\Admin\KegiatanController as admin_KegiatanController;
@@ -25,7 +26,11 @@ use App\Http\Controllers\Asesor\AsesorVerifikasiBerkasController as asesor_Aseso
 use App\Http\Controllers\Asesi\AsesiDashboardController as asesi_AsesiDashboardController;
 use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
 use App\Http\Controllers\Asesi\AsesiIsiKuesionerController as asesi_AsesiIsiKuesionerController;
+<<<<<<< HEAD
 use App\Http\Controllers\Asesi\AsesiDaftarSertifikasiController as asesi_AsesiDaftarSertifikasiController;
+=======
+use App\Http\Controllers\Asesi\AsesiSelfAsesmenController as asesi_AsesiSelfAsesmenController;
+>>>>>>> 974a77b480fbe054d8346db6e0f3ee597b29c048
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 /*
 |--------------------------------------------------------------------------
@@ -159,39 +164,52 @@ Route::prefix('admin')->middleware('auth', 'admin')->name('admin.')->group(funct
         Route::get('/{id}/delete', [admin_PenawaranSertifikasiController::class, 'del']);
     });
 
-    Route::prefix('jadwal')->group(function() {
-        Route::get('/', [admin_JadwalController::class, 'index']);
-        Route::get('/tambah', [admin_JadwalController::class, 'showCreate']);
-        Route::post('/tambah', [admin_JadwalController::class, 'create']);
-        Route::get('/{id}', [admin_JadwalController::class, 'read']);
-        Route::get('/{id}/edit', [admin_JadwalController::class, 'showEdit']);
-        Route::put('/{id}/edit', [admin_JadwalController::class, 'edit']);
-        Route::get('/{id}/delete', [admin_JadwalController::class, 'del']);
+    Route::prefix('jadwal')->name('jadwal.')->group(function() {
+        Route::get('/', [admin_JadwalController::class, 'index'])->name('index');
+        Route::get('/tambah', [admin_JadwalController::class, 'showCreate'])->name('show-create');
+        Route::post('/tambah', [admin_JadwalController::class, 'create'])->name('create');
+        Route::prefix('{id_penawaranSertifikasi}')->name('kegiatan.')->group(function() {
+            Route::get('/', [admin_JadwalController::class, 'read'])->name('read');
+            Route::get('/kegiatan/{id_jadwal}', [admin_JadwalController::class, 'readKegiatan'])->name('read-kegiatan');
+            Route::get('/kegiatan/{id_jadwal}/edit', [admin_JadwalController::class, 'showEdit'])->name('show-edit');
+            Route::put('/kegiatan/{id_jadwal}/edit', [admin_JadwalController::class, 'edit'])->name('edit');
+            Route::get('/kegiatan/{id_jadwal}/delete', [admin_JadwalController::class, 'del'])->name('delete');
+        });
     });
 
     Route::prefix('unit-kompetensi-sertifikasi')->name('unit_kompetensi_sertifikasi.')->group(function() {
-        Route::get('/', [admin_UnitKompetensiSertifikasiController::class, 'index']);
-        Route::get('/tambah', [admin_UnitKompetensiSertifikasiController::class, 'showCreate']);
-        Route::post('/tambah', [admin_UnitKompetensiSertifikasiController::class, 'create']);
+        Route::get('/', [admin_UnitKompetensiSertifikasiController::class, 'index'])->name('index');
+        Route::get('/tambah', [admin_UnitKompetensiSertifikasiController::class, 'showCreate'])->name('show-create');
+        Route::post('/tambah', [admin_UnitKompetensiSertifikasiController::class, 'create'])->name('create');
         Route::get('/{id}', [admin_UnitKompetensiSertifikasiController::class, 'read'])->name('read');
-        Route::get('/{id}/edit', [admin_UnitKompetensiSertifikasiController::class, 'showEdit']);
-        Route::put('/{id}/edit', [admin_UnitKompetensiSertifikasiController::class, 'edit']);
-        Route::get('/{id}/delete', [admin_UnitKompetensiSertifikasiController::class, 'del']);
+        Route::get('/{id}/edit', [admin_UnitKompetensiSertifikasiController::class, 'showEdit'])->name('show-edit');
+        Route::put('/{id}/edit', [admin_UnitKompetensiSertifikasiController::class, 'edit'])->name('edit');
+        Route::get('/{id}/delete', [admin_UnitKompetensiSertifikasiController::class, 'del'])->name('delete');
     });
 
     Route::prefix('syarat-sertifikasi')->name('syarat_sertifikasi.')->group(function() {
-        Route::get('/', [admin_SyaratSertifikasiController::class, 'index']);
-        Route::get('/tambah', [admin_SyaratSertifikasiController::class, 'showCreate']);
-        Route::post('/tambah', [admin_SyaratSertifikasiController::class, 'create']);
+        Route::get('/', [admin_SyaratSertifikasiController::class, 'index'])->name('index');
+        Route::get('/tambah', [admin_SyaratSertifikasiController::class, 'showCreate'])->name('show-create');
+        Route::post('/tambah', [admin_SyaratSertifikasiController::class, 'create'])->name('create');
         Route::get('/{id}', [admin_SyaratSertifikasiController::class, 'read'])->name('read');
-        Route::get('/{id}/edit', [admin_SyaratSertifikasiController::class, 'showEdit']);
-        Route::put('/{id}/edit', [admin_SyaratSertifikasiController::class, 'edit']);
-        Route::get('/{id}/delete', [admin_SyaratSertifikasiController::class, 'del']);
+        Route::get('/{id}/edit', [admin_SyaratSertifikasiController::class, 'showEdit'])->name('show-edit');
+        Route::put('/{id}/edit', [admin_SyaratSertifikasiController::class, 'edit'])->name('edit');
+        Route::get('/{id}/delete', [admin_SyaratSertifikasiController::class, 'del'])->name('delete');
+    });
+
+    Route::prefix('instrumen-asesmen')->name('instrumen-asesmen.')->group(function() {
+        Route::get('/', [admin_InstrumenAsesmenKompetensiController::class, 'index'])->name('index');
+        Route::get('/tambah', [admin_InstrumenAsesmenKompetensiController::class, 'showCreate'])->name('show-create');
+        Route::post('/tambah', [admin_InstrumenAsesmenKompetensiController::class, 'create'])->name('create');
+        Route::get('/{id}', [admin_InstrumenAsesmenKompetensiController::class, 'read'])->name('read');
+        Route::get('/{id}/edit', [admin_InstrumenAsesmenKompetensiController::class, 'showEdit'])->name('show-edit');
+        Route::put('/{id}/edit', [admin_InstrumenAsesmenKompetensiController::class, 'edit'])->name('edit');
+        Route::get('/{id}/delete', [admin_InstrumenAsesmenKompetensiController::class, 'del'])->name('delete');
     });
 });
 
 // Route khusus asesor
-Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
+Route::prefix('asesor')->middleware('auth', 'asesor')->name('asesor.')->group(function () {
     Route::get('/', [asesor_AsesorDashboardController::class, 'showDashboard']);
 
     Route::prefix('lihat-data')->group(function() {
@@ -224,7 +242,7 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
 });
 
 // Route khusus asesi
-Route::prefix('asesi')->middleware('auth', 'asesi')->group(function () {
+Route::prefix('asesi')->middleware('auth', 'asesi')->name('asesi.')->group(function () {
     Route::get('/', [asesi_AsesiDashboardController::class, 'showDashboard']);
 
     Route::prefix('lihat-data')->group(function() {
@@ -250,12 +268,20 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->group(function () {
     // });
     Route::prefix('isikuesioner')->group(function() {
         Route::get('/', [asesi_AsesiIsiKuesionerController::class, 'index']);
-        Route::put('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'jawab']);
+        Route::get('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'showJawab']);
+        Route::post('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'jawab']);
 
     });
+<<<<<<< HEAD
 
     Route::prefix('daftarsertifikasi')->group(function() {
         Route::get('/', [asesi_AsesiDaftarSertifikasiController::class, 'index']);
+=======
+    Route::prefix('self-asesmen')->group(function() {
+        Route::get('/', [asesi_AsesiSelfAsesmenController::class, 'index']);
+        Route::get('/{id}/jawab', [asesi_AsesiSelfAsesmenController::class, 'showJawab']);
+        Route::post('/{id}/jawab', [asesi_AsesiSelfAsesmenController::class, 'jawab']);
+>>>>>>> 974a77b480fbe054d8346db6e0f3ee597b29c048
     });
 });
 

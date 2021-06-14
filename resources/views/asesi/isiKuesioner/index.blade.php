@@ -41,7 +41,7 @@
                                         </i>
                                         View
                                     </a> --}}
-                                    <a class="btn btn-info btn-sm" href="/asesi/isiKuesioner/{{ $d->id }}/jawab">
+                                    <a class="btn btn-info btn-sm" href="/asesi/isikuesioner/{{ $d->id }}/jawab">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Jawab

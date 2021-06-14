@@ -12,7 +12,7 @@ use App\Models\RefKegiatan;
 class JadwalController extends Controller
 {
     public function index() {
-        $data = Jadwal::all();
+        $data = Jadwal::distinct('id_penawaran_sertifikasi')->get('id_penawaran_sertifikasi');
 
         return view('admin.jadwal.index', ['data' => $data]);
     }
@@ -45,34 +45,39 @@ class JadwalController extends Controller
             'edited_by' => Auth::user()->username
         ]);
 
-        return redirect('/admin/jadwal');
+        return redirect()->route('admin.jadwal.index');
     }
 
-    public function read($id) {
-        $data = Jadwal::find($id);
+    public function read($id_penawaranSertifikasi) {
+        $data = Jadwal::where('id_penawaran_sertifikasi', $id_penawaranSertifikasi)->first();
+        $data_kegiatan = Jadwal::where('id_penawaran_sertifikasi', $id_penawaranSertifikasi)->get();
 
-        return view('admin.jadwal.show_data', ['data' => $data]);
+        return view('admin.jadwal.show_data', ['data' => $data, 'data_kegiatan' => $data_kegiatan]);
     }
 
-    public function showEdit($id) {
-        $data = Jadwal::find($id);
+    public function readKegiatan($id_penawaranSertifikasi, $id_jadwal) {
+        $data = Jadwal::find($id_jadwal);
+
+        return view('admin.jadwal.show_jadwal', ['data' => $data]);
+    }
+
+    public function showEdit($id_penawaranSertifikasi, $id_jadwal) {
+        $data = Jadwal::find($id_jadwal);
         $data_penawaransertifikasi = PenawaranSertifikasi::all();
         $data_refkegiatan = RefKegiatan::all();
 
         return view('admin.jadwal.form_edit_data', ['data' => $data, 'data_penawaransertifikasi' => $data_penawaransertifikasi, 'data_refkegiatan' => $data_refkegiatan]);
     }
 
-    public function edit($id, Request $request) {
+    public function edit($id_penawaranSertifikasi, $id_jadwal, Request $request) {
         $request->validate([
-            'penawaranSertifikasi' => 'required',
-            'kegiatan' => 'required',
             'tanggalAwal' => 'date|required',
             'tanggalAkhir' => 'date|required',
             'show' => 'boolean|required',
             'deskripsi' => 'required'
         ]);
 
-        Jadwal::where('id', $id)->update([
+        Jadwal::where('id', $id_jadwal)->update([
             'tanggal_awal' => $request->tanggalAwal,
             'tanggal_akhir' => $request->tanggalAkhir,
             'deskripsi' => $request->deskripsi,
@@ -80,13 +85,13 @@ class JadwalController extends Controller
             'edited_by' => Auth::user()->username
         ]);
 
-        return redirect('/admin/jadwal');
+        return redirect()->route('admin.jadwal.kegiatan.read', ['id_penawaranSertifikasi' => $id_penawaranSertifikasi]);
     }
 
-    public function del($id) {
-        $data = Jadwal::find($id);
+    public function del($id_penawaranSertifikasi, $id_jadwal) {
+        $data = Jadwal::find($id_jadwal);
         $data->delete();
 
-        return redirect('/admin/jadwal');
+        return redirect()->back();
     }
 }

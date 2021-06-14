@@ -19,25 +19,18 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-body p-4">
-                <form method="post" action="/asesi/kuesioner/{{ $data->id }}/jawab">
+                <form method="post" action="/asesi/isikuesioner/{{ $data->id }}/jawab">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    {{ method_field('PUT') }}
+                    {{-- {{ method_field('PUT') }} --}}
 
-                    {{-- <div class="form-group">
-                        <label for="input_pertanyaan" class="form-label">Pertanyaan</label>
-                        <textarea id="input_pertanyaan" class="form-control" name="pertanyaan" type="text"
-                            placeholder="Masukkan pertanyaan ..." required >{{ $data->pertanyaan }}</textarea>
+                    <div class="form-group">
+                        <label for="input_jawaban" class="form-label">Jawaban</label>
+                        <textarea id="input_jawaban" class="form-control" name="jawaban" type="text"
+                            placeholder="Masukkan jawaban ..." required >{{ $data->jawaban }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="input_aktif" class="form-label">Is aktif</label>
-                        <select id="input_aktif" class="form-control" name="is_aktif">
-                            <option value="1" {{ $data->is_aktif == 1 ? 'selected' : '' }}>Ya</option>
-                                    <option value="0" {{ $data->is_aktif == 0 ? 'selected' : '' }}>Tidak</option>
-                        </select>
-                    </div> --}}
-                    <div class="form-group">
                         <button class="btn btn-primary" type="submit">Simpan</button>
-                        <a href="/asesi/kuesioner"><button class="btn btn-danger" type="button">Kembali</button></a>
+                        <a href="/asesi/isikuesioner"><button class="btn btn-danger" type="button">Kembali</button></a>
                     </div>
                 </form>
             </div>
