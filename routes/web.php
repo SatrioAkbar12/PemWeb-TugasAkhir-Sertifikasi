@@ -274,6 +274,8 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->name('asesi.')->group(funct
 
     Route::prefix('daftarsertifikasi')->group(function() {
         Route::get('/', [asesi_AsesiDaftarSertifikasiController::class, 'index']);
+        Route::get('/{id}/daftar', [asesi_AsesiDaftarSertifikasiController::class, 'showDaftar']);
+        Route::post('/{id}/daftar', [asesi_AsesiDaftarSertifikasiController::class, 'daftar']);
     });
 
     Route::prefix('self-asesmen')->group(function() {

@@ -58,7 +58,7 @@
                         </a>
                     </td>
                     <td class="project-actions text-right">
-                        <a href="/asesi/daftarSertifikasi/daftar">
+                        <a href="/asesi/daftarsertifikasi/{id}/daftar">
                         <button type="button" class="btn btn-success">
                             <i class="fas fa-plus-circle"></i>
                              Daftar
