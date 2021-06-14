@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminController as admin_AdminController;
 use App\Http\Controllers\Admin\AsesiController as admin_AsesiController;
 use App\Http\Controllers\Admin\AsesorController as admin_AsesorController;
 use App\Http\Controllers\Admin\AsesorJenisSertifikasiController as admin_AsesorJenisSertifikasiController;
+use App\Http\Controllers\Admin\InstrumenAsesmenKompetensiController as admin_InstrumenAsesmenKompetensiController;
 use App\Http\Controllers\Admin\JadwalController as admin_JadwalController;
 use App\Http\Controllers\Admin\JenisSertifikasiController as admin_JenisSertifikasiController;
 use App\Http\Controllers\Admin\KegiatanController as admin_KegiatanController;
@@ -185,6 +186,16 @@ Route::prefix('admin')->middleware('auth', 'admin')->name('admin.')->group(funct
         Route::get('/{id}/edit', [admin_SyaratSertifikasiController::class, 'showEdit']);
         Route::put('/{id}/edit', [admin_SyaratSertifikasiController::class, 'edit']);
         Route::get('/{id}/delete', [admin_SyaratSertifikasiController::class, 'del']);
+    });
+
+    Route::prefix('instrumen-asesmen')->name('instrumen-asesmen.')->group(function() {
+        Route::get('/', [admin_InstrumenAsesmenKompetensiController::class, 'index'])->name('index');
+        Route::get('/tambah', [admin_InstrumenAsesmenKompetensiController::class, 'showCreate'])->name('show-create');
+        Route::post('/tambah', [admin_InstrumenAsesmenKompetensiController::class, 'create'])->name('create');
+        Route::get('/{id}', [admin_InstrumenAsesmenKompetensiController::class, 'read'])->name('read');
+        Route::get('/{id}/edit', [admin_InstrumenAsesmenKompetensiController::class, 'showEdit'])->name('show-edit');
+        Route::put('/{id}/edit', [admin_InstrumenAsesmenKompetensiController::class, 'edit'])->name('edit');
+        Route::get('/{id}/delete', [admin_InstrumenAsesmenKompetensiController::class, 'del'])->name('delete');
     });
 });
 
