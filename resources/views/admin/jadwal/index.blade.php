@@ -23,7 +23,7 @@
     <div class="card">
       <div class="card-header">
         <div class="card-tools">
-            <a href="/admin/jadwal/tambah">
+            <a href="{{ route('admin.jadwal.show-create') }}">
                 <button type="button" class="btn btn-success">Tambah Data</button>
             </a>
         </div>
@@ -33,13 +33,10 @@
             <thead class="text-center">
                 <tr>
                     <th>
-                        ID
+                        ID Sertifikasi
                     </th>
                     <th>
                         Nama Sertifikasi
-                    </th>
-                    <th>
-                        Kegiatan
                     </th>
                     <th>
                     </th>
@@ -48,34 +45,19 @@
             @foreach ($data as $d)
             <tbody>
                 <tr>
-                    <td>
-                        {{ $d->id }}
+                    <td class="text-center">
+                        {{ $d->penawaranSertifikasi->id }}
                     </td>
                     <td>
                         <a>
                             {{ $d->penawaranSertifikasi->nama }}
                         </a>
                     </td>
-                    <td>
-                        <a>
-                            {{ $d->refKegiatan->nama_kegiatan }}
-                        </a>
-                    </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="/admin/jadwal/{{ $d->id }}">
+                        <a class="btn btn-primary btn-sm" href="{{ route('admin.jadwal.kegiatan.read', ['id_penawaranSertifikasi' => $d->penawaranSertifikasi->id]) }}">
                             <i class="fas fa-folder">
                             </i>
                             View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="/admin/jadwal/{{ $d->id }}/edit">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="/admin/jadwal/{{ $d->id }}/delete">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
                         </a>
                     </td>
                 </tr>
