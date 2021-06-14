@@ -242,14 +242,14 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->group(function () {
 
     });
 
-    Route::prefix('nilai-asesi')->group(function() {
-        Route::get('/', [asesi_AsesiController::class, 'show_nilai']);
-        Route::put('/edit', [asesi_AsesiController::class, 'edit']);
+    // Route::prefix('nilai-asesi')->group(function() {
+    //     Route::get('/', [asesi_AsesiController::class, 'show_nilai']);
+    //     Route::put('/edit', [asesi_AsesiController::class, 'edit']);
 
-    });
+    // });
     Route::prefix('isikuesioner')->group(function() {
         Route::get('/', [asesi_AsesiIsiKuesionerController::class, 'index']);
-        Route::put('/{id}/edit', [asesi_AsesiIsiKuesionerController::class, 'edit']);
+        Route::put('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'jawab']);
 
     });
 });
