@@ -23,6 +23,7 @@ use App\Http\Controllers\Asesor\AsesorPenilaianController as asesor_AsesorPenila
 use App\Http\Controllers\Asesor\AsesorVerifikasiBerkasController as asesor_AsesorVerifikasiBerkasController;
 use App\Http\Controllers\Asesi\AsesiDashboardController as asesi_AsesiDashboardController;
 use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
+use App\Http\Controllers\Asesi\AsesiIsiKuesionerController as asesi_AsesiIsiKuesionerController;
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 /*
 |--------------------------------------------------------------------------
@@ -233,6 +234,11 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->group(function () {
     Route::prefix('nilai-asesi')->group(function() {
         Route::get('/', [asesi_AsesiController::class, 'show_nilai']);
         Route::put('/edit', [asesi_AsesiController::class, 'edit']);
+
+    });
+    Route::prefix('isikuesioner')->group(function() {
+        Route::get('/', [asesi_AsesiIsiKuesionerController::class, 'index']);
+        Route::put('/edit', [asesi_AsesiIsiKuesionerController::class, 'edit']);
 
     });
 });
