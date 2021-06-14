@@ -17,6 +17,33 @@ class AsesorVerifikasiBerkasController extends Controller
         $data_asesor_jenis_sertifikasi = AsesorJenisSertifikasi::where('id_asesor', $data_asesor->id)->first();
         $data_pendaftar = AsesorPendaftar::where('id_asesor_jenis_sertifikasi', $data_asesor_jenis_sertifikasi->id)->get();
         
-        return view('asesor.asesor.verifikasi_berkas.show_data', ['data_pendaftar' => $data_pendaftar]);
+        return view('asesor.asesor.verifikasi_berkas.show', ['data_pendaftar' => $data_pendaftar]);
+    }
+
+    public function read($id) {
+        $data_pendaftar = AsesorPendaftar::where(['id' => $id])->first();
+
+        return view('asesor.asesor.verifikasi_berkas.show_data', ['data' => $data_pendaftar]);
+    }
+
+    public function edit($id, Request $request) {
+        $request->validate([
+            'id_user' => 'required',
+            'username' => 'required',
+            'email' => 'required|email'
+        ]);
+
+        PendaftarSyarat::where('id', $id)->update([
+            'verifikasi_asesor' => $request->verifikasi_asesor,
+            'komentar_asesor' => $request->komentar_asesor,
+            'edited_by' => Auth::user()->username
+        ]);
+
+        User::where('id', $request->id_user)->update([
+            'username' => $request->username,
+            'email' => $request->email
+        ]);
+
+        return redirect('/asesor/verifikasi-berkas/form_edit_data');
     }
 }
