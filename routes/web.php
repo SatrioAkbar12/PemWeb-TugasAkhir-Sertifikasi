@@ -25,6 +25,7 @@ use App\Http\Controllers\Asesor\AsesorVerifikasiBerkasController as asesor_Aseso
 use App\Http\Controllers\Asesi\AsesiDashboardController as asesi_AsesiDashboardController;
 use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
 use App\Http\Controllers\Asesi\AsesiIsiKuesionerController as asesi_AsesiIsiKuesionerController;
+use App\Http\Controllers\Asesi\AsesiDaftarSertifikasiController as asesi_AsesiDaftarSertifikasiController;
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 /*
 |--------------------------------------------------------------------------
@@ -251,6 +252,10 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->group(function () {
         Route::get('/', [asesi_AsesiIsiKuesionerController::class, 'index']);
         Route::put('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'jawab']);
 
+    });
+
+    Route::prefix('daftarsertifikasi')->group(function() {
+        Route::get('/', [asesi_AsesiDaftarSertifikasiController::class, 'index']);
     });
 });
 

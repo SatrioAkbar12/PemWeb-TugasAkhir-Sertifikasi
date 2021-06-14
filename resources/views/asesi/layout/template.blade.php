@@ -69,6 +69,16 @@
                     </form>
                 </li>
 
+                
+                <li class="nav-header">SERTIFIKASI</li>
+                <li class="nav-item">
+                    <a href="/asesi/daftarsertifikasi" class="nav-link @yield('sidebar-sertifikasi-active')">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Daftar Sertifikasi
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-header">KELOLA AKUN</li>
                 <li class="nav-item">
                     <a href="/asesi/lihat-data" class="nav-link @yield('sidebar-show-active')">
@@ -95,6 +105,7 @@
                         </p>
                     </a>
                 </li>
+                
                 <!-- <li class="nav-item">
                     <a href="/admin/kelola-asesor" class="nav-link @yield('sidebar-asesor-active')">
                         <i class="nav-icon fas fa-user-check"></i>

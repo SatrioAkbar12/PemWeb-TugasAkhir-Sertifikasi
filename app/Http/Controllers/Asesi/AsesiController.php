@@ -12,6 +12,7 @@ use App\Models\Asesi;
 use App\Models\Asesor;
 use App\Models\RefNegara;
 use App\Models\Prodi;
+use App\Models\PenawaranSertifikasi;
 use Illuminate\Support\Facades\DB;
 
 class AsesiController extends Controller
