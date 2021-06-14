@@ -28,6 +28,9 @@ use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
 use App\Http\Controllers\Asesi\AsesiIsiKuesionerController as asesi_AsesiIsiKuesionerController;
 use App\Http\Controllers\Asesi\AsesiDaftarSertifikasiController as asesi_AsesiDaftarSertifikasiController;
 use App\Http\Controllers\Asesi\AsesiSelfAsesmenController as asesi_AsesiSelfAsesmenController;
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -268,6 +271,11 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->name('asesi.')->group(funct
         Route::post('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'jawab']);
 
     });
+
+    Route::prefix('daftarsertifikasi')->group(function() {
+        Route::get('/', [asesi_AsesiDaftarSertifikasiController::class, 'index']);
+    });
+
     Route::prefix('self-asesmen')->group(function() {
         Route::get('/', [asesi_AsesiSelfAsesmenController::class, 'index']);
         Route::get('/{id}/jawab', [asesi_AsesiSelfAsesmenController::class, 'showJawab']);

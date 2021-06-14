@@ -105,9 +105,7 @@
                         </p>
                     </a>
                 </li>
-<<<<<<< HEAD
-                
-=======
+
                 <li class="nav-header">ASESMEN</li>
                 <li class="nav-item">
                     <a href="/asesi/self-asesmen" class="nav-link @yield('sidebar-selfAsesmen-active')">
@@ -117,7 +115,7 @@
                         </p>
                     </a>
                 </li>
->>>>>>> 974a77b480fbe054d8346db6e0f3ee597b29c048
+
                 <!-- <li class="nav-item">
                     <a href="/admin/kelola-asesor" class="nav-link @yield('sidebar-asesor-active')">
                         <i class="nav-icon fas fa-user-check"></i>
