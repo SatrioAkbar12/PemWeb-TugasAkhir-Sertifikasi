@@ -86,6 +86,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-header">KUESIONER</li>
+                <li class="nav-item">
+                    <a href="/asesi/isikuesioner" class="nav-link @yield('sidebar-kuesioner-active')">
+                        <i class="nav-icon fas fa-file-alt"></i>
+                        <p>
+                            Isi Kuesioner
+                        </p>
+                    </a>
+                </li>
                 <!-- <li class="nav-item">
                     <a href="/admin/kelola-asesor" class="nav-link @yield('sidebar-asesor-active')">
                         <i class="nav-icon fas fa-user-check"></i>
