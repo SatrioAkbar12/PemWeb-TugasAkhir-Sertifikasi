@@ -19,12 +19,12 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-body p-4">
-                <form method="post" action="/admin/jadwal/{{ $data->id }}/edit">
+                <form method="post" action="{{ route('admin.jadwal.kegiatan.edit', ['id_penawaranSertifikasi' => $data->id_penawaran_sertifikasi, 'id_jadwal' => $data->id])}}">
                     {{ method_field('PUT') }}
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                         <label for="input_penawaranSertifikasi" class="form-label">Penawaran Sertifikasi</label>
-                        <select id="input_penawaranSertifikasi" class="form-control" name="penawaranSertifikasi" readonly required>
+                        <select id="input_penawaranSertifikasi" class="form-control" name="penawaranSertifikasi" disabled required>
                             @foreach ($data_penawaransertifikasi as $d_penawaransertifikasi)
                                 <option value="{{ $d_penawaransertifikasi->id }}" {{ $d_penawaransertifikasi->id == $data->id_penawaran_sertifikasi ? 'selected' : '' }}>{{ $d_penawaransertifikasi->nama }}</option>
                             @endforeach
@@ -34,7 +34,7 @@
                         <label for="input_kegiatan" class="form-label">Kegiatan</label>
                         <div class="row">
                             <div class="col-md-4">
-                                <select id="input_kegiatan" class="form-control" name="kegiatan" readonly required>
+                                <select id="input_kegiatan" class="form-control" name="kegiatan" disabled required>
                                     @foreach ($data_refkegiatan as $d_refkegiatan)
                                         <option value="{{ $d_refkegiatan->id }}" {{ $d_refkegiatan->id == $data->id_kegiatan ? 'selected' : '' }}>{{ $d_refkegiatan->nama_kegiatan }}</option>
                                     @endforeach

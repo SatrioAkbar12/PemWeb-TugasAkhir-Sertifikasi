@@ -15,6 +15,8 @@ class InstrumenAsesmenKompetensi extends Model
 
     public $incrementing = 'true';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_ref_unit_kompetensi',
         'instrumen_pertanyaan',
@@ -23,7 +25,7 @@ class InstrumenAsesmenKompetensi extends Model
     ];
 
     public function refUnitKompetensi() {
-        return $this->belongsTo(RefUnitKompetensi::class, 'id_ref_unit_sertifikasi', 'id');
+        return $this->belongsTo(RefUnitKompetensi::class, 'id_ref_unit_kompetensi', 'id');
     }
 
     public function PendaftarInstrumen() {

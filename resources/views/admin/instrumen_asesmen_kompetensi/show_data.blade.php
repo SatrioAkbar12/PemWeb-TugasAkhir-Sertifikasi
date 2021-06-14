@@ -1,8 +1,8 @@
 @extends('admin.layouts.template')
 
-@section('head_title', 'Jadwal Sertifikasi')
+@section('head_title', 'Instrumen Asesmen Kompetensi')
 
-@section('sidebar-jadwal-active', 'active')
+@section('sidebar-instrumenAsesmen-active', 'active')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Detail Data Jadwal Sertifikasi</h1>
+                    <h1>Detail Data Instrumen Asesmen Kompetensi</h1>
                 </div>
             </div>
     </section>
@@ -23,41 +23,38 @@
                     <tbody>
                         <tr>
                             <td>
-                                ID Sertifikasi
+                                ID Unit Kompetensi
                             </td>
                             <td>
-                                {{ $data->penawaranSertifikasi->id }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Nama Sertifikasi
-                            </td>
-                            <td>
-                                {{ $data->penawaranSertifikasi->nama }}
+                                : {{ $data->refUnitKompetensi->id }}
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Kegiatan
+                                Unit Kompetensi
                             </td>
                             <td>
-                                @foreach ($data_kegiatan as $d)
+                                : {{ $data->refUnitKompetensi->nama }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Instrumen Pertanyaan
+                            </td>
+                            <td>
+                                @foreach ($data_instrumenasesmen as $d)
                                     <div class="row p-1">
                                         <div class="col-1 text-center">
-                                            <input type="checkbox" value="{{ $d->is_show }}" {{ $d->is_show == 1 ? 'checked' : '' }} disabled />
+                                            <input type="checkbox" {{ $d->is_aktif == 1 ? 'checked' : '' }} disabled>
                                         </div>
-                                        <div class="col-7">
-                                            {{ $d->refKegiatan->nama_kegiatan }}
+                                        <div class="col-8">
+                                            {{ $d->instrumen_pertanyaan }}
                                         </div>
-                                        <div class="col-4 text-right">
-                                            <a href="{{ route('admin.jadwal.kegiatan.read-kegiatan', ['id_penawaranSertifikasi' => $d->id_penawaran_sertifikasi, 'id_jadwal' => $d->id]) }}">
-                                                <button class="btn btn-info" type="button">View</button>
+                                        <div class="col-3 text-right">
+                                            <a href="{{ route('admin.instrumen-asesmen.show-edit', ['id' => $d->id]) }}">
+                                                <button class="btn btn-info" type="button">Edit</button>
                                             </a>
-                                            <a href="{{ route('admin.jadwal.kegiatan.show-edit', ['id_penawaranSertifikasi' => $d->id_penawaran_sertifikasi, 'id_jadwal' => $d->id]) }}">
-                                                <button class="btn btn-warning" type="button">Edit</button>
-                                            </a>
-                                            <a href="{{ route('admin.jadwal.kegiatan.delete', ['id_penawaranSertifikasi' => $d->id_penawaran_sertifikasi, 'id_jadwal' => $d->id]) }}">
+                                            <a href="{{ route('admin.instrumen-asesmen.delete', ['id' => $d->id]) }}">
                                                 <button class="btn btn-danger" type="button">Delete</button>
                                             </a>
                                         </div>
@@ -68,13 +65,14 @@
                     </tbody>
                 </table>
                 <div class="p-4">
-                    <a href="{{ route('admin.jadwal.show-create') }}">
-                        <button type="button" class="btn btn-success"> Tambah Data</button>
+                    <a href="{{ route('admin.instrumen-asesmen.show-create') }}">
+                        <button type="button" class="btn btn-success">Tambah</button>
                     </a>
-                    <a href="{{ route('admin.jadwal.index') }}">
+                    <a href="{{ route('admin.instrumen-asesmen.index') }}">
                         <button type="button" class="btn btn-danger">Kembali</button>
                     </a>
                 </div>
+
             </div>
         </div>
     </section>
