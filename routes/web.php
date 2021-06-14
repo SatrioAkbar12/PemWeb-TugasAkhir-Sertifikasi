@@ -26,12 +26,8 @@ use App\Http\Controllers\Asesor\AsesorVerifikasiBerkasController as asesor_Aseso
 use App\Http\Controllers\Asesi\AsesiDashboardController as asesi_AsesiDashboardController;
 use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
 use App\Http\Controllers\Asesi\AsesiIsiKuesionerController as asesi_AsesiIsiKuesionerController;
-<<<<<<< HEAD
 use App\Http\Controllers\Asesi\AsesiDaftarSertifikasiController as asesi_AsesiDaftarSertifikasiController;
-=======
 use App\Http\Controllers\Asesi\AsesiSelfAsesmenController as asesi_AsesiSelfAsesmenController;
->>>>>>> 974a77b480fbe054d8346db6e0f3ee597b29c048
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -272,16 +268,10 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->name('asesi.')->group(funct
         Route::post('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'jawab']);
 
     });
-<<<<<<< HEAD
-
-    Route::prefix('daftarsertifikasi')->group(function() {
-        Route::get('/', [asesi_AsesiDaftarSertifikasiController::class, 'index']);
-=======
     Route::prefix('self-asesmen')->group(function() {
         Route::get('/', [asesi_AsesiSelfAsesmenController::class, 'index']);
         Route::get('/{id}/jawab', [asesi_AsesiSelfAsesmenController::class, 'showJawab']);
         Route::post('/{id}/jawab', [asesi_AsesiSelfAsesmenController::class, 'jawab']);
->>>>>>> 974a77b480fbe054d8346db6e0f3ee597b29c048
     });
 });
 
