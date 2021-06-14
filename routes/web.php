@@ -26,6 +26,7 @@ use App\Http\Controllers\Asesor\AsesorVerifikasiBerkasController as asesor_Aseso
 use App\Http\Controllers\Asesi\AsesiDashboardController as asesi_AsesiDashboardController;
 use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
 use App\Http\Controllers\Asesi\AsesiIsiKuesionerController as asesi_AsesiIsiKuesionerController;
+use App\Http\Controllers\Asesi\AsesiSelfAsesmenController as asesi_AsesiSelfAsesmenController;
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 /*
 |--------------------------------------------------------------------------
@@ -264,6 +265,10 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->name('asesi.')->group(funct
     Route::prefix('isikuesioner')->group(function() {
         Route::get('/', [asesi_AsesiIsiKuesionerController::class, 'index']);
         Route::put('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'jawab']);
+
+    });
+    Route::prefix('self-asesmen')->group(function() {
+        Route::get('/', [asesi_AsesiSelfAsesmenController::class, 'index']);
 
     });
 });
