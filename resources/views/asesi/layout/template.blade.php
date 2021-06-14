@@ -33,7 +33,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="/asesor" class="brand-link text-center">
+        <a href="/asesi" class="brand-link text-center">
             <span class="brand-text font-weight-light">Sertifikasi</span>
         </a>
 
@@ -71,7 +71,7 @@
 
                 <li class="nav-header">KELOLA AKUN</li>
                 <li class="nav-item">
-                    <a href="/asesi/lihat-data" class="nav-link @yield('sidebar-admin-active')">
+                    <a href="/asesi/lihat-data" class="nav-link @yield('sidebar-show-active')">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             Lihat data
@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/asesi/edit-data" class="nav-link @yield('sidebar-asesi-active')">
+                    <a href="/asesi/edit-data" class="nav-link @yield('sidebar-edit-active')">
                         <i class="nav-icon fas fa-user-graduate"></i>
                         <p>
                             Edit Data

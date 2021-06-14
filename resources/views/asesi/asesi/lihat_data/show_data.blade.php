@@ -2,7 +2,7 @@
 
 @section('head_title', 'Asesi')
 
-@section('sidebar-prodi-active', 'active')
+@section('sidebar-show-active', 'active')
 
 @section('content')
     <!-- Content Header (Page header) -->
