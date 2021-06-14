@@ -14,6 +14,8 @@ class SyaratSertifikasi extends Model
     protected $primaryKey = 'id';
 
     public $incrementing = 'true';
+    
+    public $timestamps = false;
 
     protected $fillable = [
         'id_ref_jenis_sertifikasi',
