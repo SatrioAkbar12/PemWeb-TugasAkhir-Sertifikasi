@@ -249,7 +249,8 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->group(function () {
     // });
     Route::prefix('isikuesioner')->group(function() {
         Route::get('/', [asesi_AsesiIsiKuesionerController::class, 'index']);
-        Route::put('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'jawab']);
+        Route::get('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'showJawab']);
+        Route::post('/{id}/jawab', [asesi_AsesiIsiKuesionerController::class, 'jawab']);
 
     });
 });
