@@ -229,7 +229,8 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->name('asesor.')->group(fu
 
     Route::prefix('verifikasi-berkas')->group(function() {
         Route::get('/', [asesor_AsesorVerifikasiBerkasController::class, 'index']);
-        Route::put('/edit', [asesor_AsesorController::class, 'edit']);
+        Route::get('/{id}', [asesor_AsesorVerifikasiBerkasController::class, 'read']);
+        Route::get('/{id}/edit', [asesor_AsesorVerifikasiBerkasController::class, 'edit']);
 
     });
 
