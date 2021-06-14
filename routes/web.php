@@ -204,7 +204,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->name('admin.')->group(funct
 });
 
 // Route khusus asesor
-Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
+Route::prefix('asesor')->middleware('auth', 'asesor')->name('asesor.')->group(function () {
     Route::get('/', [asesor_AsesorDashboardController::class, 'showDashboard']);
 
     Route::prefix('lihat-data')->group(function() {
@@ -237,7 +237,7 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->group(function () {
 });
 
 // Route khusus asesi
-Route::prefix('asesi')->middleware('auth', 'asesi')->group(function () {
+Route::prefix('asesi')->middleware('auth', 'asesi')->name('asesi.')->group(function () {
     Route::get('/', [asesi_AsesiDashboardController::class, 'showDashboard']);
 
     Route::prefix('lihat-data')->group(function() {
