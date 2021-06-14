@@ -24,26 +24,26 @@
                     {{-- {{ method_field('PUT') }} --}}
 
                     <div class="form-group">
-                        <label for="input_jawaban" class="form-label">Jawaban</label>
-                        <textarea id="input_jawaban" class="form-control" name="jawaban" type="text"
+                        <label for="input_jawaban_self_asesmen" class="form-label">Jawaban</label>
+                        <textarea id="input_jawaban_self_asesmen" class="form-control" name="jawaban_self_asesmen" type="text"
                             placeholder="Masukkan jawaban ..." required >{{ $data->jawaban_self_asesmen }}</textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="input_jawaban" class="form-label">Path Bukti</label>
-                        <textarea id="input_jawaban" class="form-control" name="jawaban" type="text"
+                        <label for="input_path_bukti" class="form-label">Path Bukti</label>
+                        <textarea id="input_path_bukti" class="form-control" name="path_bukti" type="text"
                             placeholder="Masukkan jawaban ..." required >{{ $data->path_bukti }}</textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="input_jawaban" class="form-label">Komentar</label>
-                        <textarea id="input_jawaban" class="form-control" name="jawaban" type="text"
+                        <label for="input_komentar_bukti" class="form-label">Komentar</label>
+                        <textarea id="input_komentar_bukti" class="form-control" name="komentar_bukti" type="text"
                             placeholder="Masukkan jawaban ..." required >{{ $data->komentar_bukti }}</textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="input_jawaban" class="form-label">Jawaban Asesor Verifikasi</label>
-                        <textarea id="input_jawaban" class="form-control" name="jawaban" type="text"
+                        <label for="input_jawaban_asesor_verifikasi" class="form-label">Jawaban Asesor Verifikasi</label>
+                        <textarea id="input_jawaban_asesor_verifikasi" class="form-control" name="jawaban_asesor_verifikasi" type="text"
                             placeholder="Masukkan jawaban ..." required >{{ $data->jawaban_asesor_verifikasi }}</textarea>
                     </div>
 

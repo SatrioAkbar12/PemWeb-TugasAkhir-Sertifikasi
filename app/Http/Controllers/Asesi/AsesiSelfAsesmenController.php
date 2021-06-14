@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\PendaftarInstrumen;
 use App\Models\InstrumenAsesmenKompetensi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class AsesiSelfAsesmenController extends Controller
 {
@@ -53,7 +55,6 @@ class AsesiSelfAsesmenController extends Controller
             'komentar_bukti' => $request->komentar_bukti,
             'jawaban_asesor_verifikasi' => $request->jawaban_asesor_verifikasi,
             'verified_by' => Auth::user()->username,
-            'verified_at' => Auth::user()->username,
             'created_by' => Auth::user()->username,
             'edited_by' => Auth::user()->username
         ]);
