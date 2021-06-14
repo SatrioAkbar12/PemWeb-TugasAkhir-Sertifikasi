@@ -9,6 +9,7 @@ use App\Models\Pendaftar;
 use App\Models\RefKuesioner;
 use App\Models\Asesi;
 use App\Models\PendaftarKuesioner;
+use DB;
 
 class AsesiIsiKuesionerController extends Controller
 {
@@ -32,18 +33,20 @@ class AsesiIsiKuesionerController extends Controller
     {
 
         $nomor=Auth::user()->id;
-        $a = \DB::table('pendaftar')
+        $a = DB::table('pendaftar')
             ->join('asesi','pendaftar.id_asesi','=','asesi.id')
             ->where('asesi.id_user','=',$nomor)
             ->select('pendaftar.id')
             ->get();
+
+        $b = $a->first()->id;
 
         $request->validate([
             'jawaban'=>'required|string'
         ]);
 
         PendaftarKuesioner::create([
-            'id_pendaftar' => $a,
+            'id_pendaftar' => $b,
             'id_kuesioner' =>$id,
             'jawaban'=> $request->jawaban,
             'created_by' => Auth::user()->username,
