@@ -249,7 +249,7 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->group(function () {
     });
     Route::prefix('isikuesioner')->group(function() {
         Route::get('/', [asesi_AsesiIsiKuesionerController::class, 'index']);
-        Route::put('/edit', [asesi_AsesiIsiKuesionerController::class, 'edit']);
+        Route::put('/{id}/edit', [asesi_AsesiIsiKuesionerController::class, 'edit']);
 
     });
 });
