@@ -171,7 +171,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/unit-kompetensi-sertifikasi" class="nav-link @yield('sidebar-unitKompentensiSertifikasi-active')">
+                    <a href="/admin/unit-kompetensi-sertifikasi" class="nav-link @yield('sidebar-unitKompetensiSertifikasi-active')">
                         <i class="nav-icon fas fa-graduation-cap"></i>
                         <p>
                             Unit Kompetensi Sertifikasi
