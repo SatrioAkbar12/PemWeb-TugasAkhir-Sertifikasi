@@ -54,7 +54,7 @@
                                     <a class="btn btn-info btn-sm" href="/admin/kelola-asesor/{{ $d->id }}/edit">
                                         <i class="fas fa-pencil-alt">
                                         </i>
-                                        Nilai
+                                        Verifikasi
                                     </a>
                                 </td>
                             </tr>
