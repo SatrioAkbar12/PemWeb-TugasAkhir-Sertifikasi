@@ -2,7 +2,7 @@
 
 @section('head_title', 'Daftar Sertifikasi')
 
-@section('sidebar-Sertifikasi-active', 'active')
+@section('sidebar-sertifikasi-active', 'active')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -24,15 +24,14 @@
                     {{-- {{ method_field('PUT') }} --}}
 
                     <div class="form-group">
-                        <label for="input_status_akhir_sertifikasi" class="form-label">Jawaban</label>
+                        <label for="input_status_akhir_sertifikasi" class="form-label">Status Sertifikasi</label>
                         <textarea id="input_status_akhir_sertifikasi" class="form-control" name="status_akhir_sertifikasi" type="text"
                             placeholder="Masukkan jawaban ..." required >{{ $data->status_akhir_sertifikasi }}</textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="input_tanggal_status_akhir" class="form-label">Status Akhir</label>
-                        <textarea id="input_tanggal_status_akhir" class="form-control" name="tanggal_status_akhir" type="date"
-                            placeholder="Masukkan jawaban ..." required >{{ $data->tanggal_status_akhir }}</textarea>
+                        <label for="input_tanggal_status_akhir" class="form-label">Tanggal Status Akhir</label>
+                        <input id="input_tanggal_status_akhir" class="form-control" name="tanggal_status_akhir" type="date" value='{{ $data->tanggal_status_akhir }}'required/>
                     </div>
 
                     <div class="form-group">

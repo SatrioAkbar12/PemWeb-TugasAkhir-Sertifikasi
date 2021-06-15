@@ -2,7 +2,7 @@
 
 @section('head_title', 'Daftar Sertifikasi')
 
-@section('sidebar-Sertifikasi-active', 'active')
+@section('sidebar-sertifikasi-active', 'active')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -21,9 +21,9 @@
 
     <!-- Default box -->
     <div class="card">
-            
-        
-      
+
+
+
       <div class="card-body p-0">
         <table class="table table-striped projects">
             <thead class="text-center">
@@ -58,7 +58,7 @@
                         </a>
                     </td>
                     <td class="project-actions text-right">
-                        <a href="/asesi/daftarsertifikasi/{id}/daftar">
+                        <a href="/asesi/daftarsertifikasi/{{ $d->id }}/daftar">
                         <button type="button" class="btn btn-success">
                             <i class="fas fa-plus-circle"></i>
                              Daftar

@@ -22,7 +22,7 @@ class AsesiDaftarSertifikasiController extends Controller
         $data = PenawaranSertifikasi::find($id);
         return view('asesi.daftarSertifikasi.form_daftar', ['data' => $data]);
     }
-    public function jawab(Request $request, $id)
+    public function daftar(Request $request, $id)
     {
 
         $nomor=Auth::user()->id;
