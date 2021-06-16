@@ -79,6 +79,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/asesi/berkas-syarat" class="nav-link @yield('sidebar-syarat-active')">
+                        <i class="nav-icon fas fa-user-check"></i>
+                        <p>
+                            Berkas Syarat
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-header">KELOLA AKUN</li>
                 <li class="nav-item">
                     <a href="/asesi/lihat-data" class="nav-link @yield('sidebar-show-active')">
