@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 use App\Models\Pendaftar;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Asesi;
+use App\Models\SyaratSertifikasi;
+use App\Models\RefJenisSertifikasi;
 use DB;
 
 class AsesiDaftarSertifikasiController extends Controller
 {
     public function index()
     {
-        $data = PenawaranSertifikasi::all();
+        $data = PenawaranSertifikasi::where('is_aktif', 1)->get();
         return view('asesi.daftarSertifikasi.index', ['data' => $data]);
     }
     public function showDaftar($id)
@@ -34,23 +36,32 @@ class AsesiDaftarSertifikasiController extends Controller
         $b = $a->first()->id;
 
         $request->validate([
-            'status_akhir_sertifikasi'=>'required|string',
-            'tanggal_status_akhir'=>'required|string',
-            'status_pendaftaran'=>'required|string'
+            'status_akhir_sertifikasi'=>'string',
+            'tanggal_status_akhir'=>'string',
+            'status_pendaftaran'=>'string'
         ]);
 
         Pendaftar::create([
 
             'id_penawaran_sertifikasi'=>$id,
             'id_asesi'=>$b,
-            'status_akhir_sertifikasi' => $request->status_akhir_sertifikasi,
-            'tanggal_status_akhir' => $request->tanggal_status_akhir,
+            'status_akhir_sertifikasi' =>'pendaftar baru',
+            'tanggal_status_akhir' => date("Y-m-d"),
             'created_by' => Auth::user()->username,
             'edited_by'=> Auth::user()->username,
-            'status_pendaftaran' => $request->status_pendaftaran
+            'status_pendaftaran' => 'pendaftar baru'
         ]);
 
 
         return redirect('/asesi/daftarsertifikasi');
     }
+    public function showLihat($id)
+    {
+        $data = PenawaranSertifikasi::find($id); //1-Guru honorer 2-guru sd
+        $a = $data->id_ref_jenis_sertifikasi;
+        $syarat=SyaratSertifikasi::where('id_ref_jenis_sertifikasi',$a)->get();
+        // $syarat= RefJenisSertifikasi::where('id_ref_jenis_sertifikasi', $id)->get();
+        return view('asesi.daftarSertifikasi.form_lihat', ['data' => $data, 'syarat'=>$syarat]);
+    }
+
 }

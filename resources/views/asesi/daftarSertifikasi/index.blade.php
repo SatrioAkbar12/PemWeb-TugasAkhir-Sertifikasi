@@ -58,12 +58,22 @@
                         </a>
                     </td>
                     <td class="project-actions text-right">
-                        <a href="/asesi/daftarsertifikasi/{{ $d->id }}/daftar">
+
+
+                        {{-- <a href="/asesi/daftarsertifikasi/{{ $d->id }}/daftar">
                         <button type="button" class="btn btn-success">
                             <i class="fas fa-plus-circle"></i>
                              Daftar
                         </button>
-                    </a>
+                         </a> --}}
+
+
+                         <a href="/asesi/daftarsertifikasi/{{ $d->id }}/lihat">
+                            <button type="button" class="btn btn-info">
+                                <i class="fas fa-folder"></i>
+                                Detail
+                            </button>
+                        </a>
                     </td>
                 </tr>
             </tbody>

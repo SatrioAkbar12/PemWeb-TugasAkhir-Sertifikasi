@@ -23,7 +23,9 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     {{-- {{ method_field('PUT') }} --}}
 
-                    <div class="form-group">
+                    Selamat Anda Sudah Terdaftar!
+
+                    {{-- <div class="form-group">
                         <label for="input_status_akhir_sertifikasi" class="form-label">Status Sertifikasi</label>
                         <textarea id="input_status_akhir_sertifikasi" class="form-control" name="status_akhir_sertifikasi" type="text"
                             placeholder="Masukkan jawaban ..." required >{{ $data->status_akhir_sertifikasi }}</textarea>
@@ -38,7 +40,7 @@
                         <label for="input_status_pendaftaran" class="form-label">Status Pendaftaran</label>
                         <textarea id="input_status_pendaftaran" class="form-control" name="status_pendaftaran" type="text"
                             placeholder="Masukkan jawaban ..." required >{{ $data->status_pendaftaran }}</textarea>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Simpan</button>
