@@ -56,17 +56,6 @@
                     <input id="input_jk" class="form-control" name="jk" type="text" value="{{$data->jenis_kelamin}}" placeholder="Masukkan nama program studi ..." required />
                 </div>
 
-
-                <div class="form-group">
-                    <label for="input_alamat" class="form-label">Alamat</label>
-                    <input id="input_alamat" class="form-control" name="alamat" type="text" value="{{$data->alamat}}" placeholder="Masukkan nama program studi ..." required />
-                </div>
-
-                <div class="form-group">
-                    <label for="input_tlp" class="form-label">Nomor Telepon</label>
-                    <input id="input_tlp" class="form-control" name="tlp" type="text" value="{{$data->no_telepon}}" placeholder="Masukkan nama program studi ..." required />
-                </div>
-
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Simpan</button>
                     <a href="/asesor"><button class="btn btn-danger" type="button">Kembali</button></a>

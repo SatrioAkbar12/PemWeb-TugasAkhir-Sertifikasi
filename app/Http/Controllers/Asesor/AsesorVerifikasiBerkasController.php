@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\models\Asesor;
 use App\models\AsesorPendaftar;
 use App\models\AsesorJenisSertifikasi;
+use App\models\PendaftarSyarat;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class AsesorVerifikasiBerkasController extends Controller
@@ -27,11 +29,11 @@ class AsesorVerifikasiBerkasController extends Controller
     }
 
     public function edit($id, Request $request) {
-        $request->validate([
-            'id_user' => 'required',
-            'username' => 'required',
-            'email' => 'required|email'
-        ]);
+        // $request->validate([
+        //     'id_user' => 'required',
+        //     'username' => 'required',
+        //     'email' => 'required|email'
+        // ]);
 
         PendaftarSyarat::where('id', $id)->update([
             'verifikasi_asesor' => $request->verifikasi_asesor,
