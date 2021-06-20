@@ -285,13 +285,15 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->name('asesi.')->group(funct
     Route::prefix('berkas-syarat')->group(function() {
         Route::get('/', [asesi_AsesiBerkasSyaratController::class, 'index']);
         Route::put('/{id}/isiSyarat', [asesi_AsesiBerkasSyaratController::class, 'isiSyarat']);
-    
+
     });
 
     Route::prefix('self-asesmen')->group(function() {
         Route::get('/', [asesi_AsesiSelfAsesmenController::class, 'index']);
+        Route::get('/{id}/view', [asesi_AsesiSelfAsesmenController::class, 'showView']);
         Route::get('/{id}/jawab', [asesi_AsesiSelfAsesmenController::class, 'showJawab']);
         Route::post('/{id}/jawab', [asesi_AsesiSelfAsesmenController::class, 'jawab']);
+        // Route::post('/{id}/jawab', [asesi_AsesiSelfAsesmenController::class, 'jawab']);
     });
 });
 

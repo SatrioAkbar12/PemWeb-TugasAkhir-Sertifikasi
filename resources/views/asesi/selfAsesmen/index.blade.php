@@ -20,27 +20,37 @@
 <section class="content">
 
     <!-- Default box -->
+    <!-- /.card -->
+
+    {{-- CARD COBA --}}
     <div class="card">
         <div class="card-body p-0">
             <table class="table table-striped projects">
                 <thead class="text-center">
                     <tr>
-                        <th>ID</th>
-                        <th>Pertanyaan</th>
-                        <th></th>
+                        <th>Sertifikasi</th>
                     </tr>
                 </thead>
-                @foreach ($data as $d)
+                @foreach ($syarat as $d)
+                    <tbody>
+                        <tr>
+                            <td>{{ $d->nama }}</td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-info btn-sm" href="/asesi/self-asesmen/{{ $d->id_ref_jenis_sertifikasi}}/view">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                @endforeach
+                {{-- @foreach ($data as $d)
                     <tbody>
                         <tr>
                             <td>{{ $d->id }}</td>
                             <td>{{ $d->instrumen_pertanyaan }}</td>
                             <td class="project-actions text-right">
-                                {{-- <a class="btn btn-primary btn-sm" href="/asesi/isiKuesioner/{{ $d->id }}">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    View
-                                </a> --}}
                                 <a class="btn btn-info btn-sm" href="/asesi/self-asesmen/{{ $d->id }}/jawab">
                                     <i class="fas fa-pencil-alt">
                                     </i>
@@ -49,12 +59,11 @@
                             </td>
                         </tr>
                     </tbody>
-                @endforeach
+                @endforeach --}}
             </table>
         </div>
         <!-- /.card-body -->
     </div>
-    <!-- /.card -->
 
 </section>
   <!-- /.content -->
