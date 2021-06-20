@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use App\models\Asesor;
 use App\models\AsesorPendaftar;
 use App\models\AsesorJenisSertifikasi;
+use App\Models\Pendaftar;
 use App\models\PendaftarSyarat;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 
 class AsesorVerifikasiBerkasController extends Controller
 {
@@ -27,37 +27,85 @@ class AsesorVerifikasiBerkasController extends Controller
         $data_pendaftar = AsesorPendaftar::where(['id' => $id_asesorpendaftar])->first();
         $data_pendaftarsyarat = PendaftarSyarat::where('id_pendaftar', $data_pendaftar->id_pendaftar)->get();
 
-        return view('asesor.asesor.verifikasi_berkas.show_data', ['data' => $data_pendaftar, 'data_pendaftarsyarat' => $data_pendaftarsyarat]);
+        return view('asesor.asesor.verifikasi_berkas.show_data', ['data' => $data_pendaftar, 'data_pendaftarsyarat' => $data_pendaftarsyarat, 'id_asesorpendaftar' => $id_asesorpendaftar]);
     }
 
     public function readSyarat($id_asesorpendaftar, $id_syarat) {
+        $data_asesorpendaftar = AsesorPendaftar::find($id_asesorpendaftar);
+        $data = PendaftarSyarat::where([
+            'id_pendaftar' => $data_asesorpendaftar->id_pendaftar,
+            'id_syarat_sertifikasi'=> $id_syarat
+        ])->first();
 
-
-        return view('asesor.asesor.verifikasi_berkas.show_syarat');
+        return view('asesor.asesor.verifikasi_berkas.show_syarat', ['data' => $data, 'id_asesorpendaftar' => $id_asesorpendaftar]);
     }
 
     public function showVerifikasi($id_asesorpendaftar, $id_syarat) {
+        $data_asesorpendaftar = AsesorPendaftar::find($id_asesorpendaftar);
+        $data = PendaftarSyarat::where([
+            'id_pendaftar' => $data_asesorpendaftar->id_pendaftar,
+            'id_syarat_sertifikasi'=> $id_syarat
+        ])->first();
 
+        return view('asesor.asesor.verifikasi_berkas.form_verifikasi', ['data' => $data, 'id_asesorpendaftar' => $id_asesorpendaftar, 'id_syarat' => $id_syarat]);
     }
 
     public function verifikasi($id_asesorpendaftar, $id_syarat, Request $request) {
-        // $request->validate([
-        //     'id_user' => 'required',
-        //     'username' => 'required',
-        //     'email' => 'required|email'
-        // ]);
-
-        PendaftarSyarat::where('id', $id_syarat)->update([
-            'verifikasi_asesor' => $request->verifikasi_asesor,
-            'komentar_asesor' => $request->komentar_asesor,
-            'edited_by' => Auth::user()->username
+        $request->validate([
+            'status' => 'required'
         ]);
 
-        User::where('id', $request->id_user)->update([
-            'username' => $request->username,
-            'email' => $request->email
-        ]);
+        $data_asesorpendaftar = AsesorPendaftar::find($id_asesorpendaftar);
 
-        return redirect('/asesor/verifikasi-berkas/form_edit_data');
+        if($request->status == 'lolos verifikasi') {
+            PendaftarSyarat::where([
+                'id_pendaftar' => $data_asesorpendaftar->id_pendaftar,
+                'id_syarat_sertifikasi' => $id_syarat
+            ])->update([
+                'status_verifikasi_syarat' => $request->status,
+                'verifikasi_asesor' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->nama,
+                'komentar_asesor' => $request->komentar,
+                'verified_by' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->nama,
+                'verified_at' => now(),
+                'edited_by' => Auth::user()->username
+            ]);
+        }
+        else {
+            PendaftarSyarat::where([
+                'id_pendaftar' => $data_asesorpendaftar->id_pendaftar,
+                'id_syarat_sertifikasi' => $id_syarat
+            ])->update([
+                'status_verifikasi_syarat' => $request->status,
+                'verifikasi_asesor' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->nama,
+                'komentar_asesor' => $request->komentar,
+                'edited_by' => Auth::user()->username
+            ]);
+        }
+
+        $this->cekAllVerified($id_asesorpendaftar);
+
+        return redirect()->route('asesor.verifikasi-berkas.read-syarat', ['id_asesorpendaftar' => $id_asesorpendaftar, 'id_syarat' => $id_syarat]);
+    }
+
+    public function cekAllVerified($id_asesorpendaftar) {
+        $data_asesorpendaftar = AsesorPendaftar::find($id_asesorpendaftar);
+
+        $data_pendaftarsyarat = PendaftarSyarat::where([
+            'id_pendaftar' => $data_asesorpendaftar->id_pendaftar
+        ])->get();
+
+        $cek = 1;
+
+        foreach($data_pendaftarsyarat as $d) {
+            if($d->status_verifikasi_syarat != 'lolos verifikasi'){
+                $cek = 0;
+            }
+        }
+
+        if($cek == 1) {
+            Pendaftar::where('id', $data_asesorpendaftar->id_pendaftar)->update([
+                'status_akhir_sertifikasi' => 'siap asesmen'
+            ]);
+        }
     }
 }
