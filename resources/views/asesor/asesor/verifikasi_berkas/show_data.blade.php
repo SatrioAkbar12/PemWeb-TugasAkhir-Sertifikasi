@@ -1,8 +1,8 @@
 @extends('asesor.layouts.template')
 
-@section('head_title', 'Asesor')
+@section('head_title', 'Verifikasi Berkas')
 
-@section('sidebar-prodi-active', 'active')
+@section('sidebar-verifikasiBerkas-active', 'active')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Detail Peserta Sertifikasi</h1>
+                    <h1>Detail Syarat Sertifikasi Peserta</h1>
                 </div>
             </div>
     </section>
@@ -18,60 +18,60 @@
     <section class="content">
         <!-- Default box -->
         <div class="card">
-            <div class="card-body p-4">
-                <div class="row">
-                    <div class="col-2">
-                        ID
-                    </div>
-                    <div class="col-10">
-                        : {{ $data->pendaftar->asesi->id }}
-                    </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Nama Pendaftar
+                            </td>
+                            <td>
+                                : {{ $data->pendaftar->asesi->nama }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Sertifikasi
+                            </td>
+                            <td>
+                                : {{ $data->pendaftar->penawaranSertifikasi->nama }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Jenis Sertifikasi
+                            </td>
+                            <td>
+                                : {{ $data->pendaftar->penawaranSertifikasi->refJenisSertifikasi->nama }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Syarat
+                            </td>
+                            <td>
+                                @foreach ($data_pendaftarsyarat as $d)
+                                    <div class="row p-1">
+                                        <div class="col-8">
+                                            {{ $d->syaratSertifikasi->syarat }}
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <a href="">
+                                                <button class="btn btn-secondary" type="button">Lihat</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="p-4">
+                    <a href="{{ route('asesi.berkas-syarat.index') }}">
+                        <button type="button" class="btn btn-danger">Kembali</button>
+                    </a>
                 </div>
-                <div class="row">
-                    <div class="col-2">
-                        Nama
-                    </div>
-                    <div class="col-10">
-                        : {{ $data->pendaftar->asesi->nama }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        No telepon
-                    </div>
-                    <div class="col-10">
-                        : {{ $data->pendaftar->asesi->no_telepon }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        Jenis Kelamin
-                    </div>
-                    <div class="col-10">
-                        : {{ $data->pendaftar->asesi->jenis_kelamin }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        Nim
-                    </div>
-                    <div class="col-10">
-                        : {{ $data->pendaftar->asesi->nim }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        Nik
-                    </div>
-                    <div class="col-10">
-                        : {{ $data->pendaftar->asesi->nik }}
-                    </div>
-                </div>
-                
-                <br>
-                <a href="/asesor/verifikasi-berkas/">
-                    <button type="button" class="btn btn-danger">Kembali</button>
-                </a>
+
             </div>
         </div>
     </section>
