@@ -56,7 +56,7 @@
                                             {{ $d->syaratSertifikasi->syarat }}
                                         </div>
                                         <div class="col-3 text-right">
-                                            <a href="">
+                                            <a href="{{ route('asesor.verifikasi-berkas.read-syarat', ['id_asesorpendaftar' => $id_asesorpendaftar, 'id_syarat' => $d->syaratSertifikasi->id])}}">
                                                 <button class="btn btn-secondary" type="button">Lihat</button>
                                             </a>
                                         </div>

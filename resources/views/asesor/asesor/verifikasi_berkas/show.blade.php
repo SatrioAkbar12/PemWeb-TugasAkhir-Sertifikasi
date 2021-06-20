@@ -51,11 +51,6 @@
                                         </i>
                                         View
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="/asesor/verifikasi-berkas/{{ $d->id }}/edit">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Update
-                                    </a>
                                 </td>
                             </tr>
                         </tbody>
