@@ -14,11 +14,11 @@ class AsesiBerkasSyaratController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-    public function index() 
+
+    public function index()
     {
         $data = PendaftarSyarat::all();
-        return view('asesi.berkas_syarat.form_berkas', ['data' => $data]);
+        return view('asesi.berkas_syarat.index', ['data' => $data]);
     }
 
     // public function syarat()

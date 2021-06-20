@@ -53,7 +53,7 @@ class AsesiDaftarSertifikasiController extends Controller
         ]);
 
 
-        return redirect('/asesi/daftarsertifikasi');
+        return redirect('/asesi/daftarsertifikasi')->with('success', 'Anda Telah Terdaftar!');;
     }
     public function showLihat($id)
     {

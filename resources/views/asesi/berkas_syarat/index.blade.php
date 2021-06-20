@@ -29,7 +29,7 @@
                             ID
                         </th>
                         <th>
-                            Pertanyaan
+                            Sertifikasi
                         </th>
                         <th></th>
                     </tr>
