@@ -76,14 +76,14 @@ class AsesiBerkasSyaratController extends Controller
         $username = Auth::user()->username;
         $syarat = SyaratSertifikasi::find($id_syarat);
 
-        $tujuan_upload = 'data_asesi/'.$username.'/'.$id_sertifikasi;
-        $nama_file = $syarat->syarat.'_'.$file->getClientOriginalName();
-        $path_bukti = $tujuan_upload.'/'.$nama_file;
-
         $pendaftar = Pendaftar::where([
             'id_asesi' => Auth::user()->asesi->id,
             'id_penawaran_sertifikasi' => $id_sertifikasi
         ])->first();
+
+        $tujuan_upload = 'data_asesi/'.$username.'/'.$id_sertifikasi.'/'.$pendaftar->id;
+        $nama_file = $syarat->syarat.'_'.$file->getClientOriginalName();
+        $path_bukti = $tujuan_upload.'/'.$nama_file;
 
         $data_asesorpendaftar = AsesorPendaftar::where('id_pendaftar', $pendaftar->id)->first();
 
