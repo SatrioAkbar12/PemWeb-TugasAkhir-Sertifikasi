@@ -282,10 +282,12 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->name('asesi.')->group(funct
         Route::post('/{id}/lihat', [asesi_AsesiDaftarSertifikasiController::class, 'daftar']);
     });
 
-    Route::prefix('berkas-syarat')->group(function() {
-        Route::get('/', [asesi_AsesiBerkasSyaratController::class, 'index']);
-        Route::put('/{id}/isiSyarat', [asesi_AsesiBerkasSyaratController::class, 'isiSyarat']);
-    
+    Route::prefix('berkas-syarat')->name('berkas-syarat.')->group(function() {
+        Route::get('/', [asesi_AsesiBerkasSyaratController::class, 'index'])->name('index');
+        Route::get('/{id_sertifikasi}', [asesi_AsesiBerkasSyaratController::class, 'showSyarat'])->name('show-syarat');
+        Route::get('/{id_sertifikasi}/{id_syarat}/upload', [asesi_AsesiBerkasSyaratController::class, 'showUploadSyarat'])->name('show-upload-syarat');
+        Route::post('/{id_sertifikasi}/{id_syarat}/upload', [asesi_AsesiBerkasSyaratController::class, 'storeUploadSyarat'])->name('store-upload-syarat');
+        Route::get('/{id_sertifikasi}/{id_syarat}', [asesi_AsesiBerkasSyaratController::class, 'readUploadSyarat'])->name('read-upload-syarat');
     });
 
     Route::prefix('self-asesmen')->group(function() {
