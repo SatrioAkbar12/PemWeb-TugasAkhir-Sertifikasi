@@ -71,7 +71,7 @@
 
                 <li class="nav-header">KELOLA AKUN</li>
                 <li class="nav-item">
-                    <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-admin-active')">
+                    <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-lihatData-active')">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             Lihat data
@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/asesor/edit-data" class="nav-link @yield('sidebar-asesi-active')">
+                    <a href="/asesor/edit-data" class="nav-link @yield('sidebar-editData-active')">
                         <i class="nav-icon fas fa-user-graduate"></i>
                         <p>
                             Edit Data
@@ -89,7 +89,7 @@
 
                 <li class="nav-header">SERTIFIKASI</li>
                 <li class="nav-item">
-                    <a href="/asesor/verifikasi-berkas" class="nav-link @yield('sidebar-admin-active')">
+                    <a href="/asesor/verifikasi-berkas" class="nav-link @yield('sidebar-verifikasiBerkas-active')">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>
                             Verifikasi Berkas
@@ -97,7 +97,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-admin-active')">
+                    <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-verifikasiInstrumen-active')">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             Verifikasi Instrument
