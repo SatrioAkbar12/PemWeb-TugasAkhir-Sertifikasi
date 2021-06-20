@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Pendaftar;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Asesi;
+use App\Models\AsesorPendaftar;
 use App\Models\PendaftarSyarat;
 use App\Models\SyaratSertifikasi;
 use App\Models\RefJenisSertifikasi;
@@ -84,15 +85,17 @@ class AsesiBerkasSyaratController extends Controller
             'id_penawaran_sertifikasi' => $id_sertifikasi
         ])->first();
 
+        $data_asesorpendaftar = AsesorPendaftar::where('id_pendaftar', $pendaftar->id)->first();
+
         $file->move($tujuan_upload, $nama_file);
         $status = 'sudah upload';
 
-        // Kurang isi data asesor verifikasi
         PendaftarSyarat::create([
             'id_syarat_sertifikasi' => $id_syarat,
             'id_pendaftar' => $pendaftar->id,
             'status_verifikasi_syarat' => $status,
             'path_bukti' => $path_bukti,
+            'verifikasi_asesor' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->nama,
             'created_by' => $username,
             'edited_by' => $username
         ]);
