@@ -17,7 +17,7 @@
 
     <section class="content">
         <!-- Default box -->
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-body p-4">
                 <form method="post" action="/asesi/self-asesmen/{{ $data->id }}/jawab">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -53,6 +53,49 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> -->
+
+        <table class="table table-striped projects">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Sertifikasi
+                            </td>
+                            <td>
+                                : {{ $data->nama}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Jenis Sertifikasi
+                            </td>
+                            <td>
+                                : {{ $data->refJenisSertifikasi->nama }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Unit Kompetensi
+                            </td>
+                            <td>
+                                @foreach ($data_kompetensi as $d)
+                                    <div class="row p-1">
+                                        <div class="col-1 text-center">
+                                            <input type="checkbox" {{ $d->is_aktif == 1 ? 'checked' : '' }} disabled>
+                                        </div>
+                                        <div class="col-8">
+                                            {{ $d->refUnitKompetensi->nama }}
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <a href="/asesi/self-asesmen/{{ $d->refUnitKompetensi->id }}/jawab">
+                                                <button class="btn btn-info" type="button">Jawab</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
     </section>
 @endsection
