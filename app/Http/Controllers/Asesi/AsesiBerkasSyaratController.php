@@ -81,7 +81,7 @@ class AsesiBerkasSyaratController extends Controller
             'id_penawaran_sertifikasi' => $id_sertifikasi
         ])->first();
 
-        $tujuan_upload = 'data_asesi/'.$username.'/'.$id_sertifikasi.'/'.$pendaftar->id;
+        $tujuan_upload = 'data_asesi/'.$username.'/'.$id_sertifikasi.'/'.$pendaftar->id.'/syarat';
         $nama_file = $syarat->syarat.'_'.$file->getClientOriginalName();
         $path_bukti = $tujuan_upload.'/'.$nama_file;
 
