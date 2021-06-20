@@ -8,8 +8,12 @@ use Illuminate\Http\Request;
 use App\Models\Pendaftar;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Asesi;
+use App\Models\Asesor;
+use App\Models\AsesorJenisSertifikasi;
+use App\Models\AsesorPendaftar;
 use App\Models\SyaratSertifikasi;
 use App\Models\RefJenisSertifikasi;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class AsesiDaftarSertifikasiController extends Controller
@@ -41,8 +45,16 @@ class AsesiDaftarSertifikasiController extends Controller
             'status_pendaftaran'=>'string'
         ]);
 
-        Pendaftar::create([
+        $data_sertifikasi = PenawaranSertifikasi::find($id);
 
+        $data_asesor = AsesorJenisSertifikasi::where('id_ref_jenis_sertifikasi', $data_sertifikasi->id_ref_jenis_sertifikasi)->get();
+
+        $array_id_asesor = array();
+        foreach($data_asesor as $d) {
+            array_push($array_id_asesor, $d->id);
+        }
+
+        Pendaftar::create([
             'id_penawaran_sertifikasi'=>$id,
             'id_asesi'=>$b,
             'status_akhir_sertifikasi' =>'pendaftar baru',
@@ -52,6 +64,15 @@ class AsesiDaftarSertifikasiController extends Controller
             'status_pendaftaran' => 'pendaftar baru'
         ]);
 
+        $pendaftar = Pendaftar::where([
+            'id_penawaran_sertifikasi' => $id,
+            'id_asesi' => Auth::user()->asesi->id
+        ])->first();
+
+        AsesorPendaftar::create([
+            'id_asesor_jenis_sertifikasi' => $array_id_asesor[array_rand($array_id_asesor)],
+            'id_pendaftar' => $pendaftar->id,
+        ]);
 
         return redirect('/asesi/daftarsertifikasi')->with('success', 'Anda Telah Terdaftar!');;
     }
