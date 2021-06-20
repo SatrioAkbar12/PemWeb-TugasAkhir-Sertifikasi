@@ -19,39 +19,19 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-body p-4">
-                <form method="post" action="/asesi/berkas-syarat/{{ $data->id }}/berkas">
+                <form method="post" action="{{ route('asesi.berkas-syarat.store-upload-syarat', ['id_sertifikasi' => $id_sertifikasi, 'id_syarat' => $data->id]) }}" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    {{ method_field('PUT') }}
-
                     <div class="form-group">
                         <label for="input_syarat" class="form-label">Syarat</label>
-                        <textarea id="input_syarat" class="form-control" name="syarat" type="text"
-                            placeholder="Masukkan syarat ..." required >{{ $data->syarat }}</textarea>
+                        <input id="input_syarat" class="form-control" type="text" name="syarat" value="{{ $data->syarat }}" disabled />
                     </div>
                     <div class="form-group">
-                        <label for="input_status_verifikasi_syarat" class="form-label">Status Verifikasi Syarat</label>
-                        <textarea id="input_status_verifikasi_syarat" class="form-control" name="status_verifikasi_syarat" type="text"
-                            placeholder="Masukkan jawaban ..." required >{{ $data->status_verifikasi_syarat }}</textarea>
+                        <label for="input_file" class="form-label">Upload File</label>
+                        <input id="input_file" class="form-control" type="file" name="file" required />
                     </div>
-                    <div class="form-group">
-                        <label for="input_path_bukti" class="form-label">Path Bukti</label>
-                        <textarea id="input_path_bukti" class="form-control" name="path_bukti" type="text"
-                            placeholder="Masukkan jawaban ..." required >{{ $data->path_bukti }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="input_verifikasi_asesor" class="form-label">Verifikasi Asesor</label>
-                        <textarea id="input_verifikasi_asesor" class="form-control" name="verifikasi_asesor" type="text"
-                            placeholder="Masukkan jawaban ..." required >{{ $data->verifikasi_asesor }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="input_komentar_asesor" class="form-label">Komentar Asesor</label>
-                        <textarea id="input_komentar_asesor" class="form-control" name="komentar_asesor" type="text"
-                            placeholder="Masukkan jawaban ..." required >{{ $data->komentar_asesor }}</textarea>
-                    </div>
-            
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Simpan</button>
-                        <a href="/asesi/isiSyarat"><button class="btn btn-danger" type="button">Kembali</button></a>
+                        <a href="{{ route('asesi.berkas-syarat.show-syarat', ['id_sertifikasi' => $id_sertifikasi]) }}"><button class="btn btn-danger" type="button">Kembali</button></a>
                     </div>
                 </form>
             </div>

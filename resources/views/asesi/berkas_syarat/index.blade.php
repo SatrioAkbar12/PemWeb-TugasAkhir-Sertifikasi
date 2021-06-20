@@ -49,16 +49,16 @@
                     </td>
                     <td>
                         <a>
-                            {{ $d->nama }}
+                            {{ $d->penawaranSertifikasi->nama }}
                         </a>
                     </td>
                     <td>
                         <a>
-                            {{ $d->id_asesi }}
+                            {{ $d->penawaranSertifikasi->refJenisSertifikasi->nama }}
                         </a>
                     </td>
                     <td class="project-actions text-right">
-                         <a href="/asesi/daftarsertifikasi/{{ $d->id }}/lihat">
+                         <a href="{{ route('asesi.berkas-syarat.show-syarat', ['id_sertifikasi' => $d->penawaranSertifikasi->id])}}">
                             <button type="button" class="btn btn-info">
                                 <i class="fas fa-folder"></i>
                                 Detail
