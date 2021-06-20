@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Asesi;
 use App\Models\SyaratSertifikasi;
 use App\Models\RefJenisSertifikasi;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class AsesiDaftarSertifikasiController extends Controller
 {

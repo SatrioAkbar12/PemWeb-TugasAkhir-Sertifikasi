@@ -9,7 +9,7 @@ use App\Models\Pendaftar;
 use App\Models\RefKuesioner;
 use App\Models\Asesi;
 use App\Models\PendaftarKuesioner;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class AsesiIsiKuesionerController extends Controller
 {

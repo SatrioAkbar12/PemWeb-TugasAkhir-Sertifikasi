@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\asesi;
 
 use App\Http\Controllers\Controller;
+use App\Models\PenawaranSertifikasi;
 use Illuminate\Http\Request;
-use App\Models\PendaftarSyarat;
+use App\Models\Pendaftar;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Asesi;
+use App\Models\SyaratSertifikasi;
+use App\Models\RefJenisSertifikasi;
+use Illuminate\Support\Facades\DB;
 
 class AsesiBerkasSyaratController extends Controller
 {
@@ -17,7 +23,20 @@ class AsesiBerkasSyaratController extends Controller
 
     public function index()
     {
-        $data = PendaftarSyarat::all();
+
+        $nomor=Auth::user()->id;
+        $a = DB::table('asesi')
+            ->where('asesi.id_user','=',$nomor)
+            ->select('asesi.id')
+            ->get();
+
+        $b = $a->first()->id;
+
+        $data = DB::table('penawaran_sertifikasi')
+            ->leftJoin('pendaftar', 'penawaran_sertifikasi.id', '=', 'pendaftar.id_penawaran_sertifikasi')
+            ->where('pendaftar.id_asesi',$b)
+            ->get();
+
         return view('asesi.berkas_syarat.index', ['data' => $data]);
     }
 

@@ -7,7 +7,7 @@ use App\Models\PendaftarInstrumen;
 use App\Models\InstrumenAsesmenKompetensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class AsesiSelfAsesmenController extends Controller
 {

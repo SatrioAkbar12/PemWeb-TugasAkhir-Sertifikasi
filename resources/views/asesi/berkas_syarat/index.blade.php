@@ -6,60 +6,75 @@
 
 @section('content')
     <!-- Content Header (Page header) -->
-<section class="content-header">
-    <div class="container-fluid">
+    <section class="content-header">
+        <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Isi Berkas Syarat</h1>
+            <h1>Syarat Sertifikasi</h1>
             </div>
         </div>
-    </div><!-- /.container-fluid -->
-</section>
+        </div><!-- /.container-fluid -->
+    </section>
 
 <!-- Main content -->
 <section class="content">
 
     <!-- Default box -->
     <div class="card">
-        <div class="card-body p-0">
-            <table class="table table-striped projects">
-                <thead class="text-center">
-                    <tr>
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            Sertifikasi
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                @foreach ($data as $d)
-                    <tbody>
-                        <tr>
-                            <td>{{ $d->id }}</td>
-                            <td>{{ $d->syarat_sertifikasi }}</td>
-                            <td class="project-actions text-right">
-                                {{-- <a class="btn btn-primary btn-sm" href="/asesi/berkas-syarat/{{ $d->id }}">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    View
-                                </a> --}}
-                                <a class="btn btn-info btn-sm" href="/asesi/berkas-syarat/{{ $d->id }}/berkas">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Isi
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                @endforeach
-            </table>
-        </div>
-        <!-- /.card-body -->
+
+
+
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead class="text-center">
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Nama Sertifikasi
+                    </th>
+                    <th>
+                        Jenis Sertifikasi
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            @foreach ($data as $d)
+            <tbody>
+                <tr>
+                    <td>
+                        {{ $d->id }}
+                    </td>
+                    <td>
+                        <a>
+                            {{ $d->nama }}
+                        </a>
+                    </td>
+                    <td>
+                        <a>
+                            {{ $d->id_asesi }}
+                        </a>
+                    </td>
+                    <td class="project-actions text-right">
+                         <a href="/asesi/daftarsertifikasi/{{ $d->id }}/lihat">
+                            <button type="button" class="btn btn-info">
+                                <i class="fas fa-folder"></i>
+                                Detail
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+            @endforeach
+        </table>
+      </div>
+      <!-- /.card-body -->
     </div>
     <!-- /.card -->
 
-</section>
+  </section>
   <!-- /.content -->
 @endsection
+
