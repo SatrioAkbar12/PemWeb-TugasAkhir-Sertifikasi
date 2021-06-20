@@ -233,7 +233,7 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->name('asesor.')->group(fu
         Route::get('/{id_asesorpendaftar}', [asesor_AsesorVerifikasiBerkasController::class, 'readPendaftar'])->name('read-pendaftar');
         Route::get('/{id_asesorpendaftar}/{id_syarat}', [asesor_AsesorVerifikasiBerkasController::class, 'readSyarat'])->name('read-syarat');
         Route::get('/{id_asesorpendaftar}/{id_syarat}/verifikasi', [asesor_AsesorVerifikasiBerkasController::class, 'showVerifikasi'])->name('show-verifikasi');
-        Route::get('/{id_asesorpendaftar}/edit', [asesor_AsesorVerifikasiBerkasController::class, 'verifikasi'])->name('verifikasi');
+        Route::post('/{id_asesorpendaftar}/{id_syarat}/verifikasi', [asesor_AsesorVerifikasiBerkasController::class, 'verifikasi'])->name('verifikasi');
     });
 
     Route::prefix('nilai-asesi')->group(function() {
