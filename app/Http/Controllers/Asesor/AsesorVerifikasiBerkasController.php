@@ -10,6 +10,7 @@ use App\models\AsesorJenisSertifikasi;
 use App\models\PendaftarSyarat;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 
 class AsesorVerifikasiBerkasController extends Controller
 {
@@ -18,24 +19,35 @@ class AsesorVerifikasiBerkasController extends Controller
         $data_asesor = Asesor::where('id_user', $data_user)->first();
         $data_asesor_jenis_sertifikasi = AsesorJenisSertifikasi::where('id_asesor', $data_asesor->id)->first();
         $data_pendaftar = AsesorPendaftar::where('id_asesor_jenis_sertifikasi', $data_asesor_jenis_sertifikasi->id)->get();
-        
+
         return view('asesor.asesor.verifikasi_berkas.show', ['data_pendaftar' => $data_pendaftar]);
     }
 
-    public function read($id) {
-        $data_pendaftar = AsesorPendaftar::where(['id' => $id])->first();
+    public function readPendaftar($id_asesorpendaftar) {
+        $data_pendaftar = AsesorPendaftar::where(['id' => $id_asesorpendaftar])->first();
+        $data_pendaftarsyarat = PendaftarSyarat::where('id_pendaftar', $data_pendaftar->id_pendaftar)->get();
 
-        return view('asesor.asesor.verifikasi_berkas.show_data', ['data' => $data_pendaftar]);
+        return view('asesor.asesor.verifikasi_berkas.show_data', ['data' => $data_pendaftar, 'data_pendaftarsyarat' => $data_pendaftarsyarat]);
     }
 
-    public function edit($id, Request $request) {
+    public function readSyarat($id_asesorpendaftar, $id_syarat) {
+
+
+        return view('asesor.asesor.verifikasi_berkas.show_syarat');
+    }
+
+    public function showVerifikasi($id_asesorpendaftar, $id_syarat) {
+
+    }
+
+    public function verifikasi($id_asesorpendaftar, $id_syarat, Request $request) {
         // $request->validate([
         //     'id_user' => 'required',
         //     'username' => 'required',
         //     'email' => 'required|email'
         // ]);
 
-        PendaftarSyarat::where('id', $id)->update([
+        PendaftarSyarat::where('id', $id_syarat)->update([
             'verifikasi_asesor' => $request->verifikasi_asesor,
             'komentar_asesor' => $request->komentar_asesor,
             'edited_by' => Auth::user()->username
