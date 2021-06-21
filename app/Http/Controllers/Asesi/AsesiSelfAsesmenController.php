@@ -23,29 +23,12 @@ class AsesiSelfAsesmenController extends Controller
      */
     public function index()
     {
-        $data = Pendaftar::where('status_akhir_sertifikasi', 'siap asesmen')->get();
+        $data = Pendaftar::where([
+            'id_asesi' => Auth::user()->asesi->id,
+            'status_akhir_sertifikasi' => 'siap asesmen'
+        ])->get();
 
-<<<<<<< HEAD
         return view('asesi.selfAsesmen.index', ['data' => $data]);
-=======
-        $nomor=Auth::user()->id;
-        $a = DB::table('asesi')
-            ->where('asesi.id_user','=',$nomor)
-            ->select('asesi.id')
-            ->get();
-
-        $b = $a->first()->id;
-
-        $syarat = DB::table('penawaran_sertifikasi')
-            ->leftJoin('pendaftar', 'penawaran_sertifikasi.id', '=', 'pendaftar.id_penawaran_sertifikasi')
-            ->leftJoin('pendaftar_syarat','pendaftar.id','=','pendaftar_syarat.id_pendaftar')
-            ->where('pendaftar.id_asesi',$b)
-            ->where('pendaftar_syarat.status_verifikasi_syarat','lolos verifikasi')
-            ->get();
-
-
-        return view('asesi.selfAsesmen.index', ['data' => $data,'syarat'=>$syarat]);
->>>>>>> ae626b3668c9b1387343b52030f0db5783f20ef0
     }
 
     public function showView($id_sertifikasi)
@@ -71,6 +54,8 @@ class AsesiSelfAsesmenController extends Controller
 
     public function jawab(Request $request, $id_sertifikasi, $id_ref_unit_kompetensi, $id_instrumen_asesmen)
     {
+        // Simpan jawaban belum
+
         // $nomor=Auth::user()->id;
         // $a = DB::table('pendaftar')
         //     ->join('asesi','pendaftar.id_asesi','=','asesi.id')
