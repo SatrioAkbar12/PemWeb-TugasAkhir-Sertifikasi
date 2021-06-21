@@ -16,9 +16,9 @@ class AsesorSeeder extends Seeder
     public function run()
     {
         User::create([
-            'username' => 'Siraj',
-            'email' => 'asesor1@mail.com',
-            'password' => Hash::make('siraj123'),
+            'username' => 'Asesor',
+            'email' => 'asesor@mail.com',
+            'password' => Hash::make('asesor123'),
             'role' => 'asesor'
         ]);
     }
