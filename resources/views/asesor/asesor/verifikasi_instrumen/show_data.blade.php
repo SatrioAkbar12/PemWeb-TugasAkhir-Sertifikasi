@@ -1,8 +1,8 @@
 @extends('asesor.layouts.template')
 
-@section('head_title', 'Verifikasi Berkas')
+@section('head_title', 'Verifikasi Instrumen')
 
-@section('sidebar-verifikasiBerkas-active', 'active')
+@section('sidebar-verifikasiInstrumen-active', 'active')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Detail Syarat Sertifikasi Peserta</h1>
+                    <h1>Detail Instrumen Sertifikasi Peserta</h1>
                 </div>
             </div>
     </section>
@@ -47,17 +47,17 @@
                         </tr>
                         <tr>
                             <td>
-                                Syarat
+                                Instrumen
                             </td>
                             <td>
-                                @foreach ($data_pendaftarsyarat as $d)
+                                @foreach ($data_pendaftarinstrumen as $d)
                                     <div class="row p-1">
                                         <div class="col-8">
-
-                                            {{ $d->syaratSertifikasi->syarat }}
+                                            {{ $d->InstrumenAsesmenKompetensi->instrumen_pertanyaan }}
+                                        
                                         </div>
                                         <div class="col-3 text-right">
-                                            <a href="{{ route('asesor.verifikasi-berkas.read-syarat', ['id_asesorpendaftar' => $id_asesorpendaftar, 'id_syarat' => $d->syaratSertifikasi->id])}}">
+                                            <a href="{{ route('asesor.verifikasi-instrumen.read-instrumen', ['id_asesorpendaftar' => $id_asesorpendaftar, 'id_instrumen' => $d->InstrumenAsesmenKompetensi->id])}}">
                                                 <button class="btn btn-secondary" type="button">Lihat</button>
                                             </a>
                                         </div>
@@ -68,7 +68,7 @@
                     </tbody>
                 </table>
                 <div class="p-4">
-                    <a href="{{ route('asesor.verifikasi-berkas.index') }}">
+                    <a href="{{ route('asesor.verifikasi-instrumen.index') }}">
                         <button type="button" class="btn btn-danger">Kembali</button>
                     </a>
                 </div>
