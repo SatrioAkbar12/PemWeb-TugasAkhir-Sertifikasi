@@ -1,8 +1,8 @@
 @extends('asesor.layouts.template')
 
-@section('head_title', 'Asesor')
+@section('head_title', 'Verifikasi Berkas')
 
-@section('sidebar-prodi-active', 'active')
+@section('sidebar-penilaianasesi-active', 'active')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -10,59 +10,54 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Peserta Sertifikasi</h1>
+                    <h1>Detail Syarat Sertifikasi Peserta</h1>
                 </div>
             </div>
     </section>
 
-    <!-- Main content -->
     <section class="content">
-
         <!-- Default box -->
         <div class="card">
             <div class="card-body p-0">
                 <table class="table table-striped projects">
-                    <thead class="text-center">
+                    <tbody>
                         <tr>
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Nama Peserta
-                            </th>
-                            <th>
-                            </th>
+                            <td>
+                                Nama Pendaftar
+                            </td>
+                            <td>
+                                : {{ $data->pendaftar->asesi->nama }}
+                            </td>
                         </tr>
-                    </thead>
-                    @foreach ($data_pendaftar as $d)
-                        <tbody>
-                            <tr>
-                                <td class="text-center">
-                                    {{ $d->pendaftar->asesi->id }}
-                                </td>
-                                <td class="text-center">
-                                    <a>
-                                        {{ $d->pendaftar->asesi->nama }}
-                                    </a>
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="/admin/kelola-asesor/{{ $d->id }}">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        View
-                                    </a>
-                                    <a class="btn btn-info btn-sm" href="/admin/kelola-asesor/{{ $d->id }}/edit">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Nilai
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    @endforeach
+                        <tr>
+                            <td>
+                                Sertifikasi
+                            </td>
+                            <td>
+                                : {{ $data->pendaftar->penawaranSertifikasi->nama }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Jenis Sertifikasi
+                            </td>
+                            <td>
+                                : {{ $data->pendaftar->penawaranSertifikasi->refJenisSertifikasi->nama }}
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
+                <div class="p-4">
+                    <a href="{{ route('asesor.verifikasi-berkas.index') }}">
+                        <button type="button" class="btn btn-danger">Kembali</button>
+                    </a>
+                    <a href="{{ route('asesor.verifikasi-berkas.index') }}">
+                        <button type="button" class="btn btn-info">Nilai</button>
+                    </a>
+                </div>
+               
+
             </div>
         </div>
-
-
+    </section>
 @endsection
