@@ -72,6 +72,7 @@ class AsesiDaftarSertifikasiController extends Controller
         AsesorPendaftar::create([
             'id_asesor_jenis_sertifikasi' => $array_id_asesor[array_rand($array_id_asesor)],
             'id_pendaftar' => $pendaftar->id,
+            'hasil' => ' ',
         ]);
 
         return redirect('/asesi/daftarsertifikasi')->with('success', 'Anda Telah Terdaftar!');;
