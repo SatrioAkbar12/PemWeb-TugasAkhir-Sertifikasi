@@ -294,9 +294,10 @@ Route::prefix('asesi')->middleware('auth', 'asesi')->name('asesi.')->group(funct
     Route::prefix('self-asesmen')->name('self-asesmen.')->group(function() {
         Route::get('/', [asesi_AsesiSelfAsesmenController::class, 'index'])->name('index');
         Route::get('/{id_sertifikasi}/view', [asesi_AsesiSelfAsesmenController::class, 'showView'])->name('show-view');
-        Route::get('/{id_sertifikasi}/{id_ref_unit_kompentensi}/', [asesi_AsesiSelfAsesmenController::class, 'showUnitKompetensi'])->name('show-unit-kompetensi');
-        Route::get('/{id_sertifikasi}/{id_ref_unit_kompentensi}/{id_instrumen_asesmen}/jawab', [asesi_AsesiSelfAsesmenController::class, 'showJawab'])->name('show-jawab');
-        Route::post('/{id_sertifikasi}/{id_ref_unit_kompentensi}/{id_instrumen_asesmen}/jawab', [asesi_AsesiSelfAsesmenController::class, 'jawab'])->name('jawab');
+        Route::get('/{id_sertifikasi}/{id_ref_unit_kompetensi}/', [asesi_AsesiSelfAsesmenController::class, 'showUnitKompetensi'])->name('show-unit-kompetensi');
+        Route::get('/{id_sertifikasi}/{id_ref_unit_kompetensi}/submit', [asesi_AsesiSelfAsesmenController::class, 'lockUnitKompetensi'])->name('lock-unit-kompetensi');
+        Route::get('/{id_sertifikasi}/{id_ref_unit_kompetensi}/{id_instrumen_asesmen}/jawab', [asesi_AsesiSelfAsesmenController::class, 'showJawab'])->name('show-jawab');
+        Route::post('/{id_sertifikasi}/{id_ref_unit_kompetensi}/{id_instrumen_asesmen}/jawab', [asesi_AsesiSelfAsesmenController::class, 'jawab'])->name('jawab');
         // Route::post('/{id}/jawab', [asesi_AsesiSelfAsesmenController::class, 'jawab']);
     });
 });
