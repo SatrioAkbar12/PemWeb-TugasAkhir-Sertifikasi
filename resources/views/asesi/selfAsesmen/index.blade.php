@@ -29,14 +29,17 @@
                 <thead class="text-center">
                     <tr>
                         <th>Sertifikasi</th>
+                        <th>Jenis Sertifikas</th>
+                        <th></th>
                     </tr>
                 </thead>
-                @foreach ($syarat as $d)
+                @foreach ($data as $d)
                     <tbody>
                         <tr>
-                            <td>{{ $d->nama }}</td>
+                            <td>{{ $d->penawaranSertifikasi->nama }}</td>
+                            <td>{{ $d->penawaranSertifikasi->refJenisSertifikasi->nama }}</td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="/asesi/self-asesmen/{{ $d->id_ref_jenis_sertifikasi}}/view">
+                                <a class="btn btn-info btn-sm" href="{{ route('asesi.self-asesmen.show-view', ['id_sertifikasi' => $d->id_penawaran_sertifikasi]) }}">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     View
@@ -45,21 +48,6 @@
                         </tr>
                     </tbody>
                 @endforeach
-                {{-- @foreach ($data as $d)
-                    <tbody>
-                        <tr>
-                            <td>{{ $d->id }}</td>
-                            <td>{{ $d->instrumen_pertanyaan }}</td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="/asesi/self-asesmen/{{ $d->id }}/jawab">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Jawab
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                @endforeach --}}
             </table>
         </div>
         <!-- /.card-body -->
