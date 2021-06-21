@@ -97,7 +97,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/asesor/lihat-data" class="nav-link @yield('sidebar-verifikasiInstrumen-active')">
+                    <a href="/asesor/verifikasi-instrumen" class="nav-link @yield('sidebar-verifikasiInstrumen-active')">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             Verifikasi Instrument
@@ -105,7 +105,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/asesor/nilai-asesi" class="nav-link @yield('sidebar-asesi-active')">
+                    <a href="/asesor/nilai-asesi" class="nav-link @yield('sidebar-penilaianasesi-active')">
                         <i class="nav-icon fas fa-pencil-alt"></i>
                         <p>
                             Penilaian

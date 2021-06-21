@@ -53,6 +53,7 @@
                                 @foreach ($data_pendaftarsyarat as $d)
                                     <div class="row p-1">
                                         <div class="col-8">
+
                                             {{ $d->syaratSertifikasi->syarat }}
                                         </div>
                                         <div class="col-3 text-right">
@@ -67,7 +68,7 @@
                     </tbody>
                 </table>
                 <div class="p-4">
-                    <a href="{{ route('asesi.berkas-syarat.index') }}">
+                    <a href="{{ route('asesor.verifikasi-berkas.index') }}">
                         <button type="button" class="btn btn-danger">Kembali</button>
                     </a>
                 </div>
