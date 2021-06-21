@@ -238,6 +238,7 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->name('asesor.')->group(fu
 
     Route::prefix('nilai-asesi')->group(function() {
         Route::get('/', [asesor_AsesorPenilaianController::class, 'index']);
+        Route::get('/{id_asesorpendaftar}', [asesor_AsesorPenilaianController::class, 'readPendaftar'])->name('read-pendaftar');
         Route::put('/edit', [asesor_AsesorController::class, 'edit']);
 
     });
