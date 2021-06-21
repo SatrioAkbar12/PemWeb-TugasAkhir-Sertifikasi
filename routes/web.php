@@ -23,6 +23,7 @@ use App\Http\Controllers\Asesor\AsesorDashboardController as asesor_AsesorDashbo
 use App\Http\Controllers\Asesor\AsesorController as asesor_AsesorController;
 use App\Http\Controllers\Asesor\AsesorPenilaianController as asesor_AsesorPenilaianController;
 use App\Http\Controllers\Asesor\AsesorVerifikasiBerkasController as asesor_AsesorVerifikasiBerkasController;
+use App\Http\Controllers\Asesor\AsesorVerifikasiInstrumenController as asesor_AsesorVerifikasiInstrumenController;
 use App\Http\Controllers\Asesi\AsesiDashboardController as asesi_AsesiDashboardController;
 use App\Http\Controllers\Asesi\AsesiController as asesi_AsesiController;
 use App\Http\Controllers\Asesi\AsesiIsiKuesionerController as asesi_AsesiIsiKuesionerController;
@@ -234,6 +235,14 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->name('asesor.')->group(fu
         Route::get('/{id_asesorpendaftar}/{id_syarat}', [asesor_AsesorVerifikasiBerkasController::class, 'readSyarat'])->name('read-syarat');
         Route::get('/{id_asesorpendaftar}/{id_syarat}/verifikasi', [asesor_AsesorVerifikasiBerkasController::class, 'showVerifikasi'])->name('show-verifikasi');
         Route::post('/{id_asesorpendaftar}/{id_syarat}/verifikasi', [asesor_AsesorVerifikasiBerkasController::class, 'verifikasi'])->name('verifikasi');
+    });
+
+    Route::prefix('verifikasi-instrumen')->name('verifikasi-instrumen.')->group(function() {
+        Route::get('/', [asesor_AsesorVerifikasiInstrumenController::class, 'index'])->name('index');
+        Route::get('/{id_asesorpendaftar}', [asesor_AsesorVerifikasiInstrumenController::class, 'readPendaftar'])->name('read-pendaftar');
+        Route::get('/{id_asesorpendaftar}/{id_instrumen}', [asesor_AsesorVerifikasiInstrumenController::class, 'readinstrumen'])->name('read-instrumen');
+        Route::get('/{id_asesorpendaftar}/{id_instrumen}/verifikasi', [asesor_AsesorVerifikasiInstrumenController::class, 'showVerifikasi'])->name('show-verifikasi');
+        Route::post('/{id_asesorpendaftar}/{id_instrumen}/verifikasi', [asesor_AsesorVerifikasiInstrumenController::class, 'verifikasi'])->name('verifikasi');
     });
 
     Route::prefix('nilai-asesi')->group(function() {
