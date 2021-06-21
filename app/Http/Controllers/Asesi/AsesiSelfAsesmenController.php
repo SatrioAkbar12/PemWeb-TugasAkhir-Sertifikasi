@@ -36,7 +36,7 @@ class AsesiSelfAsesmenController extends Controller
             ->leftJoin('pendaftar', 'penawaran_sertifikasi.id', '=', 'pendaftar.id_penawaran_sertifikasi')
             ->leftJoin('pendaftar_syarat','pendaftar.id','=','pendaftar_syarat.id_pendaftar')
             ->where('pendaftar.id_asesi',$b)
-            ->where('pendaftar_syarat.status_verifikasi_syarat','diterima')
+            ->where('pendaftar_syarat.status_verifikasi_syarat','lolos verifikasi')
             ->get();
 
 
