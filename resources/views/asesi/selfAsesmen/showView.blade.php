@@ -101,7 +101,7 @@
                                         {{ $d->refUnitKompetensi->nama }}
                                     </div>
                                     <div class="col-3 text-right">
-                                        <a href="{{ route('asesi.self-asesmen.show-unit-kompetensi', ['id_sertifikasi' => $data->id, 'id_ref_unit_kompentensi' => $d->refUnitKompetensi->id]) }}">
+                                        <a href="{{ route('asesi.self-asesmen.show-unit-kompetensi', ['id_sertifikasi' => $data->id, 'id_ref_unit_kompetensi' => $d->refUnitKompetensi->id]) }}">
                                             <button class="btn btn-info" type="button">Jawab</button>
                                         </a>
                                     </div>

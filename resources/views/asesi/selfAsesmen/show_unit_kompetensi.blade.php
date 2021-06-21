@@ -29,7 +29,7 @@
                                         {{ $d->instrumen_pertanyaan }}
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('asesi.self-asesmen.show-jawab', ['id_sertifikasi' => $id_sertifikasi, 'id_ref_unit_kompentensi' => $data->id, 'id_instrumen_asesmen' => $d->id])}}">
+                                        <a href="{{ route('asesi.self-asesmen.show-jawab', ['id_sertifikasi' => $id_sertifikasi, 'id_ref_unit_kompetensi' => $data->id, 'id_instrumen_asesmen' => $d->id])}}">
                                             <button type="button" class="btn btn-primary">Jawab</button>
                                         </a>
                                     </td>
@@ -39,8 +39,13 @@
                     </tbody>
                 </table>
                 <div class="py-3">
-                    <button class="btn btn-primary" type="submit">Simpan</button>
-                    <a href="{{ route('asesi.self-asesmen.show-view', ['id_sertifikasi' => $id_sertifikasi]) }}"><button class="btn btn-danger" type="button">Kembali</button></a>
+                    <a href="{{ route('asesi.self-asesmen.lock-unit-kompetensi', ['id_sertifikasi' => $id_sertifikasi, 'id_ref_unit_kompetensi' => $data->id])}}">
+                        <button class="btn btn-primary" type="submit">Simpan</button>
+                    </a>
+                    <a href="{{ route('asesi.self-asesmen.show-view', ['id_sertifikasi' => $id_sertifikasi]) }}">
+                        <button class="btn btn-danger" type="button">Kembali</button>
+                    </a>
+                    <p>*Tombol simpan akan mengunci unit kompetensi ini</p>
                 </div>
             </div>
         </div>
