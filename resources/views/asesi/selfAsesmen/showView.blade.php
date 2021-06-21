@@ -56,46 +56,61 @@
         </div> -->
 
         <table class="table table-striped projects">
-                    <tbody>
-                        <tr>
-                            <td>
-                                Sertifikasi
-                            </td>
-                            <td>
-                                : {{ $data->nama}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Jenis Sertifikasi
-                            </td>
-                            <td>
-                                : {{ $data->refJenisSertifikasi->nama }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Unit Kompetensi
-                            </td>
-                            <td>
-                                @foreach ($data_kompetensi as $d)
-                                    <div class="row p-1">
-                                        <div class="col-1 text-center">
-                                            <input type="checkbox" {{ $d->is_aktif == 1 ? 'checked' : '' }} disabled>
-                                        </div>
-                                        <div class="col-8">
-                                            {{ $d->refUnitKompetensi->nama }}
-                                        </div>
-                                        <div class="col-3 text-right">
-                                            <a href="/asesi/self-asesmen/{{ $d->refUnitKompetensi->id }}/jawab">
-                                                <button class="btn btn-info" type="button">Jawab</button>
-                                            </a>
-                                        </div>
+            <tbody>
+                <tr>
+                    <td>
+                        Sertifikasi
+                    </td>
+                    <td>
+                        : {{ $data->nama }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Jenis Sertifikasi
+                    </td>
+                    <td>
+                        : {{ $data->refJenisSertifikasi->nama }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Deskripsi
+                    </td>
+                    <td>
+                        : {{ $data->deskripsi_penawaran }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Periode
+                    </td>
+                    <td>
+                        : {{ $data->periode }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unit Kompetensi
+                    </td>
+                    <td>
+                        @foreach ($data_kompetensi as $d)
+                            @if ($d->is_aktif == 1)
+                                <div class="row p-1">
+                                    <div class="col-8">
+                                        {{ $d->refUnitKompetensi->nama }}
                                     </div>
-                                @endforeach
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                    <div class="col-3 text-right">
+                                        <a href="{{ route('asesi.self-asesmen.show-unit-kompetensi', ['id_sertifikasi' => $data->id, 'id_ref_unit_kompentensi' => $d->refUnitKompetensi->id]) }}">
+                                            <button class="btn btn-info" type="button">Jawab</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 @endsection
