@@ -105,7 +105,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/asesor/nilai-asesi" class="nav-link @yield('sidebar-asesi-active')">
+                    <a href="/asesor/nilai-asesi" class="nav-link @yield('sidebar-penilaianasesi-active')">
                         <i class="nav-icon fas fa-pencil-alt"></i>
                         <p>
                             Penilaian
