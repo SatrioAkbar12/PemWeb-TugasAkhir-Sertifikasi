@@ -95,7 +95,9 @@ class AsesiBerkasSyaratController extends Controller
             'id_pendaftar' => $pendaftar->id,
             'status_verifikasi_syarat' => $status,
             'path_bukti' => $path_bukti,
-            'verifikasi_asesor' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->nama,
+            'verifikasi_asesor' => 1,
+            'komentar_asesor' =>' ',
+            'verified_by'=>' ',
             'created_by' => $username,
             'edited_by' => $username
         ]);

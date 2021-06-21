@@ -25,7 +25,27 @@ class AsesiSelfAsesmenController extends Controller
     {
         $data = Pendaftar::where('status_akhir_sertifikasi', 'siap asesmen')->get();
 
+<<<<<<< HEAD
         return view('asesi.selfAsesmen.index', ['data' => $data]);
+=======
+        $nomor=Auth::user()->id;
+        $a = DB::table('asesi')
+            ->where('asesi.id_user','=',$nomor)
+            ->select('asesi.id')
+            ->get();
+
+        $b = $a->first()->id;
+
+        $syarat = DB::table('penawaran_sertifikasi')
+            ->leftJoin('pendaftar', 'penawaran_sertifikasi.id', '=', 'pendaftar.id_penawaran_sertifikasi')
+            ->leftJoin('pendaftar_syarat','pendaftar.id','=','pendaftar_syarat.id_pendaftar')
+            ->where('pendaftar.id_asesi',$b)
+            ->where('pendaftar_syarat.status_verifikasi_syarat','lolos verifikasi')
+            ->get();
+
+
+        return view('asesi.selfAsesmen.index', ['data' => $data,'syarat'=>$syarat]);
+>>>>>>> ae626b3668c9b1387343b52030f0db5783f20ef0
     }
 
     public function showView($id_sertifikasi)

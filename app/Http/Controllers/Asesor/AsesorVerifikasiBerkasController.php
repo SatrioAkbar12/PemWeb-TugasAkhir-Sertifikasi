@@ -63,7 +63,7 @@ class AsesorVerifikasiBerkasController extends Controller
                 'id_syarat_sertifikasi' => $id_syarat
             ])->update([
                 'status_verifikasi_syarat' => $request->status,
-                'verifikasi_asesor' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->nama,
+                'verifikasi_asesor' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->id,
                 'komentar_asesor' => $request->komentar,
                 'verified_by' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->nama,
                 'verified_at' => now(),
@@ -76,7 +76,7 @@ class AsesorVerifikasiBerkasController extends Controller
                 'id_syarat_sertifikasi' => $id_syarat
             ])->update([
                 'status_verifikasi_syarat' => $request->status,
-                'verifikasi_asesor' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->nama,
+                'verifikasi_asesor' => $data_asesorpendaftar->asesorJenisSertifikasi->asesor->id,
                 'komentar_asesor' => $request->komentar,
                 'edited_by' => Auth::user()->username
             ]);
