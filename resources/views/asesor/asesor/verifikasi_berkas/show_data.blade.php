@@ -67,7 +67,7 @@
                     </tbody>
                 </table>
                 <div class="p-4">
-                    <a href="{{ route('asesi.berkas-syarat.index') }}">
+                    <a href="{{ route('asesor.verifikasi-berkas.index') }}">
                         <button type="button" class="btn btn-danger">Kembali</button>
                     </a>
                 </div>
