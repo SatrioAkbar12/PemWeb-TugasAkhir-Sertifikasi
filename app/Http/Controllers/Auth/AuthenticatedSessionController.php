@@ -32,19 +32,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-
-        if(Auth::user()->role == 'admin') {
-            return redirect('/admin');
-        }
-        elseif(Auth::user()->role == 'asesor') {
-            return redirect('/asesor');
-        }
-        elseif(Auth::user()->role == 'asesi') {
-            return redirect('/asesi');
-        }
-        else {
-            return redirect()->intended(RouteServiceProvider::HOME);
-        }
+        return redirect()->route('dashboard');
+        // if(Auth::user()->role == 'admin') {
+        //     return redirect('/admin');
+        // }
+        // elseif(Auth::user()->role == 'asesor') {
+        //     return redirect('/asesor');
+        // }
+        // elseif(Auth::user()->role == 'asesi') {
+        //     return redirect('/asesi');
+        // }
+        // else {
+        //     return redirect()->intended(RouteServiceProvider::HOME);
+        // }
     }
 
     /**

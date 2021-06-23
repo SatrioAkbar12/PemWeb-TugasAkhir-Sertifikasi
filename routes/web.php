@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 //!!!!!!!!!!!!!!!!!!!!!! Controller jangan lupa diberi as untuk nama lain !!!!!!!!!!!!!!!!!!!!!!//
+use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController as admin_AdminDashboardController;
 use App\Http\Controllers\Admin\AdminController as admin_AdminController;
 use App\Http\Controllers\Admin\AsesiController as admin_AsesiController;
@@ -48,9 +49,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('asesi.index');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('asesi.index');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->middleware('auth')->name('dashboard');
 
 // Route khusus admin
 Route::prefix('admin')->middleware('auth', 'admin')->name('admin.')->group(function () {
