@@ -107,6 +107,6 @@ class AsesiSelfAsesmenController extends Controller
             ]);
         }
 
-        return redirect()->route('asesi.self-asesmen.show-unit-kompetensi', ['id_sertifikasi' => $id_sertifikasi, 'id_ref_unit_kompentensi' => $id_ref_unit_kompetensi]);
+        return redirect()->route('asesi.self-asesmen.show-unit-kompetensi', ['id_sertifikasi' => $id_sertifikasi, 'id_ref_unit_kompetensi' => $id_ref_unit_kompetensi]);
     }
 }
