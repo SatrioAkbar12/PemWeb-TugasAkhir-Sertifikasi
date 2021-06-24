@@ -17,7 +17,7 @@ class AlterColumnPendaftarSyaratTable extends Migration
             $table->string('verifikasi_asesor')->nullable()->change();
             $table->string('komentar_asesor')->nullable()->change();
             $table->string('verified_by')->nullable()->change();
-            $table->timestamp('verified_at')->nullable()->change();
+            $table->timestamp('verified_at')->default(null)->change();
         });
     }
 
@@ -32,7 +32,6 @@ class AlterColumnPendaftarSyaratTable extends Migration
             $table->string('verifikasi_asesor')->change();
             $table->string('komentar_asesor')->change();
             $table->string('verified_by')->change();
-            $table->timestamp('verified_at')->change();
         });
     }
 }

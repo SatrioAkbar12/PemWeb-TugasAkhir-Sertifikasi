@@ -26,6 +26,9 @@ class AlterDropCollumnAsesiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asesi');
+        Schema::table('asesi', function (Blueprint $table) {
+            $table->dropColumn('nama');
+            $table->string('email');
+        });
     }
 }

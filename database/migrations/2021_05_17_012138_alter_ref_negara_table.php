@@ -25,6 +25,10 @@ class AlterRefNegaraTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ref_negara');
+        // Schema::dropIfExists('ref_negara');
+        Schema::table('ref_negara', function (Blueprint $table) {
+            $table->dropColumn('created_at');
+            $table->dropColumn('updated_at');
+        });
     }
 }

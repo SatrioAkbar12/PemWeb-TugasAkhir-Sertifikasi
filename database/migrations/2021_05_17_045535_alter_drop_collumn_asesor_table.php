@@ -25,6 +25,8 @@ class AlterDropCollumnAsesorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asesor');
+        Schema::table('asesor', function (Blueprint $table) {
+            $table->string('email');
+        });
     }
 }
