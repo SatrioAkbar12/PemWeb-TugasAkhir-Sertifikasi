@@ -11,17 +11,22 @@ use App\Models\Asesi;
 use App\Models\Asesor;
 use App\Models\AsesorJenisSertifikasi;
 use App\Models\AsesorPendaftar;
+use App\Models\PendaftarSyarat;
 use App\Models\SyaratSertifikasi;
 use App\Models\RefJenisSertifikasi;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+
+use function PHPUnit\Framework\isEmpty;
 
 class AsesiDaftarSertifikasiController extends Controller
 {
     public function index()
     {
         $data = PenawaranSertifikasi::where('is_aktif', 1)->get();
-        return view('asesi.daftarSertifikasi.index', ['data' => $data]);
+        $data_pendaftaran = Pendaftar::where('id_asesi', Auth::user()->asesi->id)->get();
+
+        return view('asesi.daftarSertifikasi.index', ['data' => $data, 'data_pendaftar'=> $data_pendaftaran]);
     }
     public function showDaftar($id)
     {
@@ -75,15 +80,33 @@ class AsesiDaftarSertifikasiController extends Controller
             'hasil' => ' ',
         ]);
 
+        $this->generatePendaftarSyarat($id, $pendaftar->id);
+
         return redirect('/asesi/daftarsertifikasi')->with('success', 'Anda Telah Terdaftar!');;
     }
     public function showLihat($id)
     {
-        $data = PenawaranSertifikasi::find($id); //1-Guru honorer 2-guru sd
+        $data = PenawaranSertifikasi::find($id);
         $a = $data->id_ref_jenis_sertifikasi;
         $syarat=SyaratSertifikasi::where('id_ref_jenis_sertifikasi',$a)->get();
-        // $syarat= RefJenisSertifikasi::where('id_ref_jenis_sertifikasi', $id)->get();
+
         return view('asesi.daftarSertifikasi.form_lihat', ['data' => $data, 'syarat'=>$syarat]);
     }
 
+    public function generatePendaftarSyarat($id_penawaran_sertifikasi, $id_pendaftar) {
+        $data_sertifikasi = PenawaranSertifikasi::find($id_penawaran_sertifikasi);
+        $data_syarat = SyaratSertifikasi::where('id_ref_jenis_sertifikasi', $data_sertifikasi->id_ref_jenis_sertifikasi)->get();
+
+        foreach($data_syarat as $d) {
+            PendaftarSyarat::create([
+                'id_syarat_sertifikasi' => $d->id,
+                'id_pendaftar' => $id_pendaftar,
+                'status_verifikasi_syarat' => 'generate syarat',
+                'created_by' => Auth::user()->username,
+                'edited_by' => Auth::user()->username
+            ]);
+        }
+
+        return;
+    }
 }
