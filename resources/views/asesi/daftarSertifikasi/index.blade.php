@@ -21,9 +21,6 @@
 
     <!-- Default box -->
     <div class="card">
-
-
-
       <div class="card-body p-0">
         <table class="table table-striped projects">
             <thead class="text-center">
@@ -43,39 +40,59 @@
             </thead>
             @foreach ($data as $d)
             <tbody>
-                <tr>
-                    <td>
-                        {{ $d->id }}
-                    </td>
-                    <td>
-                        <a>
-                            {{ $d->nama }}
-                        </a>
-                    </td>
-                    <td>
-                        <a>
-                            {{ $d->refJenisSertifikasi->nama }}
-                        </a>
-                    </td>
-                    <td class="project-actions text-right">
-
-
-                        {{-- <a href="/asesi/daftarsertifikasi/{{ $d->id }}/daftar">
-                        <button type="button" class="btn btn-success">
-                            <i class="fas fa-plus-circle"></i>
-                             Daftar
-                        </button>
-                         </a> --}}
-
-
-                         <a href="/asesi/daftarsertifikasi/{{ $d->id }}/lihat">
-                            <button type="button" class="btn btn-info">
-                                <i class="fas fa-folder"></i>
-                                Detail
-                            </button>
-                        </a>
-                    </td>
-                </tr>
+                @if ($data_pendaftar->isEmpty())
+                    <tr>
+                        <td>
+                            {{ $d->id }}
+                        </td>
+                        <td>
+                            <a>
+                                {{ $d->nama }}
+                            </a>
+                        </td>
+                        <td>
+                            <a>
+                                {{ $d->refJenisSertifikasi->nama }}
+                            </a>
+                        </td>
+                        <td class="project-actions text-right">
+                            <a href="/asesi/daftarsertifikasi/{{ $d->id }}/lihat">
+                                <button type="button" class="btn btn-info">
+                                    <i class="fas fa-folder"></i>
+                                    Detail
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                @else
+                    @foreach ($data_pendaftar as $d_pendaftar)
+                        @if ($d_pendaftar->id_penawaran_sertifikasi != $d->id)
+                            <tr>
+                                <td>
+                                    {{ $d->id }}
+                                </td>
+                                <td>
+                                    <a>
+                                        {{ $d->nama }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a>
+                                        {{ $d->refJenisSertifikasi->nama }}
+                                    </a>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a href="/asesi/daftarsertifikasi/{{ $d->id }}/lihat">
+                                        <button type="button" class="btn btn-info">
+                                            <i class="fas fa-folder"></i>
+                                            Detail
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                @endif
             </tbody>
             @endforeach
         </table>

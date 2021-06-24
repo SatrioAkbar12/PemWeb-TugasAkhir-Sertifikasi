@@ -60,18 +60,15 @@
                     <div class="col-9">
                         : {{ $data->periode}}
                     </div>
+                    @foreach ($data->jadwal as $d)
+                        <div class="col-3">
+                            {{ $d->refKegiatan->nama_kegiatan }}
+                        </div>
+                        <div class="col-9">
+                            : {{ $d->tanggal_awal }} - {{ $d->tanggal_akhir }}
+                        </div>
+                    @endforeach
                 </div>
-
-                {{-- <a href="/asesi/daftarsertifikasi/{{ $data->id }}/daftar">
-                    <button type="button" class="btn btn-success">
-                        <i class="fas fa-plus-circle"></i>
-                         Daftar
-                    </button>
-                     </a>
-                <a href="/asesi/daftarsertifikasi">
-                    <button type="button" class="btn btn-danger">Kembali</button>
-                </a> --}}
-
                 <div>
                     <form method="post" action="/asesi/daftarsertifikasi/{{ $data->id }}/daftar">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
