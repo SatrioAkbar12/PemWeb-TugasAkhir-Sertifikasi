@@ -25,22 +25,8 @@ class AsesiBerkasSyaratController extends Controller
 
     public function index()
     {
-
-        // $nomor=Auth::user()->id;
-        // $a = DB::table('asesi')
-        //     ->where('asesi.id_user','=',$nomor)
-        //     ->select('asesi.id')
-        //     ->get();
-
-        // $b = $a->first()->id;
-
-        // $data = DB::table('penawaran_sertifikasi')
-        //     ->leftJoin('pendaftar', 'penawaran_sertifikasi.id', '=', 'pendaftar.id_penawaran_sertifikasi')
-        //     ->where('pendaftar.id_asesi',$b)
-        //     ->get();
-
         $data = Pendaftar::where('id_asesi', Auth::user()->asesi->id)->get();
-        // dd($data);
+
         return view('asesi.berkas_syarat.index', ['data' => $data]);
     }
 
