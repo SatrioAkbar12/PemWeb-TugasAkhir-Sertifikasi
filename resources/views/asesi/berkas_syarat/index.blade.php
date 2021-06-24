@@ -21,9 +21,6 @@
 
     <!-- Default box -->
     <div class="card">
-
-
-
       <div class="card-body p-0">
         <table class="table table-striped projects">
             <thead class="text-center">
@@ -43,6 +40,7 @@
             </thead>
             @foreach ($data as $d)
             <tbody>
+                @if ($d->status_akhir_sertifikasi != 'siap asesmen')
                 <tr>
                     <td>
                         {{ $d->id }}
@@ -66,6 +64,7 @@
                         </a>
                     </td>
                 </tr>
+                @endif
             </tbody>
             @endforeach
         </table>
