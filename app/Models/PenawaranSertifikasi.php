@@ -32,7 +32,7 @@ class PenawaranSertifikasi extends Model
     }
 
     public function jadwal() {
-        return $this->hasOne(Jadwal::class, 'id_penawaran_sertifikasi', 'id');
+        return $this->hasMany(Jadwal::class, 'id_penawaran_sertifikasi', 'id');
     }
 
     public function pendaftar() {
