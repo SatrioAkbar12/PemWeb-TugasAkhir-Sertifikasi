@@ -43,14 +43,14 @@
                         : {{ $data->status_verifikasi_syarat }}
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-2">
                         Asesor verifikator
                     </div>
                     <div class="col-10">
                         : {{ $data->verifikasi_asesor }}
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-2">
                         Komentar Asesor
@@ -59,14 +59,14 @@
                         : {{ $data->komentar_asesor }}
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-2">
                         Verified by
                     </div>
                     <div class="col-10">
                         : {{ $data->verified_by }}
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-2">
                         Verified at
@@ -75,7 +75,7 @@
                         : {{ $data->verified_at }}
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-2">
                         Dibuat oleh
                     </div>
@@ -90,7 +90,7 @@
                     <div class="col-10">
                         : {{ $data->edited_by }}
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-2">
                         Dibuat pada
@@ -108,9 +108,11 @@
                     </div>
                 </div>
                 <div class="py-3">
-                    <a href="{{ route('asesor.verifikasi-berkas.show-verifikasi', ['id_asesorpendaftar' => $id_asesorpendaftar, 'id_syarat' => $data->id_syarat_sertifikasi]) }}">
-                        <button type="button" class="btn btn-primary">Verifikasi</button>
-                    </a>
+                    @if ($data->status_verifikasi_syarat != 'lolos verifikasi' && $data->status_verifikasi_syarat != 'gagal verifikasi')
+                        <a href="{{ route('asesor.verifikasi-berkas.show-verifikasi', ['id_asesorpendaftar' => $id_asesorpendaftar, 'id_syarat' => $data->id_syarat_sertifikasi]) }}">
+                            <button type="button" class="btn btn-primary">Verifikasi</button>
+                        </a>
+                    @endif
                     <a href="{{ route('asesor.verifikasi-berkas.read-pendaftar', ['id_asesorpendaftar' => $id_asesorpendaftar]) }}">
                         <button type="button" class="btn btn-danger">Kembali</button>
                     </a>

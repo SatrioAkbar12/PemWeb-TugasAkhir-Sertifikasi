@@ -2,7 +2,7 @@
 
 @section('head_title', 'Asesor')
 
-@section('sidebar-prodi-active', 'active')
+@section('sidebar-verifikasiBerkas-active', 'active')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -36,23 +36,25 @@
                     </thead>
                     @foreach ($data_pendaftar as $d)
                         <tbody>
-                            <tr>
-                                <td class="text-center">
-                                    {{ $d->pendaftar->asesi->id }}
-                                </td>
-                                <td class="text-center">
-                                    <a>
-                                        {{ $d->pendaftar->asesi->nama }}
-                                    </a>
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="/asesor/verifikasi-berkas/{{ $d->id }}">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        View
-                                    </a>
-                                </td>
-                            </tr>
+                            @if ($d->pendaftar->status_akhir_sertifikasi != 'siap asesmen')
+                                <tr>
+                                    <td class="text-center">
+                                        {{ $d->pendaftar->asesi->id }}
+                                    </td>
+                                    <td class="text-center">
+                                        <a>
+                                            {{ $d->pendaftar->asesi->nama }}
+                                        </a>
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="/asesor/verifikasi-berkas/{{ $d->id }}">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endif
                         </tbody>
                     @endforeach
                 </table>
