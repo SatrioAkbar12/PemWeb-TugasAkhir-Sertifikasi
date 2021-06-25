@@ -95,7 +95,10 @@ class AsesiDaftarSertifikasiController extends Controller
 
     public function generatePendaftarSyarat($id_penawaran_sertifikasi, $id_pendaftar) {
         $data_sertifikasi = PenawaranSertifikasi::find($id_penawaran_sertifikasi);
-        $data_syarat = SyaratSertifikasi::where('id_ref_jenis_sertifikasi', $data_sertifikasi->id_ref_jenis_sertifikasi)->get();
+        $data_syarat = SyaratSertifikasi::where([
+            'id_ref_jenis_sertifikasi' => $data_sertifikasi->id_ref_jenis_sertifikasi,
+            'is_aktif' => 1
+        ])->get();
 
         foreach($data_syarat as $d) {
             PendaftarSyarat::create([
