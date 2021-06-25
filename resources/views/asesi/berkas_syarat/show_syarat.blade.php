@@ -43,36 +43,21 @@
                                 Syarat
                             </td>
                             <td>
-                                @foreach ($data_syarat as $d)
+                                @foreach ($data_pendaftarsyarat as $d)
                                     <div class="row p-1">
                                         <div class="col-8">
-                                            {{ $d->syarat }}
+                                            {{ $d->syaratSertifikasi->syarat }}
                                         </div>
                                         <div class="col-3 text-right">
-                                            <a href="{{ route('asesi.berkas-syarat.show-upload-syarat', ['id_sertifikasi' => $data->id, 'id_syarat' => $d->id])}}">
-                                                <button class="btn btn-primary" type="button">Upload</button>
-                                            </a>
-                                            <a href="{{ route('asesi.berkas-syarat.read-upload-syarat', ['id_sertifikasi' => $data->id, 'id_syarat' => $d->id]) }}">
-                                                <button class="btn btn-info" type="button">Detail</button>
-                                            </a>
-                                            {{-- @foreach ($data_pendaftarsyarat as $d_pendaftarsyarat) --}}
-                                                {{-- @if($d_pendaftarsyarat->id_syarat_sertifikasi == $d->id)
-                                                    <a href="{{ route('asesi.berkas-syarat.show-upload-syarat', ['id_sertifikasi' => $data->id, 'id_syarat' => $d->id])}}">
-                                                        <button class="btn btn-primary" type="button" disabled>Upload</button>
-                                                    </a>
-                                                    <a href="{{ route('asesi.berkas-syarat.read-upload-syarat', ['id_sertifikasi' => $data->id, 'id_syarat' => $d->id]) }}">
-                                                        <button class="btn btn-info" type="button">Detail</button>
-                                                    </a>
-                                                    @break
-                                                @else
-                                                    <a href="{{ route('asesi.berkas-syarat.show-upload-syarat', ['id_sertifikasi' => $data->id, 'id_syarat' => $d->id])}}">
-                                                        <button class="btn btn-primary" type="button">Upload</button>
-                                                    </a>
-                                                    <a href="{{ route('asesi.berkas-syarat.read-upload-syarat', ['id_sertifikasi' => $data->id, 'id_syarat' => $d->id]) }}">
-                                                        <button class="btn btn-info" type="button" disabled>Detail</button>
-                                                    </a>
-                                                @endif --}}
-                                            {{-- @endforeach --}}
+                                            @if ($d->path_bukti == null)
+                                                <a href="{{ route('asesi.berkas-syarat.show-upload-syarat', ['id_sertifikasi' => $data->id, 'id_syarat' => $d->id_syarat_sertifikasi])}}">
+                                                    <button class="btn btn-primary" type="button">Upload</button>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('asesi.berkas-syarat.read-upload-syarat', ['id_sertifikasi' => $data->id, 'id_syarat' => $d->id_syarat_sertifikasi]) }}">
+                                                    <button class="btn btn-info" type="button">Detail</button>
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach

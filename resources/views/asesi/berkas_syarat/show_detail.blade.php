@@ -43,14 +43,14 @@
                         : {{ $data->status_verifikasi_syarat }}
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-2">
                         Asesor verifikator
                     </div>
                     <div class="col-10">
                         : {{ $data->verifikasi_asesor }}
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-2">
                         Komentar Asesor
@@ -59,14 +59,14 @@
                         : {{ $data->komentar_asesor }}
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-2">
                         Verified by
                     </div>
                     <div class="col-10">
                         : {{ $data->verified_by }}
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-2">
                         Verified at
@@ -75,7 +75,7 @@
                         : {{ $data->verified_at }}
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-2">
                         Dibuat oleh
                     </div>
@@ -106,7 +106,12 @@
                     <div class="col-10">
                         : {{ $data->updated_at }}
                     </div>
-                </div>
+                </div> --}}
+                @if ($data->status_verifikasi_syarat == 'gagal verifikasi')
+                    <a href="{{ route('asesi.berkas-syarat.show-upload-syarat', ['id_sertifikasi' => $id_sertifikasi, 'id_syarat' => $data->id_syarat_sertifikasi])}}">
+                        <button type="button" class="btn btn-info">Upload ulang</button>
+                    </a>
+                @endif
                 <a href="{{ route('asesi.berkas-syarat.show-syarat', ['id_sertifikasi' => $id_sertifikasi]) }}">
                     <button type="button" class="btn btn-danger">Kembali</button>
                 </a>

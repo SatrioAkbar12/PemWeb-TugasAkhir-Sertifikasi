@@ -19,11 +19,11 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-body p-4">
-                <form method="post" action="{{ route('asesi.berkas-syarat.store-upload-syarat', ['id_sertifikasi' => $id_sertifikasi, 'id_syarat' => $data->id]) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('asesi.berkas-syarat.store-upload-syarat', ['id_sertifikasi' => $id_sertifikasi, 'id_syarat' => $data->id_syarat_sertifikasi]) }}" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                         <label for="input_syarat" class="form-label">Syarat</label>
-                        <input id="input_syarat" class="form-control" type="text" name="syarat" value="{{ $data->syarat }}" disabled />
+                        <input id="input_syarat" class="form-control" type="text" name="syarat" value="{{ $data->syaratSertifikasi->syarat }}" disabled />
                     </div>
                     <div class="form-group">
                         <label for="input_file" class="form-label">Upload File</label>
