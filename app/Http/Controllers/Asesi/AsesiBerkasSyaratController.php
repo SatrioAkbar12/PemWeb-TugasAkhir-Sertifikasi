@@ -32,23 +32,26 @@ class AsesiBerkasSyaratController extends Controller
 
     public function showSyarat($id_sertifikasi) {
         $data = PenawaranSertifikasi::where('id', $id_sertifikasi)->first();
-        $data_syarat = SyaratSertifikasi::where([
-            'id_ref_jenis_sertifikasi' => $data->id_ref_jenis_sertifikasi,
-            'is_aktif' => 1
-        ])->get();
 
         $pendaftar = Pendaftar::where([
             'id_asesi' => Auth::user()->asesi->id,
             'id_penawaran_sertifikasi' => $id_sertifikasi
         ])->first();
 
-        $data_pendaftarsyarat = PendaftarSyarat::where('id_pendaftar', $pendaftar)->get();
+        $data_pendaftarsyarat = PendaftarSyarat::where('id_pendaftar', $pendaftar->id)->get();
 
-        return view('asesi.berkas_syarat.show_syarat', ['data' => $data, 'data_syarat' => $data_syarat, 'data_pendaftarsyarat' => $data_pendaftarsyarat]);
+        return view('asesi.berkas_syarat.show_syarat', ['data' => $data, 'data_pendaftarsyarat' => $data_pendaftarsyarat]);
     }
 
     public function showUploadSyarat($id_sertifikasi, $id_syarat) {
-        $data = SyaratSertifikasi::find($id_syarat);
+        $pendaftar = $this->getPendaftar($id_sertifikasi);
+
+        $data = PendaftarSyarat::where([
+            'id_syarat_sertifikasi' => $id_syarat,
+            'id_pendaftar' => $pendaftar->id
+        ])->first();
+
+        // dd($data);
 
         return view('asesi.berkas_syarat.form_berkas', ['data' => $data, 'id_sertifikasi' => $id_sertifikasi]);
     }
@@ -76,14 +79,14 @@ class AsesiBerkasSyaratController extends Controller
         $file->move($tujuan_upload, $nama_file);
         $status = 'sudah upload';
 
-        PendaftarSyarat::create([
-            'id_syarat_sertifikasi' => $id_syarat,
+        PendaftarSyarat::where([
             'id_pendaftar' => $pendaftar->id,
+            'id_syarat_sertifikasi' => $id_syarat
+        ])->update([
+            'komentar_asesor' => null,
             'status_verifikasi_syarat' => $status,
             'path_bukti' => $path_bukti,
-            'verifikasi_asesor' => 1,
-            'komentar_asesor' =>' ',
-            'verified_by'=>' ',
+            'verifikasi_asesor' => $data_asesorpendaftar->id,
             'created_by' => $username,
             'edited_by' => $username
         ]);
@@ -103,5 +106,14 @@ class AsesiBerkasSyaratController extends Controller
         ])->first();
 
         return view('asesi.berkas_syarat.show_detail', ['data' => $data, 'id_sertifikasi' => $id_sertifikasi]);
+    }
+
+    public function getPendaftar($id_sertifikasi){
+        $pendaftar = Pendaftar::where([
+            'id_asesi' => Auth::user()->asesi->id,
+            'id_penawaran_sertifikasi' => $id_sertifikasi
+        ])->first();
+
+        return $pendaftar;
     }
 }
