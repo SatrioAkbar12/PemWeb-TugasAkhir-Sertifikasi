@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use App\models\Asesor;
 use App\models\AsesorPendaftar;
 use App\models\AsesorJenisSertifikasi;
+use App\Models\InstrumenAsesmenKompetensi;
 use App\Models\Pendaftar;
+use App\Models\PendaftarInstrumen;
 use App\models\PendaftarSyarat;
+use App\Models\UnitKompetensiSertifikasi;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -106,6 +109,24 @@ class AsesorVerifikasiBerkasController extends Controller
             Pendaftar::where('id', $data_asesorpendaftar->id_pendaftar)->update([
                 'status_akhir_sertifikasi' => 'siap asesmen'
             ]);
+        }
+
+        $pendaftar = Pendaftar::find($data_asesorpendaftar->id_pendaftar);
+        $data_kompetensi = UnitKompetensiSertifikasi::where('id_ref_jenis_sertifikasi', $pendaftar->penawaranSertifikasi->id_ref_jenis_sertifikasi)->get();
+
+        if($pendaftar->status_akhir_sertifikasi == 'siap asesmen') {
+            foreach($data_kompetensi as $d_kompetensi) {
+                if($d_kompetensi->refUnitKompetensi->is_aktif == 1) {
+                    foreach($d_kompetensi->refUnitKompetensi->instrumenAsesmenKompetensi as $d_instrumen) {
+                        PendaftarInstrumen::create([
+                            'id_pendaftar' => $pendaftar->id,
+                            'id_instrumen_asesmen' => $d_instrumen->id,
+                            'created_by' => $pendaftar->id_asesi,
+                            'edited_by' => $pendaftar->id_asesi
+                        ]);
+                    }
+                }
+            }
         }
     }
 }
