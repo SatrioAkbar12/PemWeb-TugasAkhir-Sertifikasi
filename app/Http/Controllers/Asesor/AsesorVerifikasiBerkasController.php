@@ -121,8 +121,8 @@ class AsesorVerifikasiBerkasController extends Controller
                         PendaftarInstrumen::create([
                             'id_pendaftar' => $pendaftar->id,
                             'id_instrumen_asesmen' => $d_instrumen->id,
-                            'created_by' => $pendaftar->id_asesi,
-                            'edited_by' => $pendaftar->id_asesi
+                            'created_by' => $pendaftar->asesi->user->username,
+                            'edited_by' => $pendaftar->asesi->user->username
                         ]);
                     }
                 }
