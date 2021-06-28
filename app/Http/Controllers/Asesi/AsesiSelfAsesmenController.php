@@ -92,7 +92,7 @@ class AsesiSelfAsesmenController extends Controller
         $pendaftar = $this->getPendaftar($id_sertifikasi);
 
         Pendaftar::where('id', $pendaftar->id)->update([
-            'status_akhir_sertifikasi' => 'selesai asemen'
+            'status_akhir_sertifikasi' => 'selesai asesmen'
         ]);
 
         return redirect()->route('asesi.self-asesmen.index');
