@@ -36,7 +36,7 @@
                     </thead>
                     @foreach ($data_pendaftar as $d)
                         <tbody>
-                            @if ($d->pendaftar->status_akhir_sertifikasi != 'siap asesmen')
+                            @if ($d->pendaftar->status_akhir_sertifikasi == 'pendaftar baru')
                                 <tr>
                                     <td class="text-center">
                                         {{ $d->pendaftar->asesi->id }}
