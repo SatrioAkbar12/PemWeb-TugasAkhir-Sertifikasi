@@ -242,10 +242,10 @@ Route::prefix('asesor')->middleware('auth', 'asesor')->name('asesor.')->group(fu
 
     Route::prefix('verifikasi-instrumen')->name('verifikasi-instrumen.')->group(function() {
         Route::get('/', [asesor_AsesorVerifikasiInstrumenController::class, 'index'])->name('index');
-        Route::get('/{id_asesorpendaftar}', [asesor_AsesorVerifikasiInstrumenController::class, 'readPendaftar'])->name('read-pendaftar');
-        Route::get('/{id_asesorpendaftar}/{id_instrumen}', [asesor_AsesorVerifikasiInstrumenController::class, 'readinstrumen'])->name('read-instrumen');
-        Route::get('/{id_asesorpendaftar}/{id_instrumen}/verifikasi', [asesor_AsesorVerifikasiInstrumenController::class, 'showVerifikasi'])->name('show-verifikasi');
-        Route::post('/{id_asesorpendaftar}/{id_instrumen}/verifikasi', [asesor_AsesorVerifikasiInstrumenController::class, 'verifikasi'])->name('verifikasi');
+        Route::get('/{id_pendaftar}', [asesor_AsesorVerifikasiInstrumenController::class, 'readPendaftar'])->name('read-pendaftar');
+        Route::get('/{id_pendaftar}/submit', [asesor_AsesorVerifikasiInstrumenController::class, 'akhiriVerifikasi'])->name('akhiri-verifikasi');
+        Route::get('/{id_pendaftar}/{id_ref_unit_kompetensi}', [asesor_AsesorVerifikasiInstrumenController::class, 'readinstrumen'])->name('read-instrumen');
+        Route::post('/{id_pendaftar}/{id_ref_unit_kompetensi}/verifikasi', [asesor_AsesorVerifikasiInstrumenController::class, 'verifikasi'])->name('verifikasi');
     });
 
     Route::prefix('nilai-asesi')->group(function() {
