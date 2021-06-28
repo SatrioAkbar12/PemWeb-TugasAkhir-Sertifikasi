@@ -26,7 +26,7 @@
                                 Nama Pendaftar
                             </td>
                             <td>
-                                : {{ $data->pendaftar->asesi->nama }}
+                                : {{ $data->asesi->nama }}
                             </td>
                         </tr>
                         <tr>
@@ -34,7 +34,7 @@
                                 Sertifikasi
                             </td>
                             <td>
-                                : {{ $data->pendaftar->penawaranSertifikasi->nama }}
+                                : {{ $data->penawaranSertifikasi->nama }}
                             </td>
                         </tr>
                         <tr>
@@ -42,7 +42,7 @@
                                 Jenis Sertifikasi
                             </td>
                             <td>
-                                : {{ $data->pendaftar->penawaranSertifikasi->refJenisSertifikasi->nama }}
+                                : {{ $data->penawaranSertifikasi->refJenisSertifikasi->nama }}
                             </td>
                         </tr>
                         <tr>
@@ -50,24 +50,37 @@
                                 Instrumen
                             </td>
                             <td>
-                                @foreach ($data_pendaftarinstrumen as $d)
-                                    <div class="row p-1">
-                                        <div class="col-8">
-                                            {{ $d->InstrumenAsesmenKompetensi->instrumen_pertanyaan }}
-                                        
-                                        </div>
-                                        <div class="col-3 text-right">
-                                            <a href="{{ route('asesor.verifikasi-instrumen.read-instrumen', ['id_asesorpendaftar' => $id_asesorpendaftar, 'id_instrumen' => $d->InstrumenAsesmenKompetensi->id])}}">
-                                                <button class="btn btn-secondary" type="button">Lihat</button>
-                                            </a>
-                                        </div>
-                                    </div>
+                                @foreach ($data_unitkompetensisertifikasi as $d)
+                                    @foreach ($data_pendaftarinstrumen as $d_pendaftarinstrumen)
+                                        @if ($d_pendaftarinstrumen->instrumenAsesmenKompetensi->id_ref_unit_kompetensi == $d->id_ref_kompetensi)
+                                            <div class="row py-1">
+                                                <div class="col-9">
+                                                    {{ $d->refUnitKompetensi->nama }}
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    @if ($d_pendaftarinstrumen->verified_by == null)
+                                                        <a href="{{ route('asesor.verifikasi-instrumen.read-instrumen', ['id_pendaftar' => $data->id, 'id_ref_unit_kompetensi' => $d->id_ref_kompetensi]) }}">
+                                                            <button type="button" class="btn btn-primary">Cek</button>
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ route('asesor.verifikasi-instrumen.read-instrumen', ['id_pendaftar' => $data->id, 'id_ref_unit_kompetensi' => $d->id_ref_kompetensi]) }}">
+                                                            <button type="button" class="btn btn-primary">Cek ulang</button>
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            @break
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="p-4">
+                    <a href="{{ route('asesor.verifikasi-instrumen.akhiri-verifikasi', ['id_pendaftar' => $data->id])}}">
+                        <button type="button" class="btn btn-success">Akhiri Verifikasi</button>
+                    </a>
                     <a href="{{ route('asesor.verifikasi-instrumen.index') }}">
                         <button type="button" class="btn btn-danger">Kembali</button>
                     </a>

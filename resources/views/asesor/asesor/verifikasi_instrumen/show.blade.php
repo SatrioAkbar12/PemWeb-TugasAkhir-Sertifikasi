@@ -31,28 +31,38 @@
                                 Nama Peserta
                             </th>
                             <th>
+                                Sertifikasi
+                            </th>
+                            <th>
                             </th>
                         </tr>
                     </thead>
                     @foreach ($data_pendaftar as $d)
                         <tbody>
-                            <tr>
-                                <td class="text-center">
-                                    {{ $d->pendaftar->asesi->id }}
-                                </td>
-                                <td class="text-center">
-                                    <a>
-                                        {{ $d->pendaftar->asesi->nama }}
-                                    </a>
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="/asesor/verifikasi-instrumen/{{ $d->id }}">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        View
-                                    </a>
-                                </td>
-                            </tr>
+                            @if ($d->pendaftar->status_akhir_sertifikasi == 'selesai asesmen')
+                                <tr>
+                                    <td class="text-center">
+                                        {{ $d->pendaftar->asesi->id }}
+                                    </td>
+                                    <td class="text-center">
+                                        <a>
+                                            {{ $d->pendaftar->asesi->nama }}
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a>
+                                            {{ $d->pendaftar->penawaranSertifikasi->nama }}
+                                        </a>
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('asesor.verifikasi-instrumen.read-pendaftar', ['id_pendaftar' => $d->id_pendaftar]) }}">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endif
                         </tbody>
                     @endforeach
                 </table>
