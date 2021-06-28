@@ -63,12 +63,12 @@
                                     </div>
                                     <div class="col-3 text-right">
                                         @foreach ($data_pendaftarinstrumen as $d_pendaftarinstrumen)
-                                            @if ($d_pendaftarinstrumen->instrumenAsesmenKompetensi->id_ref_unit_kompetensi == $d->id && $d_pendaftarinstrumen->jawaban_self_asesmen == null)
+                                            @if ($d_pendaftarinstrumen->instrumenAsesmenKompetensi->id_ref_unit_kompetensi == $d->id_ref_kompetensi && $d_pendaftarinstrumen->jawaban_self_asesmen == null)
                                                 <a href="{{ route('asesi.self-asesmen.show-unit-kompetensi', ['id_sertifikasi' => $data->id, 'id_ref_unit_kompetensi' => $d->refUnitKompetensi->id]) }}">
                                                     <button class="btn btn-info" type="button">Jawab</button>
                                                 </a>
                                                 @break
-                                            @elseif ($d_pendaftarinstrumen->instrumenAsesmenKompetensi->id_ref_unit_kompetensi == $d->id && $d_pendaftarinstrumen->jawaban_self_asesmen != null)
+                                            @elseif ($d_pendaftarinstrumen->instrumenAsesmenKompetensi->id_ref_unit_kompetensi == $d->id_ref_kompetensi && $d_pendaftarinstrumen->jawaban_self_asesmen != null)
                                                 <a href="{{ route('asesi.self-asesmen.show-unit-kompetensi', ['id_sertifikasi' => $data->id, 'id_ref_unit_kompetensi' => $d->refUnitKompetensi->id]) }}">
                                                     <button class="btn btn-info" type="button">Perbarui Jawaban</button>
                                                 </a>
